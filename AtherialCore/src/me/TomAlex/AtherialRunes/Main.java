@@ -24,4 +24,6 @@ public class Main extends JavaPlugin implements Listener
 	}
 	
 	String test = "Test";
+	
+	String hei = "Pipo";
 }
