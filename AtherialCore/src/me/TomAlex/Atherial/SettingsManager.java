@@ -28,6 +28,9 @@ public class SettingsManager {
     FileConfiguration playerdata;
     File pdfile;
     
+    FileConfiguration uuiddata;
+    File udfile;
+    
     public void setup(Plugin p) {
             cfile = new File(p.getDataFolder(), "config.yml");
             config = p.getConfig();
@@ -50,6 +53,19 @@ public class SettingsManager {
                     }
             }
             playerdata = YamlConfiguration.loadConfiguration(pdfile);
+            
+            
+            
+            udfile = new File(p.getDataFolder(), "uuiddata.yml");
+            if (!udfile.exists()) {
+                    try {
+                    	udfile.createNewFile();
+                    }
+                    catch (IOException e) {
+                            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create uuiddata.yml!");
+                    }
+            }
+            uuiddata = YamlConfiguration.loadConfiguration(udfile);
 
             
             
@@ -79,6 +95,25 @@ public class SettingsManager {
    
     public void reloadPlayerData() {
     	playerdata = YamlConfiguration.loadConfiguration(pdfile);
+    }
+    
+    
+    
+    public FileConfiguration getUuidData() {
+        return uuiddata;
+    }
+
+    public void saveUuidData() {
+        	try {
+        		uuiddata.save(udfile);
+        	}
+        	catch (IOException e) {
+                	Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save uuiddata.yml!");
+        	}
+    }
+
+    public void reloadUuidData() {
+    	uuiddata = YamlConfiguration.loadConfiguration(udfile);
     }
     
     //===========================================================
