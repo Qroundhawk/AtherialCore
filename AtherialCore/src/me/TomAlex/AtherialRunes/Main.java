@@ -22,4 +22,6 @@ public class Main extends JavaPlugin implements Listener
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
 	}
+	
+	String test = "Test";
 }
