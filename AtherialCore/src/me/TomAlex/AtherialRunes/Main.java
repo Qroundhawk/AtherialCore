@@ -1,31 +1,19 @@
 package me.TomAlex.AtherialRunes;
 
-import java.util.logging.Logger;
+import me.TomAlex.AtherialRunes.SettingsManager;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin implements Listener 
-{
-	public static Logger log = Bukkit.getLogger();
-
-	public static void out(String s) 
-	{
-		log.info("Test" + s);
-	}
+public class Main extends JavaPlugin implements Listener {
+	
+	SettingsManager settings = SettingsManager.getInstance();
 
 	public void onEnable() {
-		out("Plugin enabled");
-		saveDefaultConfig();
-		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(this, this);
+		
 	}
 	
-	String test = "Test";
-	
-	String hei = "Pipo";
-	
-	String pi = "pikki";
+	public void onDisable() {
+		
+	}
 }
