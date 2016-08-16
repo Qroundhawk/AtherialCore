@@ -18,12 +18,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-<<<<<<< HEAD
-=======
 import org.bukkit.scheduler.BukkitRunnable;
 
 import me.TomAlex.Atherial.Main;
->>>>>>> branch 'master' of https://github.com/Qroundhawk/AtherialCore.git
+
 
 
 public class PlayerJoinSet implements Listener
@@ -32,20 +30,9 @@ public class PlayerJoinSet implements Listener
 	@EventHandler
 	public void PlayerJoin(PlayerLoginEvent event) {
 		Player p = event.getPlayer();
-
-<<<<<<< HEAD
-		// removes 1.9 combat
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-			public void run() {
-				p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
-			}
-		}, 20);
-
-		// Sets healthscale to 40
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-=======
+		
 		new BukkitRunnable() {
->>>>>>> branch 'master' of https://github.com/Qroundhawk/AtherialCore.git
+
 			public void run() {
 				if (!(event.getPlayer().hasPlayedBefore())) {
 					event.getPlayer().setMaxHealth(100);
