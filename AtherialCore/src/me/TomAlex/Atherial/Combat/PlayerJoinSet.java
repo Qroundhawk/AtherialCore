@@ -15,26 +15,22 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import me.TomAlex.Atherial.Main;
 
 
 public class PlayerJoinSet implements Listener
 {
+
 	@EventHandler
 	public void PlayerJoin(PlayerLoginEvent event) {
-		
-
 		Player p = event.getPlayer();
 
-		// removes 1.9 combat
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) this, new Runnable() {
+		new BukkitRunnable() {
 			public void run() {
-				p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
-			}
-		}, 20);
-
-		// Sets healthscale to 40
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) this, new Runnable() {
-			public void run() {
+				p.sendMessage("Worked");
 				if (!(event.getPlayer().hasPlayedBefore())) {
 					event.getPlayer().setMaxHealth(100);
 					event.getPlayer().setHealthScale(40);
@@ -119,10 +115,13 @@ public class PlayerJoinSet implements Listener
 					ItemStack tapple = new ItemStack(Material.APPLE, 30);
 					event.getPlayer().getInventory().addItem(sword1, thelm, tlegs, tchest, tboots, tapple);
 
-				} else event.getPlayer().setHealthScale(40);
+				}else event.getPlayer().setHealthScale(40);
+				p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
 
+				cancel();
 			}
-		}, 20);
+		}.runTaskLater(JavaPlugin.getProvidingPlugin(Main.class), 20);
+
 	}
 
 }
