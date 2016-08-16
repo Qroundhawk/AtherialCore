@@ -1,4 +1,4 @@
-package me.TomAlex.ArmorEquipEvent;
+package me.TomAlex.Atherial.ArmorEquip;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

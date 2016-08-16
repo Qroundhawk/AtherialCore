@@ -1,4 +1,4 @@
-package me.TomAlex.AtherialRunes;
+package me.TomAlex.Atherial;
 
 import java.io.File;
 import java.io.IOException;
