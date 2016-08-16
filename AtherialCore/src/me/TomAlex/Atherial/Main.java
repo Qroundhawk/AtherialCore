@@ -12,6 +12,7 @@ public class Main extends JavaPlugin implements Listener {
 	SettingsManager settings = SettingsManager.getInstance();
 
 	public void onEnable() {
+		JavaPlugin.getProvidingPlugin(Main.class);
 		settings.setup(this);
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
@@ -22,4 +23,6 @@ public class Main extends JavaPlugin implements Listener {
 	public void onDisable() {
 		
 	}
+	
+	
 }
