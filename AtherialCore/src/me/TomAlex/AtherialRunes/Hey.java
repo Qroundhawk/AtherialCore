@@ -1,5 +1,7 @@
 package me.TomAlex.AtherialRunes;
 
-public class Hey {
+public class Hey 
+{
+	String test = "Test";
 
 }
