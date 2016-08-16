@@ -30,7 +30,6 @@ public class PlayerJoinSet implements Listener
 
 		new BukkitRunnable() {
 			public void run() {
-				p.sendMessage("Worked");
 				if (!(event.getPlayer().hasPlayedBefore())) {
 					event.getPlayer().setMaxHealth(100);
 					event.getPlayer().setHealthScale(40);
