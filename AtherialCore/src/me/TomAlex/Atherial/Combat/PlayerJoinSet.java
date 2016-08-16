@@ -3,6 +3,8 @@ package me.TomAlex.Atherial.Combat;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.TomAlex.Atherial.Main;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -15,6 +17,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
 
 public class PlayerJoinSet implements Listener
@@ -26,14 +29,14 @@ public class PlayerJoinSet implements Listener
 		Player p = event.getPlayer();
 
 		// removes 1.9 combat
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) this, new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 			public void run() {
 				p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
 			}
 		}, 20);
 
 		// Sets healthscale to 40
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) this, new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 			public void run() {
 				if (!(event.getPlayer().hasPlayedBefore())) {
 					event.getPlayer().setMaxHealth(100);
