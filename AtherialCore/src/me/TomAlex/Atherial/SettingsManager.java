@@ -25,8 +25,8 @@ public class SettingsManager {
     FileConfiguration config;
     File cfile;
    
-    FileConfiguration data;
-    File dfile;
+    FileConfiguration playerdata;
+    File pdfile;
     
     public void setup(Plugin p) {
             cfile = new File(p.getDataFolder(), "config.yml");
@@ -40,16 +40,16 @@ public class SettingsManager {
             
             
            
-            dfile = new File(p.getDataFolder(), "data.yml");
-            if (!dfile.exists()) {
+            pdfile = new File(p.getDataFolder(), "playerdata.yml");
+            if (!pdfile.exists()) {
                     try {
-                            dfile.createNewFile();
+                    	pdfile.createNewFile();
                     }
                     catch (IOException e) {
-                            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
+                            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create playerdata.yml!");
                     }
             }
-            data = YamlConfiguration.loadConfiguration(dfile);
+            playerdata = YamlConfiguration.loadConfiguration(pdfile);
 
             
             
@@ -64,21 +64,21 @@ public class SettingsManager {
     
     
     
-    public FileConfiguration getData() {
-            return data;
+    public FileConfiguration getPlayerData() {
+            return playerdata;
     }
    
-    public void saveData() {
+    public void savePlayerData() {
             try {
-                    data.save(dfile);
+            	playerdata.save(pdfile);
             }
             catch (IOException e) {
-                    Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save data.yml!");
+                    Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save playerdata.yml!");
             }
     }
    
-    public void reloadData() {
-            data = YamlConfiguration.loadConfiguration(dfile);
+    public void reloadPlayerData() {
+    	playerdata = YamlConfiguration.loadConfiguration(pdfile);
     }
     
     //===========================================================
