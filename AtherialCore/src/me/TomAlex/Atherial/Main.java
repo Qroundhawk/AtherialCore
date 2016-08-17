@@ -55,6 +55,8 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new MenuStorageClickEvent(), this);
 		pm.registerEvents(new StorageCloseEvent(), this);
 		
+		pm.registerEvents(new BlockPlaceEvent(), this);
+		
 		
 		
 		
