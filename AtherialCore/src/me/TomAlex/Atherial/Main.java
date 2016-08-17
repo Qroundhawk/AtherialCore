@@ -23,9 +23,16 @@ public class Main extends JavaPlugin implements Listener {
 		settings.setup(this);
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
+		
+		
+		//Join Event
+		//pm.registerEvents(new JoinEvent(), this);
+		
+		
+		//Combat Event
 		pm.registerEvents(new PlayerJoinSet(), this);
 		pm.registerEvents(new ArmorEquipting(), this);
-		getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
+		pm.registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
 		
 		
 		getCommand("test").setExecutor(new TestCommand());
