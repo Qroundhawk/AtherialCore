@@ -74,9 +74,26 @@ public class ArmorEquipting implements Listener
 				
 			}else return;
 			//----------Thorns----------------------
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 8)
+			{
+				String loreThorns = e.getNewArmorPiece().getItemMeta().getLore().get(5);
+				Scanner in5 = new Scanner(loreThorns).useDelimiter("[^0-9]+");
+				int Thorns = in5.nextInt();
+				int currentThorns = settings.Thorns.get(p.getUniqueId());
+				int newThorns =  currentThorns +Thorns ;
+				settings.Block.put(p.getUniqueId(), newThorns);				
+			}else return;
 
 			//----------PvP Or PvE restistance------
-			
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 9)
+			{
+				String loreThorns = e.getNewArmorPiece().getItemMeta().getLore().get(6);
+				Scanner in5 = new Scanner(loreThorns).useDelimiter("[^0-9]+");
+				int Thorns = in5.nextInt();
+				int currentThorns = settings.Thorns.get(p.getUniqueId());
+				int newThorns =  currentThorns +Thorns ;
+				settings.Block.put(p.getUniqueId(), newThorns);				
+			}else return;
 			//----------Vit-------------------------
 			
 			
