@@ -18,7 +18,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class Methods {
 	
-	public String smsg = ChatColor.DARK_GRAY +  "[" + ChatColor.RED + "!" + ChatColor.DARK_GRAY + "]" + ChatColor.BOLD + "> ";
+	public String smsg = ChatColor.DARK_GRAY +  "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "]" + ChatColor.BOLD + "> ";
 	
 	Economy econ = Main.getEcon();
 	SettingsManager settings = SettingsManager.getInstance();
