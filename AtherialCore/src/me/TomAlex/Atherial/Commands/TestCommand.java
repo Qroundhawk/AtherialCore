@@ -19,13 +19,15 @@ public class TestCommand implements CommandExecutor {
 		if (!p.hasPermission("test.command")) {
 			p.sendMessage(ChatColor.RED + "You do not have permissions to do that.");
 			return true;
-		}else if(p.hasPermission("test.command"))
-		{
+		}
+		
+		
 			if(settings.Health.containsKey(p.getUniqueId()))
 			{
 				p.sendMessage("Health equip: " + settings.Health.get(p.getUniqueId()));
 			}else p.sendMessage("Not in map");
-		}
+		
+		
 		
 		return true;
 	}
