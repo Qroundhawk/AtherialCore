@@ -2,6 +2,7 @@ package me.TomAlex.Atherial;
 
 import me.TomAlex.Atherial.SettingsManager;
 import me.TomAlex.Atherial.Combat.ArmorEquipting;
+import me.TomAlex.Atherial.ArmorEquipEvent.ArmorListener;
 import me.TomAlex.Atherial.Combat.PlayerJoinSet;
 import me.TomAlex.Atherial.Commands.TestCommand;
 
@@ -24,6 +25,7 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(this, this);
 		pm.registerEvents(new PlayerJoinSet(), this);
 		pm.registerEvents(new ArmorEquipting(), this);
+		getServer().getPluginManager().registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
 		
 		
 		getCommand("test").setExecutor(new TestCommand());
