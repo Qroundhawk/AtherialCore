@@ -38,10 +38,10 @@ public class SettingsManager {
     
     
     //Combat HashMaps
-    public HashMap<UUID, Double> Health = new HashMap<UUID, Double>();
-	public HashMap<UUID, Double> Armor = new HashMap<UUID, Double>();
-	public HashMap<UUID, Double> Damage = new HashMap<UUID, Double>();
-	public HashMap<UUID, Double> LifeSteal = new HashMap<UUID, Double>();
+    public HashMap<UUID, Integer> Health = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Armor = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Damage = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> LifeSteal = new HashMap<UUID, Integer>();
 	
 	
 	
