@@ -36,7 +36,6 @@ public class ArmorEquipting implements Listener
 			return;
 		}
 		
-		e.getType().getSlot();
 		
 		if (e.getNewArmorPiece() != null && e.getNewArmorPiece().hasItemMeta()) 
 		{
@@ -46,6 +45,8 @@ public class ArmorEquipting implements Listener
 			int h = in2.nextInt();
 			double maxhealth = p.getMaxHealth();
 			p.setMaxHealth(maxhealth + h);
+			
+			pl.Health.put(p.getUniqueId(), h);
 			
 			
 			p.sendMessage("");
