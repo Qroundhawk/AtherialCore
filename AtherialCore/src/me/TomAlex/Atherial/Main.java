@@ -13,6 +13,7 @@ import me.TomAlex.Atherial.Economy.MenuStorageClickEvent;
 import me.TomAlex.Atherial.Economy.StorageCloseEvent;
 import me.TomAlex.Atherial.Economy.VillagerEvent;
 import me.TomAlex.Atherial.Mining.OreSetup;
+import me.TomAlex.Atherial.Mining.test;
 import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.event.EventHandler;
@@ -57,6 +58,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		//@Mining Events
 		pm.registerEvents(new OreSetup(), this);
+		pm.registerEvents(new test(), this);
 		
 		
 		
