@@ -1,10 +1,17 @@
 package me.TomAlex.Atherial;
 
-import me.TomAlex.Atherial.SettingsManager;
-import me.TomAlex.Atherial.Combat.ArmorEquipting;
 import me.TomAlex.Atherial.ArmorEquipEvent.ArmorListener;
+import me.TomAlex.Atherial.Combat.ArmorEquipting;
 import me.TomAlex.Atherial.Combat.PlayerJoinSet;
+import me.TomAlex.Atherial.Commands.EcoAddBankCommand;
+import me.TomAlex.Atherial.Commands.EcoAddMarketCommand;
+import me.TomAlex.Atherial.Commands.EcoMoneyCommand;
+import me.TomAlex.Atherial.Commands.EcoSetStorageCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
+import me.TomAlex.Atherial.Economy.MenuBankClickEvent;
+import me.TomAlex.Atherial.Economy.MenuStorageClickEvent;
+import me.TomAlex.Atherial.Economy.StorageCloseEvent;
+import me.TomAlex.Atherial.Economy.VillagerEvent;
 import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.event.Listener;
@@ -27,20 +34,42 @@ public class Main extends JavaPlugin implements Listener {
             return;
         }
 		
+		/*@Event registers*/
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
 		
+		//@Join Events
+		pm.registerEvents(new JoinEvent(), this);
 		
-		//@Join Event
-		//pm.registerEvents(new JoinEvent(), this);
-		
-		
-		//@Combat Event
+		//@Combat Events
 		pm.registerEvents(new PlayerJoinSet(), this);
 		pm.registerEvents(new ArmorEquipting(), this);
 		pm.registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
 		
+		//@Economy Events
+		pm.registerEvents(new JoinEvent(), this);
+		pm.registerEvents(new VillagerEvent(), this);
+		pm.registerEvents(new MenuBankClickEvent(), this);
+		pm.registerEvents(new MenuStorageClickEvent(), this);
+		pm.registerEvents(new StorageCloseEvent(), this);
 		
+		
+		
+		
+		
+		/*@Command registers*/
+		
+		//@Ecomony Commands
+		getCommand("addbank").setExecutor(new EcoAddBankCommand());
+		getCommand("addmarket").setExecutor(new EcoAddMarketCommand());
+		getCommand("money").setExecutor(new EcoMoneyCommand());
+		getCommand("setstorage").setExecutor(new EcoSetStorageCommand());
+		
+		
+		
+		
+		
+		//@Extra Comamnds
 		getCommand("test").setExecutor(new TestCommand());
 	}
 	

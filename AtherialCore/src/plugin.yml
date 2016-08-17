@@ -9,8 +9,35 @@ commands:
     test:
         usage: /<command>
         description: Test Command.
+    money:
+        usage: /<command>
+        description: Money Command.
+    addbank:
+        usage: /<command>
+        description: Addbank Command.
+    setstorage:
+        usage: /<command>
+        description: Setstorage Command.
+    addmarket:
+        usage: /<command>
+        description: Addmarket Command.
         
 permissions:
     test.command:
         description: Test.
+        default: op
+    economy.money:
+        description: Money.
+        default: op
+    economy.money.other:
+        description: Money see.
+        default: op
+    economy.addbank:
+        description: Addbank.
+        default: op
+    economy.setstorage:
+        description: Addbank.
+        default: op
+    economy.addmarket:
+        description: Addmarket.
         default: op
