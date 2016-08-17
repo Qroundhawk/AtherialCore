@@ -16,8 +16,7 @@ public class JoinEvent implements Listener {
 		if(!settings.getPlayerData().contains(p.getUniqueId().toString())) {
 			settings.getPlayerData().set(p.getUniqueId().toString(), p.getUniqueId().toString());
 			settings.getPlayerData().set(p.getUniqueId().toString() + ".name", p.getName());
-			settings.getPlayerData().set(p.getUniqueId().toString() + ".money", p.getName());
-			settings.getPlayerData().set(p.getUniqueId().toString() + "storage.rows", p.getName());
+			settings.getPlayerData().set(p.getUniqueId().toString() + "storage.rows", 2);
 			settings.savePlayerData();
 		}
 		

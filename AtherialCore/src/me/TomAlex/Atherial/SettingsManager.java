@@ -33,6 +33,9 @@ public class SettingsManager {
     FileConfiguration uuiddata;
     File udfile;
     
+    FileConfiguration storagedata;
+    File stfile;
+    
     
     
     
@@ -45,6 +48,7 @@ public class SettingsManager {
 	public HashMap<UUID, Integer> PvP = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> PvE = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Vit = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Regen = new HashMap<UUID, Integer>();
 	
 	
 	
@@ -88,6 +92,19 @@ public class SettingsManager {
                     }
             }
             uuiddata = YamlConfiguration.loadConfiguration(udfile);
+            
+            
+            
+            stfile = new File(p.getDataFolder(), "storagedata.yml");
+            if (!stfile.exists()) {
+                    try {
+                    	stfile.createNewFile();
+                    }
+                    catch (IOException e) {
+                            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create storagedata.yml!");
+                    }
+            }
+            storagedata = YamlConfiguration.loadConfiguration(stfile);
 
             
             
@@ -121,6 +138,7 @@ public class SettingsManager {
     
     
     
+    
     public FileConfiguration getUuidData() {
         return uuiddata;
     }
@@ -136,6 +154,26 @@ public class SettingsManager {
 
     public void reloadUuidData() {
     	uuiddata = YamlConfiguration.loadConfiguration(udfile);
+    }
+    
+    
+    
+    
+    public FileConfiguration getStorageData() {
+        return storagedata;
+    }
+
+    public void saveStorageData() {
+        	try {
+        		storagedata.save(stfile);
+        	}
+        	catch (IOException e) {
+                	Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save storagedata.yml!");
+        	}
+    }
+
+    public void reloadStorageData() {
+    	storagedata = YamlConfiguration.loadConfiguration(stfile);
     }
     
     //===========================================================
@@ -155,6 +193,11 @@ public class SettingsManager {
     public void reloadConfig() {
             config = YamlConfiguration.loadConfiguration(cfile);
     }
+    
+    
+    
+    
+    
    
     public PluginDescriptionFile getDesc() {
             return p.getDescription();

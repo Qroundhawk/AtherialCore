@@ -3,6 +3,7 @@ version: 0.1
 main: me.TomAlex.Atherial.Main
 author: eagleshooter-qroundhawk
 description: AtherialCore
+depend: [Vault]
 
 commands:
     test:
