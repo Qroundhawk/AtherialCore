@@ -3,3 +3,13 @@ version: 0.1
 main: me.TomAlex.Atherial.Main
 author: eagleshooter-qroundhawk
 description: AtherialCore
+
+commands:
+    test:
+        usage: /<command>
+        description: Test Command.
+        
+permissions:
+    test.command:
+        description: Test.
+        default: op
