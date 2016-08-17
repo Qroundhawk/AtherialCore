@@ -34,10 +34,5 @@ public class Main extends JavaPlugin implements Listener {
 		
 	}
 	
-	public HashMap<UUID, Integer> Health = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> Armor = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> Damage = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> LifeSteal = new HashMap<UUID, Integer>();
-	
 	
 }

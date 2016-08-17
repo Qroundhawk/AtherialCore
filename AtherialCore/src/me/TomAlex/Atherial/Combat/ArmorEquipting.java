@@ -10,11 +10,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import me.TomAlex.Atherial.Main;
+import me.TomAlex.Atherial.SettingsManager;
 import me.TomAlex.Atherial.ArmorEquip.ArmorEquipEvent;
 
 public class ArmorEquipting implements Listener
 {
-	
+	SettingsManager settings = SettingsManager.getInstance();
 	
 	@EventHandler
 	public void Equip(ArmorEquipEvent e) 
@@ -41,7 +42,7 @@ public class ArmorEquipting implements Listener
 			double maxhealth = p.getMaxHealth();
 			p.setMaxHealth(maxhealth + h);
 			
-			pl.Health.put(p.getUniqueId(), h);
+			settings.Health.put(p.getUniqueId(), h);
 			
 			
 			p.sendMessage("");

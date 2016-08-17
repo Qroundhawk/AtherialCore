@@ -2,6 +2,8 @@ package me.TomAlex.Atherial;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,6 +32,23 @@ public class SettingsManager {
     
     FileConfiguration uuiddata;
     File udfile;
+    
+    
+    
+    
+    
+    //Combat HashMaps
+    public HashMap<UUID, Integer> Health = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Armor = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Damage = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> LifeSteal = new HashMap<UUID, Integer>();
+	
+	
+	
+	
+	
+	
+	
     
     public void setup(Plugin p) {
             cfile = new File(p.getDataFolder(), "config.yml");
