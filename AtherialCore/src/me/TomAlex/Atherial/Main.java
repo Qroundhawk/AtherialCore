@@ -1,6 +1,7 @@
 package me.TomAlex.Atherial;
 
 import me.TomAlex.Atherial.SettingsManager;
+import me.TomAlex.Atherial.Combat.ArmorEquipting;
 import me.TomAlex.Atherial.Combat.PlayerJoinSet;
 import me.TomAlex.Atherial.Commands.TestCommand;
 

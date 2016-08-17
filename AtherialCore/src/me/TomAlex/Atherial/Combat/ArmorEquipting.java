@@ -15,11 +15,6 @@ import me.TomAlex.Atherial.ArmorEquip.ArmorEquipEvent;
 public class ArmorEquipting implements Listener
 {
 	
-	Main pl;
-	public ArmorEquipting(Main plugin)
-	{
-	pl = plugin;
-	}
 	
 	@EventHandler
 	public void Equip(ArmorEquipEvent e) 
