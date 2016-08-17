@@ -36,6 +36,9 @@ public class SettingsManager {
     FileConfiguration storagedata;
     File stfile;
     
+    FileConfiguration oredata;
+    File orfile;
+    
     
     
     
@@ -105,6 +108,19 @@ public class SettingsManager {
                     }
             }
             storagedata = YamlConfiguration.loadConfiguration(stfile);
+            
+            
+            
+            orfile = new File(p.getDataFolder(), "oredata.yml");
+            if (!orfile.exists()) {
+                    try {
+                    	orfile.createNewFile();
+                    }
+                    catch (IOException e) {
+                            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create oredata.yml!");
+                    }
+            }
+            oredata = YamlConfiguration.loadConfiguration(orfile);
 
             
             
@@ -174,6 +190,26 @@ public class SettingsManager {
 
     public void reloadStorageData() {
     	storagedata = YamlConfiguration.loadConfiguration(stfile);
+    }
+    
+    
+    
+    
+    public FileConfiguration getOreData() {
+        return oredata;
+    }
+
+    public void saveOreData() {
+        	try {
+        		oredata.save(orfile);
+        	}
+        	catch (IOException e) {
+                	Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save oredata.yml!");
+        	}
+    }
+
+    public void reloadOreData() {
+    	oredata = YamlConfiguration.loadConfiguration(orfile);
     }
     
     //===========================================================
