@@ -14,7 +14,7 @@ import me.TomAlex.Atherial.ArmorEquipEvent.ArmorEquipEvent;
 
 public class ArmorEquipting implements Listener
 {
-	//SettingsManager settings = SettingsManager.getInstance();
+	SettingsManager settings = SettingsManager.getInstance();
 	
 	@EventHandler
 	public void Equip(ArmorEquipEvent e) 
@@ -41,10 +41,35 @@ public class ArmorEquipting implements Listener
 			int h = in2.nextInt();
 			double maxhealth = p.getMaxHealth();
 			p.setMaxHealth(maxhealth + h);
+			settings.Health.put(p.getUniqueId(), (int) (maxhealth + h));
 			
-			//settings.Health.put(p.getUniqueId(), h);
+			//----------Setting Armor-----------------
+			String loreArmor = e.getNewArmorPiece().getItemMeta().getLore().get(1);
+			Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
+			int a = in1.nextInt();
+			int currentarmor = settings.Armor.get(p.getUniqueId());
+			int newarmor =  currentarmor +a;
+			settings.Armor.put(p.getUniqueId(), newarmor);
+			//----------HealthRegen-----------------
+			
+			//----------BlockChance-----------------
+			
+			//----------Thorns----------------------
+			
+			//----------PvP Or PvE restistance------
+			
+			//----------Vit-------------------------
 			
 			
+			
+			
+			settings.Health.put(p.getUniqueId(), (int) (maxhealth + h));
+			
+			
+			
+			
+			
+			//--------------Message-------------
 			p.sendMessage("");
 			p.sendMessage(ChatColor.DARK_PURPLE + "    ■You equipped: "
 					+ e.getNewArmorPiece().getItemMeta().getDisplayName());
@@ -60,6 +85,7 @@ public class ArmorEquipting implements Listener
 			int h = in2.nextInt();
 			double maxhealth = p.getMaxHealth();
 			p.setMaxHealth(maxhealth - h);
+			settings.Health.put(p.getUniqueId(), (int) (maxhealth - h));
 
 
 			p.sendMessage("");

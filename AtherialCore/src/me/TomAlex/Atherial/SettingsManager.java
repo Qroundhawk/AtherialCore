@@ -40,8 +40,11 @@ public class SettingsManager {
     //Combat HashMaps
     public HashMap<UUID, Integer> Health = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Armor = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> Damage = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> LifeSteal = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Block = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Thorns = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> PvP = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> PvE = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Vit = new HashMap<UUID, Integer>();
 	
 	
 	
