@@ -22,7 +22,8 @@ public class TestCommand implements CommandExecutor {
 		}
 		if(p.getItemInHand().hasItemMeta())
 		{
-			p.sendMessage("Loresize: "  + p.getItemInHand().getItemMeta().getLore().size());
+			String chatcolor = ""+ ChatColor.RED;
+			p.sendMessage(chatcolor+ "Loresize: "  + p.getItemInHand().getItemMeta().getLore().size());
 		
 		}
 			if(settings.Health.containsKey(p.getUniqueId()))
