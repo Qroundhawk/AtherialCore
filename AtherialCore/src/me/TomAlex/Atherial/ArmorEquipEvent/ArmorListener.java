@@ -1,4 +1,4 @@
-package me.TomAlex.Atherial.ArmorEquip;
+package me.TomAlex.Atherial.ArmorEquipEvent;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import me.TomAlex.Atherial.ArmorEquip.ArmorEquipEvent.EquipMethod;
+import me.TomAlex.Atherial.ArmorEquipEvent.ArmorEquipEvent.EquipMethod;
 
 /**
  * @Author Borlea

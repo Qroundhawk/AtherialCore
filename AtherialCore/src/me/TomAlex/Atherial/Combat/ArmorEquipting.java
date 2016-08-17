@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 
 import me.TomAlex.Atherial.Main;
 import me.TomAlex.Atherial.SettingsManager;
-import me.TomAlex.Atherial.ArmorEquip.ArmorEquipEvent;
+import me.TomAlex.Atherial.ArmorEquipEvent.ArmorEquipEvent;
 
 public class ArmorEquipting implements Listener
 {
