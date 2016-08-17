@@ -35,6 +35,14 @@ public class ArmorEquipting implements Listener
 		
 		if (e.getNewArmorPiece() != null && e.getNewArmorPiece().hasItemMeta()) 
 		{
+			//----------Setting Armor-----------------
+			String loreArmor = e.getNewArmorPiece().getItemMeta().getLore().get(1);
+			Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
+			int a = in1.nextInt();
+			int currentarmor = settings.Armor.get(p.getUniqueId());
+			int newarmor =  currentarmor +a;
+			settings.Armor.put(p.getUniqueId(), newarmor);
+			
 			// ----------Setting Health----------
 			String lorehealth = e.getNewArmorPiece().getItemMeta().getLore().get(2);
 			Scanner in2 = new Scanner(lorehealth).useDelimiter("[^0-9]+");
@@ -43,19 +51,30 @@ public class ArmorEquipting implements Listener
 			p.setMaxHealth(maxhealth + h);
 			settings.Health.put(p.getUniqueId(), (int) (maxhealth + h));
 			
-			//----------Setting Armor-----------------
-			String loreArmor = e.getNewArmorPiece().getItemMeta().getLore().get(1);
-			Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
-			int a = in1.nextInt();
-			int currentarmor = settings.Armor.get(p.getUniqueId());
-			int newarmor =  currentarmor +a;
-			settings.Armor.put(p.getUniqueId(), newarmor);
 			//----------HealthRegen-----------------
-			
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 6)
+			{
+				String loreRegen = e.getNewArmorPiece().getItemMeta().getLore().get(3);
+				Scanner in3 = new Scanner(loreRegen).useDelimiter("[^0-9]+");
+				int regen = in3.nextInt();
+				int currentregen = settings.Regen.get(p.getUniqueId());
+				int newregen =  currentregen +regen;
+				settings.Regen.put(p.getUniqueId(), newregen);
+				
+			}else return;
 			//----------BlockChance-----------------
-			
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 7)
+			{
+				String loreBlock = e.getNewArmorPiece().getItemMeta().getLore().get(4);
+				Scanner in4 = new Scanner(loreBlock).useDelimiter("[^0-9]+");
+				int block = in4.nextInt();
+				int currentblock = settings.Block.get(p.getUniqueId());
+				int newblock =  currentblock +block ;
+				settings.Block.put(p.getUniqueId(), newblock);
+				
+			}else return;
 			//----------Thorns----------------------
-			
+
 			//----------PvP Or PvE restistance------
 			
 			//----------Vit-------------------------
