@@ -22,6 +22,7 @@ public class ArmorEquipting implements Listener
 	{
 
 		Player p = e.getPlayer();
+		p.sendMessage("Works");
 	
 		
 		//Checking if inventory is full
