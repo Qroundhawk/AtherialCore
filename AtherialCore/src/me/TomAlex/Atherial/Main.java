@@ -23,8 +23,7 @@ public class Main extends JavaPlugin implements Listener {
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
 		pm.registerEvents(new PlayerJoinSet(), this);
-		
-		Bukkit.getServer().getPluginManager().registerEvents(new JoinEvent(), this);
+		pm.registerEvents(new ArmorEquipting(), this);
 		
 		
 		getCommand("test").setExecutor(new TestCommand());
