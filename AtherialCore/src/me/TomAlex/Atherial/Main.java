@@ -12,8 +12,10 @@ import me.TomAlex.Atherial.Economy.MenuBankClickEvent;
 import me.TomAlex.Atherial.Economy.MenuStorageClickEvent;
 import me.TomAlex.Atherial.Economy.StorageCloseEvent;
 import me.TomAlex.Atherial.Economy.VillagerEvent;
+import me.TomAlex.Atherial.Mining.BlockPlaceEvent;
 import net.milkbowl.vault.economy.Economy;
 
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
