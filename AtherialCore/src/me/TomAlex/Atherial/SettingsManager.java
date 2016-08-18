@@ -43,7 +43,7 @@ public class SettingsManager {
     
     
     
-    //Combat HashMaps
+    //@Combat HashMaps
     public HashMap<UUID, Integer> Health = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Armor = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Block = new HashMap<UUID, Integer>();
@@ -53,13 +53,21 @@ public class SettingsManager {
 	public HashMap<UUID, Integer> Vit = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Regen = new HashMap<UUID, Integer>();
 	
-	//Mining HashMaps
+	//@Mining HashMaps
 	public HashMap<String, Integer> Coal = new HashMap<String, Integer>();
 	public HashMap<String, Integer> Emerald = new HashMap<String, Integer>();
 	public HashMap<String, Integer> Iron = new HashMap<String, Integer>();
 	public HashMap<String, Integer> Gold = new HashMap<String, Integer>();
 	public HashMap<String, Integer> Diamond = new HashMap<String, Integer>();
 	public HashMap<String, Integer> Lapis = new HashMap<String, Integer>();
+	//@Mining respawnrate in seconds
+	public int CoalRespawn = 30;
+	public int EmeraldRespawn = 30;
+	public int IronRespawn = 30;
+	public int GoldRespawn = 30;
+	public int DiamondRespawn = 30;
+	public int LapisRespawn = 30;
+	
 	
     
     public void setup(Plugin p) {

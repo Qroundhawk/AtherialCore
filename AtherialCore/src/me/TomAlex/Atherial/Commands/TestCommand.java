@@ -23,12 +23,14 @@ public class TestCommand implements CommandExecutor {
 			return true;
 		}
 		
-		String loreArmor = p.getItemInHand().getItemMeta().getLore().get(1);
+		p.sendMessage("MAP: " + settings.Coal);
+		
+		/*String loreArmor = p.getItemInHand().getItemMeta().getLore().get(1);
 		Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
 		int a = in1.nextInt();
 		int a1 = in1.nextInt();
 		p.sendMessage("a"  + a + " " + a1 + " "  + " " +  " ");
-		p.sendMessage(""+ p.getItemInHand().getItemMeta().getLore().size());
+		p.sendMessage(""+ p.getItemInHand().getItemMeta().getLore().size());*/
 		
 			//String chatcolor = ""+ ChatColor.RED;
 			//p.sendMessage(chatcolor+ "Loresize: "  + p.getItemInHand().getItemMeta().getLore().size());

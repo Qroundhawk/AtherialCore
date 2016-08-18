@@ -24,28 +24,33 @@ public class OreRespawn {
     
     public void miningStart() {
     	
-    	
-    	settings.Coal.put("coal1", 20);
-    	settings.Coal.put("coal2", 20);
-    	
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable () {
 			public void run() {
 				
 				//@Coal respawn
 				if (!settings.Coal.isEmpty() == true) {
 					for (Entry<String, Integer> i : settings.Coal.entrySet()) {
-						
 						settings.Coal.put(i.getKey(), i.getValue() - 5);
-						
-						if (i.getValue() <= 0) {
+						if (!(settings.getOreData().get("coalore." + i.getKey()) == null)) {
 							Location loc = (Location) settings.getOreData().get("coalore." + i.getKey() + ".loc");
-							loc.getWorld().getBlockAt(loc).setType(Material.COAL_ORE);
-							settings.Coal.remove(i);
+							if 	(i.getValue() <= 0) {
+								if (!(loc.getWorld().getBlockAt(loc).getType() == Material.COAL_ORE)) {
+									loc.getWorld().getBlockAt(loc).setType(Material.COAL_ORE);
+								}
+								settings.Coal.remove(i.getKey());
+							}
+						}else{
+							settings.Coal.remove(i.getKey());
 						}
-						
-						//Bukkit.broadcastMessage("" + i.getKey() + " - " + i.getValue());
 					}
 				}
+				
+				
+				
+				
+				
+				
+				
 				
 			}
 		}, 100, 100);

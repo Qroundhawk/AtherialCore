@@ -36,7 +36,7 @@ public class OreBreakCoal implements Listener {
 						e.setCancelled(true);
 						b.setType(Material.BEDROCK);
 						
-						settings.Coal.put(i, 30);
+						settings.Coal.put(i, settings.CoalRespawn);
 						return;
 					}
 				}
