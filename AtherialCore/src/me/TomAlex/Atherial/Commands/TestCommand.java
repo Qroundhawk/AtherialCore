@@ -26,6 +26,8 @@ public class TestCommand implements CommandExecutor {
 			p.sendMessage(chatcolor+ "Loresize: "  + p.getItemInHand().getItemMeta().getLore().size());
 			String loreThorns = p.getItemInHand().getItemMeta().getLore().get(7);
 			p.sendMessage("" + loreThorns.indexOf(1));
+			
+			p.sendMessage("\u2694" + "");
 		
 		
 		}
