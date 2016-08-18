@@ -52,7 +52,7 @@ public class ArmorEquipting implements Listener
 			settings.Health.put(p.getUniqueId(), (int) (maxhealth + h));
 			
 			//----------HealthRegen-----------------
-			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 6)
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 8)
 			{
 				String loreRegen = e.getNewArmorPiece().getItemMeta().getLore().get(3);
 				Scanner in3 = new Scanner(loreRegen).useDelimiter("[^0-9]+");
@@ -63,7 +63,7 @@ public class ArmorEquipting implements Listener
 				
 			}else return;
 			//----------BlockChance-----------------
-			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 7)
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 9)
 			{
 				String loreBlock = e.getNewArmorPiece().getItemMeta().getLore().get(4);
 				Scanner in4 = new Scanner(loreBlock).useDelimiter("[^0-9]+");
@@ -74,32 +74,41 @@ public class ArmorEquipting implements Listener
 				
 			}else return;
 			//----------Thorns----------------------
-			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 8)
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 10)
 			{
 				String loreThorns = e.getNewArmorPiece().getItemMeta().getLore().get(5);
 				Scanner in5 = new Scanner(loreThorns).useDelimiter("[^0-9]+");
 				int Thorns = in5.nextInt();
 				int currentThorns = settings.Thorns.get(p.getUniqueId());
 				int newThorns =  currentThorns +Thorns ;
-				settings.Block.put(p.getUniqueId(), newThorns);				
+				settings.Thorns.put(p.getUniqueId(), newThorns);				
 			}else return;
 
-			//----------PvP Or PvE restistance------
-			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 9)
+			//----------Vit-------------------------
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 11)
 			{
-				String loreThorns = e.getNewArmorPiece().getItemMeta().getLore().get(6);
+				String loreVit = e.getNewArmorPiece().getItemMeta().getLore().get(6);
+				Scanner in6 = new Scanner(loreVit).useDelimiter("[^0-9]+");
+				int Vit = in6.nextInt();
+				int currentVit = settings.Vit.get(p.getUniqueId());
+				int newVit =  currentVit +Vit ;
+				settings.Vit.put(p.getUniqueId(), newVit);				
+			}else return;
+			
+			//----------PvP Or PvE restistance------
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 12)
+			{
+				String loreThorns = e.getNewArmorPiece().getItemMeta().getLore().get(7);
 				Scanner in5 = new Scanner(loreThorns).useDelimiter("[^0-9]+");
 				int Thorns = in5.nextInt();
 				int currentThorns = settings.Thorns.get(p.getUniqueId());
 				int newThorns =  currentThorns +Thorns ;
-				settings.Block.put(p.getUniqueId(), newThorns);				
-			}else return;
-			//----------Vit-------------------------
+				settings.Block.put(p.getUniqueId(), newThorns);		
+			}
 			
 			
 			
-			
-			settings.Health.put(p.getUniqueId(), (int) (maxhealth + h));
+		
 			
 			
 			
