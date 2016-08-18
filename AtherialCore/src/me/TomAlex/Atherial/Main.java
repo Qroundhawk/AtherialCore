@@ -14,7 +14,8 @@ import me.TomAlex.Atherial.Economy.MenuBankClickEvent;
 import me.TomAlex.Atherial.Economy.MenuStorageClickEvent;
 import me.TomAlex.Atherial.Economy.StorageCloseEvent;
 import me.TomAlex.Atherial.Economy.VillagerEvent;
-import me.TomAlex.Atherial.Mining.OreSetup;
+import me.TomAlex.Atherial.Mining.OreRespawn;
+import me.TomAlex.Atherial.Mining.OreSetupRespawn;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationCoal;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationDiamond;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationEmerald;
@@ -32,7 +33,8 @@ public class Main extends JavaPlugin implements Listener {
 	
 	public static Economy econ = null;
 	SettingsManager settings = SettingsManager.getInstance();
-	OreSetup mining = OreSetup.getInstance();
+	OreSetupRespawn mining = OreSetupRespawn.getInstance();
+	OreRespawn miningore = OreRespawn.getInstance();
 
 	public void onEnable() {
 		JavaPlugin.getProvidingPlugin(Main.class);
