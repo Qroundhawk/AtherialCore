@@ -14,10 +14,14 @@ import me.TomAlex.Atherial.Economy.MenuBankClickEvent;
 import me.TomAlex.Atherial.Economy.MenuStorageClickEvent;
 import me.TomAlex.Atherial.Economy.StorageCloseEvent;
 import me.TomAlex.Atherial.Economy.VillagerEvent;
-import me.TomAlex.Atherial.Mining.OreRegistration;
+import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationCoal;
+import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationDiamond;
+import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationEmerald;
+import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationGold;
+import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationIron;
+import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationLapis;
 import net.milkbowl.vault.economy.Economy;
 
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -61,9 +65,12 @@ public class Main extends JavaPlugin implements Listener {
 		
 
 		//@Mining Events
-		pm.registerEvents(new OreRegistration(), this);
-		
-		
+		pm.registerEvents(new OreRegistrationCoal(), this);
+		pm.registerEvents(new OreRegistrationDiamond(), this);
+		pm.registerEvents(new OreRegistrationEmerald(), this);
+		pm.registerEvents(new OreRegistrationGold(), this);
+		pm.registerEvents(new OreRegistrationIron(), this);
+		pm.registerEvents(new OreRegistrationLapis(), this);
 		
 		
 

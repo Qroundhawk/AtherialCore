@@ -1,4 +1,4 @@
-package me.TomAlex.Atherial.Mining;
+package me.TomAlex.Atherial.Mining.OreRegisteration;
 
 import me.TomAlex.Atherial.SettingsManager;
 
@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-public class OreRegistration implements Listener {
+public class OreRegistrationDiamond implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
 	
@@ -19,9 +19,9 @@ public class OreRegistration implements Listener {
 		Player p = e.getPlayer();
 		Block b = e.getBlock();
 		
-		Material material = Material.COAL_ORE;
-		String coalore = "coalore.";
-		String coaloresave = "coalore.coal";
+		Material material = Material.DIAMOND_ORE;
+		String coalore = "diamondore.";
+		String coaloresave = "diamondore.diamond";
 		
 		if (p.getItemInHand().getType() == Material.FEATHER) {
 			if (!p.hasPermission("mining.oresetup")) {
