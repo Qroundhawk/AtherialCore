@@ -20,21 +20,12 @@ public class TestCommand implements CommandExecutor {
 			p.sendMessage(ChatColor.RED + "You do not have permissions to do that.");
 			return true;
 		}
-		if(p.getItemInHand().hasItemMeta())
-		{
-			String chatcolor = ""+ ChatColor.RED;
-			p.sendMessage(chatcolor+ "Loresize: "  + p.getItemInHand().getItemMeta().getLore().size());
-			String loreThorns = p.getItemInHand().getItemMeta().getLore().get(7);
-			p.sendMessage("" + loreThorns.indexOf(1));
+			//String chatcolor = ""+ ChatColor.RED;
+			//p.sendMessage(chatcolor+ "Loresize: "  + p.getItemInHand().getItemMeta().getLore().size());
+			//String loreThorns = p.getItemInHand().getItemMeta().getLore().get(7);
+			//p.sendMessage("" + loreThorns.indexOf(1));
 			
-			p.sendMessage("\u2694" + "");
-		
-		
-		}
-			if(settings.Health.containsKey(p.getUniqueId()))
-			{
-				p.sendMessage("Health equip: " + settings.Health.get(p.getUniqueId()));
-			}
+			p.sendMessage("\u2694" + "" + "\u2764" + "\u25BA" + 	"\u27E1");
 		
 		
 		
