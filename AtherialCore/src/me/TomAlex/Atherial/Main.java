@@ -16,6 +16,7 @@ import me.TomAlex.Atherial.Economy.StorageCloseEvent;
 import me.TomAlex.Atherial.Economy.VillagerEvent;
 import me.TomAlex.Atherial.Mining.OreRespawn;
 import me.TomAlex.Atherial.Mining.OreSetupRespawn;
+import me.TomAlex.Atherial.Mining.OreBreak.OreBreakCoal;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationCoal;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationDiamond;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationEmerald;
@@ -76,6 +77,8 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new OreRegistrationIron(), this);
 		pm.registerEvents(new OreRegistrationLapis(), this);
 		
+		pm.registerEvents(new OreBreakCoal(), this);
+		
 		
 
 		/*@Command registers*/
@@ -96,6 +99,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		
 		mining.miningRespawn();
+		miningore.miningStart();
 	}
 	
 	public void onDisable() {

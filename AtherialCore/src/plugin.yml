@@ -41,3 +41,6 @@ permissions:
     economy.addmarket:
         description: Addmarket.
         default: op
+    mining.oresetup:
+        description: Addmarket.
+        default: op

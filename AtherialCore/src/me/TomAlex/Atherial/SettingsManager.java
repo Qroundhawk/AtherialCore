@@ -54,12 +54,12 @@ public class SettingsManager {
 	public HashMap<UUID, Integer> Regen = new HashMap<UUID, Integer>();
 	
 	//Mining HashMaps
-	public HashMap<UUID, Integer> Coal = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> Emerald = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> Iron = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> Gold = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> Diamond = new HashMap<UUID, Integer>();
-	public HashMap<UUID, Integer> Lapis = new HashMap<UUID, Integer>();
+	public HashMap<String, Integer> Coal = new HashMap<String, Integer>();
+	public HashMap<String, Integer> Emerald = new HashMap<String, Integer>();
+	public HashMap<String, Integer> Iron = new HashMap<String, Integer>();
+	public HashMap<String, Integer> Gold = new HashMap<String, Integer>();
+	public HashMap<String, Integer> Diamond = new HashMap<String, Integer>();
+	public HashMap<String, Integer> Lapis = new HashMap<String, Integer>();
 	
     
     public void setup(Plugin p) {
