@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-public class OreSetup implements Listener {
+public class OreRegistrationCoal implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
 	
@@ -19,20 +19,23 @@ public class OreSetup implements Listener {
 		Player p = e.getPlayer();
 		Block b = e.getBlock();
 		
+		Material material = Material.COAL_ORE;
+		String coalore = "coalore.";
+		String coaloresave = "coalore.coal";
+		
 		if (p.getItemInHand().getType() == Material.FEATHER) {
-			e.setCancelled(true);
 			if (!p.hasPermission("mining.oresetup")) {
 				return;
 			}
 			
 			//@Coal ore setup
-			if (b.getType() == Material.COAL_ORE) {
-				
+			if (b.getType() == material) {
+				e.setCancelled(true);
 				if (p.isSneaking())	 {
-					if (!(settings.getOreData().get("coalore.") == null)) {
-						for (String i : settings.getOreData().getConfigurationSection("coalore.").getKeys(false)) {
-							if (settings.getOreData().get("coalore." + i + ".loc").equals(b.getLocation())) {
-								settings.getOreData().set("coalore." + i, null);
+					if (!(settings.getOreData().get(coalore) == null)) {
+						for (String i : settings.getOreData().getConfigurationSection(coalore).getKeys(false)) {
+							if (settings.getOreData().get(coalore + i + ".loc").equals(b.getLocation())) {
+								settings.getOreData().set(coalore + i, null);
 								settings.saveOreData();
 								
 								p.sendMessage("Removed register");
@@ -47,9 +50,9 @@ public class OreSetup implements Listener {
 					p.sendMessage("shift");
 					return;
 				}else{
-					if (!(settings.getOreData().get("coalore.") == null)) {
-						for (String i : settings.getOreData().getConfigurationSection("coalore.").getKeys(false)) {
-							if (settings.getOreData().get("coalore." + i + ".loc").equals(b.getLocation())) {
+					if (!(settings.getOreData().get(coalore) == null)) {
+						for (String i : settings.getOreData().getConfigurationSection(coalore).getKeys(false)) {
+							if (settings.getOreData().get(coalore + i + ".loc").equals(b.getLocation())) {
 								
 								p.sendMessage("Already registerd");
 								return;
@@ -61,8 +64,8 @@ public class OreSetup implements Listener {
 					
 					int counter = 0;
 					while (counter < 1) {
-						if (settings.getOreData().get("coalore.coal" + number + ".loc") == null) {
-							settings.getOreData().set("coalore.coal" + number + ".loc", b.getLocation());
+						if (settings.getOreData().get(coaloresave + number + ".loc") == null) {
+							settings.getOreData().set(coaloresave + number + ".loc", b.getLocation());
 							settings.saveOreData();
 							
 							p.sendMessage("New block");
@@ -74,13 +77,6 @@ public class OreSetup implements Listener {
 					return;
 				}
 			}
-			
-			
-			
-			
-			
-			
-			
 		}
 		
 		 return;
