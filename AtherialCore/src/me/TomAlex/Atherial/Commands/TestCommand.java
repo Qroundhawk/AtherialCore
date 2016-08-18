@@ -25,7 +25,7 @@ public class TestCommand implements CommandExecutor {
 			//String loreThorns = p.getItemInHand().getItemMeta().getLore().get(7);
 			//p.sendMessage("" + loreThorns.indexOf(1));
 			
-			p.sendMessage("\u2694" + "" + "\u2764" + "\u25BA" + 	"\u27E1");
+			p.sendMessage("" + settings.getOreData().getDouble("coalore.coal1.loc"));
 		
 		
 		
