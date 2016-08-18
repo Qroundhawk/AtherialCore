@@ -17,35 +17,24 @@ public class OreSetup implements Listener {
 	public void BlockBreak(BlockBreakEvent e) {
 		
 		Player p = e.getPlayer();
-		Block b = e.getBlock();	
+		Block b = e.getBlock();
 		
-		if (b.getType() == Material.COAL_ORE) {
-			
-			if (!(p.getItemInHand().getType() == Material.FEATHER)) {
-				if (!(settings.getOreData().get("coalore.") == null)) {
-					for (String i : settings.getOreData().getConfigurationSection("coalore.").getKeys(false)) {
-						if (settings.getOreData().get("coalore." + i + ".loc").equals(b.getLocation())) {
-							e.setCancelled(true);
-							p.sendMessage("This is an registerd block!");
-							return;
-						}
-					}
-				}
+		if (p.getItemInHand().getType() == Material.FEATHER) {
+			e.setCancelled(true);
+			if (!p.hasPermission("mining.oresetup")) {
 				return;
 			}
-
-			if (p.getItemInHand().getType() == Material.FEATHER) {
-				if (!p.hasPermission("mining.oresetup")) {
-					return;
-				}
+			
+			//@Coal ore setup
+			if (b.getType() == Material.COAL_ORE) {
 				
 				if (p.isSneaking())	 {
 					if (!(settings.getOreData().get("coalore.") == null)) {
 						for (String i : settings.getOreData().getConfigurationSection("coalore.").getKeys(false)) {
 							if (settings.getOreData().get("coalore." + i + ".loc").equals(b.getLocation())) {
-								e.setCancelled(true);
 								settings.getOreData().set("coalore." + i, null);
 								settings.saveOreData();
+								
 								p.sendMessage("Removed register");
 								
 								b.setType(Material.AIR);
@@ -58,10 +47,10 @@ public class OreSetup implements Listener {
 					p.sendMessage("shift");
 					return;
 				}else{
-					e.setCancelled(true);
 					if (!(settings.getOreData().get("coalore.") == null)) {
 						for (String i : settings.getOreData().getConfigurationSection("coalore.").getKeys(false)) {
 							if (settings.getOreData().get("coalore." + i + ".loc").equals(b.getLocation())) {
+								
 								p.sendMessage("Already registerd");
 								return;
 							}
@@ -75,6 +64,7 @@ public class OreSetup implements Listener {
 						if (settings.getOreData().get("coalore.coal" + number + ".loc") == null) {
 							settings.getOreData().set("coalore.coal" + number + ".loc", b.getLocation());
 							settings.saveOreData();
+							
 							p.sendMessage("New block");
 							counter++;
 						}else{
@@ -83,10 +73,14 @@ public class OreSetup implements Listener {
 					}
 					return;
 				}
-				
-				//p.sendMessage("hey");
-				//return;
 			}
+			
+			
+			
+			
+			
+			
+			
 		}
 		
 		 return;
