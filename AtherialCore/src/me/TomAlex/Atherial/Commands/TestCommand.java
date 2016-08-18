@@ -24,12 +24,19 @@ public class TestCommand implements CommandExecutor {
 		{
 			String chatcolor = ""+ ChatColor.RED;
 			p.sendMessage(chatcolor+ "Loresize: "  + p.getItemInHand().getItemMeta().getLore().size());
+			String loreThorns = p.getItemInHand().getItemMeta().getLore().get(7);
+			p.sendMessage("" + loreThorns.toString());
+			if(loreThorns.contains("pvp"))
+			{
+				p.sendMessage("true");
+			}
+			
 		
 		}
 			if(settings.Health.containsKey(p.getUniqueId()))
 			{
 				p.sendMessage("Health equip: " + settings.Health.get(p.getUniqueId()));
-			}else p.sendMessage("Not in map");
+			}
 		
 		
 		
