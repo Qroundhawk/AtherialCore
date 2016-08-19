@@ -60,20 +60,21 @@ public class OreRespawn {
 				if (settings.Coal.isEmpty() == false) {
 					for (Entry<String, Integer> i : settings.Coal.entrySet()) {
 						Bukkit.getServer().broadcastMessage("" + i);
-						if (!(settings.getOreData().get("coalore." + i.getKey()) == null)) {
+						if (settings.getOreData().get("coalore." + i.getKey()) == null) {
+							settings.Coal.remove(i.getKey());
+						}else{
 							Location loc = (Location) settings.getOreData().get("coalore." + i.getKey() + ".loc");
 							if (loc.getWorld().getBlockAt(loc).getType() == Material.COAL_ORE) {
 								Bukkit.getServer().broadcastMessage("Removed ;)");
 								settings.Coal.remove(i.getKey());
 							}else{
-								settings.Coal.put(i.getKey(), i.getValue() - 5);
-								if 	(i.getValue() <= 0) {
+								//settings.Coal.put(i.getKey(), i.getValue() - 5);
+								settings.Coal.replace(i.getKey(), i.getValue() - 5);
+								if 	(i.getValue() == 0) {
 									loc.getWorld().getBlockAt(loc).setType(Material.COAL_ORE);
 									settings.Coal.remove(i.getKey());
 								}
 							}
-						}else{
-							settings.Coal.remove(i.getKey());
 						}
 					}
 				}

@@ -61,7 +61,7 @@ public class SettingsManager {
 	public HashMap<String, Integer> Diamond = new HashMap<String, Integer>();
 	public HashMap<String, Integer> Lapis = new HashMap<String, Integer>();
 	//@Mining respawnrate in seconds
-	public int CoalRespawn = 30;
+	public int CoalRespawn = 15;
 	public int EmeraldRespawn = 30;
 	public int IronRespawn = 30;
 	public int GoldRespawn = 30;
