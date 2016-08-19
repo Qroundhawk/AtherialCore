@@ -135,8 +135,13 @@ public class PlayerJoinSet implements Listener
 				pmenu.setItemMeta(pmenuMeta);
 				p.getInventory().setItem(8, pmenu);
 				
+				
 				//---------------------------setting stats--------------------------
 				settings.Armor.put(p.getUniqueId(), 0);
+				settings.Regen.put(p.getUniqueId(), 0);
+				settings.Block.put(p.getUniqueId(), 0);
+				settings.Thorns.put(p.getUniqueId(), 0);
+				settings.Vit.put(p.getUniqueId(), 0);
 				if(p.getInventory().getHelmet() != null)
 				{
 					String loreArmor = p.getInventory().getHelmet().getItemMeta().getLore().get(3);

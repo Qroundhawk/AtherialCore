@@ -1,6 +1,7 @@
 package me.TomAlex.Atherial.Combat;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -56,6 +57,7 @@ public class PlayerMenu implements Listener
 	public void Compassdrop(PlayerInteractEvent e)
 	{
 		Player p = e.getPlayer();
+		UUID ud = p.getUniqueId();
 		if(e.getAction() != Action.RIGHT_CLICK_AIR)
 		{
 			return;
@@ -70,8 +72,10 @@ public class PlayerMenu implements Listener
 			ItemStack slotA = new ItemStack(Material.BOOK);
 			ItemMeta slotAMeta = slotA.getItemMeta();
 			slotAMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "STATS");
-			slotAMeta.setLore(Arrays.asList("",ChatColor.DARK_RED +  "\u2764" + " MaxHealth: " + settings.Health.get(p.getUniqueId()),
-			"", ChatColor.YELLOW + "Armor: " + settings.Armor.get(p.getUniqueId())));
+			slotAMeta.setLore(Arrays.asList("",ChatColor.DARK_RED +  "\u2764" + " MaxHealth: " + p.getMaxHealth(),
+			"", ChatColor.YELLOW + "Armor: " + settings.Armor.get(ud), "HealthRegen: " + settings.Regen.get(ud) ,
+			"BlockChance: " + settings.Block.get(ud), "Thorns Damage: " + settings.Thorns.get(ud)
+			, "Vitality: " + settings.Vit.get(ud)));
 			slotA.setItemMeta(slotAMeta);
 	
 			menu.setItem(0, slotA);

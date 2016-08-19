@@ -33,7 +33,7 @@ public class TestCommand implements CommandExecutor {
 		
 			//String chatcolor = ""+ ChatColor.RED;
 			p.sendMessage( "Loresize: "  + p.getItemInHand().getItemMeta().getLore().size());
-			String lorehealth = p.getItemInHand().getItemMeta().getLore().get(3);
+			String lorehealth = p.getItemInHand().getItemMeta().getLore().get(4);
 			Scanner in2 = new Scanner(lorehealth).useDelimiter("[^0-9]+");
 			int h = in2.nextInt();
 			p.sendMessage(h + "");
