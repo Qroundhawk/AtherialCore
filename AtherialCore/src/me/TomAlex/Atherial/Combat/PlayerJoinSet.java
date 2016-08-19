@@ -119,8 +119,19 @@ public class PlayerJoinSet implements Listener
 					event.getPlayer().getInventory().addItem(sword1, thelm, tlegs, tchest, tboots, tapple);
 
 				}else event.getPlayer().setHealthScale(40);
+				
 				p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
-
+				
+				ItemStack pmenu = new ItemStack(Material.COMPASS);
+				ItemMeta pmenuMeta = pmenu.getItemMeta();
+				List<String> pmenuLore = new ArrayList<String>();
+				pmenuMeta.setDisplayName(ChatColor.GREEN + ChatColor.BOLD.toString() + ChatColor.ITALIC.toString() + "Player Menu");
+				pmenuLore.add(ChatColor.WHITE + "Right click to open Player Menu");
+				pmenuMeta.setLore(pmenuLore);
+				pmenu.setItemMeta(pmenuMeta);
+				p.getInventory().setItem(8, pmenu);
+				
+				
 				cancel();
 			}
 		}.runTaskLater(JavaPlugin.getProvidingPlugin(Main.class), 20);
