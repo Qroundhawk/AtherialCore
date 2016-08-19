@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -15,8 +16,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class Stats implements Listener
+import me.TomAlex.Atherial.SettingsManager;
+
+public class PlayerMenu implements Listener
 {
+	SettingsManager settings = SettingsManager.getInstance();
+	
 	@EventHandler
 	public void statsMenu(InventoryClickEvent e)
 	{
@@ -51,6 +56,10 @@ public class Stats implements Listener
 	public void Compassdrop(PlayerInteractEvent e)
 	{
 		Player p = e.getPlayer();
+		if(e.getAction() != Action.RIGHT_CLICK_AIR)
+		{
+			return;
+		}
 		
 		if(e.getItem().getType() == Material.COMPASS)
 		{
@@ -61,7 +70,8 @@ public class Stats implements Listener
 			ItemStack slotA = new ItemStack(Material.BOOK);
 			ItemMeta slotAMeta = slotA.getItemMeta();
 			slotAMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "STATS");
-			slotAMeta.setLore(Arrays.asList(ChatColor.DARK_GREEN + "", ChatColor.DARK_GREEN + ""));
+			slotAMeta.setLore(Arrays.asList("",ChatColor.DARK_RED +  "\u2764" + " MaxHealth: " + settings.Health.get(p.getUniqueId()),
+			"", ChatColor.YELLOW + "Armor: " + settings.Armor.get(p.getUniqueId())));
 			slotA.setItemMeta(slotAMeta);
 	
 			menu.setItem(0, slotA);

@@ -2,8 +2,6 @@ package me.TomAlex.Atherial.Combat;
 
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.UUID;
-
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,22 +33,30 @@ public class ArmorEquipting implements Listener
 		
 		if (e.getNewArmorPiece() != null && e.getNewArmorPiece().hasItemMeta()) 
 		{
-			//----------Setting Armor-----------------
-			String loreArmor = e.getNewArmorPiece().getItemMeta().getLore().get(1);
-			Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
-			int a = in1.nextInt();
-			int currentarmor = settings.Armor.get(p.getUniqueId());
-			int newarmor =  currentarmor +a;
-			settings.Armor.put(p.getUniqueId(), newarmor);
-			
+	
 			// ----------Setting Health----------
-			String lorehealth = e.getNewArmorPiece().getItemMeta().getLore().get(2);
+			String lorehealth = e.getNewArmorPiece().getItemMeta().getLore().get(1);
 			Scanner in2 = new Scanner(lorehealth).useDelimiter("[^0-9]+");
 			int h = in2.nextInt();
+			int h2 = in2.nextInt();
+			p.sendMessage(h2 + "");
 			double maxhealth = p.getMaxHealth();
-			p.setMaxHealth(maxhealth + h);
-			settings.Health.put(p.getUniqueId(), (int) (maxhealth + h));
+			p.setMaxHealth(maxhealth + h2);
+			settings.Health.put(p.getUniqueId(), (int) (maxhealth + h2));
 			
+			
+			
+			//----------Setting Armor-----------------
+			String loreArmor = e.getNewArmorPiece().getItemMeta().getLore().get(3);
+			Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
+			int a = in1.nextInt();
+			int a1 = in1.nextInt();
+			int currentarmor = settings.Armor.get(p.getUniqueId());
+			int newarmor =  currentarmor +a1;
+			settings.Armor.put(p.getUniqueId(), newarmor);
+	
+			
+			/*
 			//----------HealthRegen-----------------
 			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 8)
 			{
@@ -105,7 +111,7 @@ public class ArmorEquipting implements Listener
 				int newThorns =  currentThorns +Thorns ;
 				settings.Block.put(p.getUniqueId(), newThorns);		
 			}
-			
+			*/
 			
 			
 		
@@ -125,12 +131,13 @@ public class ArmorEquipting implements Listener
 
 		if (e.getOldArmorPiece() != null && e.getOldArmorPiece().hasItemMeta()) {
 			// ----------Setting Health----------
-			String lorehealth = e.getOldArmorPiece().getItemMeta().getLore().get(2);
+			String lorehealth = e.getOldArmorPiece().getItemMeta().getLore().get(1);
 			Scanner in2 = new Scanner(lorehealth).useDelimiter("[^0-9]+");
 			int h = in2.nextInt();
+			int h2 = in2.nextInt();
 			double maxhealth = p.getMaxHealth();
-			p.setMaxHealth(maxhealth - h);
-			settings.Health.put(p.getUniqueId(), (int) (maxhealth - h));
+			p.setMaxHealth(maxhealth - h2);
+			settings.Health.put(p.getUniqueId(), (int) (maxhealth - h2));
 
 
 			p.sendMessage("");

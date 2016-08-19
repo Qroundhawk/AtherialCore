@@ -2,8 +2,10 @@ package me.TomAlex.Atherial.Combat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import me.TomAlex.Atherial.Main;
+import me.TomAlex.Atherial.SettingsManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -27,6 +29,8 @@ import me.TomAlex.Atherial.Main;
 public class PlayerJoinSet implements Listener
 {
 
+	SettingsManager settings = SettingsManager.getInstance();
+	
 	@EventHandler
 	public void PlayerJoin(PlayerLoginEvent event) {
 		Player p = event.getPlayer();
@@ -130,6 +134,18 @@ public class PlayerJoinSet implements Listener
 				pmenuMeta.setLore(pmenuLore);
 				pmenu.setItemMeta(pmenuMeta);
 				p.getInventory().setItem(8, pmenu);
+				
+				//---------------------------setting stats--------------------------
+				settings.Armor.put(p.getUniqueId(), 0);
+				if(p.getInventory().getHelmet() != null)
+				{
+					String loreArmor = p.getInventory().getHelmet().getItemMeta().getLore().get(3);
+					Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
+					int a = in1.nextInt();
+					int currentarmor = settings.Armor.get(p.getUniqueId());
+					int newarmor =  currentarmor +a;
+					settings.Armor.put(p.getUniqueId(), newarmor);
+				}
 				
 				
 				cancel();
