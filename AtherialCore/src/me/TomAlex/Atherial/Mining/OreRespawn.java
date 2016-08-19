@@ -24,6 +24,8 @@ public class OreRespawn {
             return instance;
     }
     
+    //20 / xp nodig = uitkomts    --   nu xp / uitkomst = (rond nummer af) hoeveel streepjes.
+    
     public void miningStart() {
     	
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable () {

@@ -8,7 +8,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 
 public class TestCommand implements CommandExecutor {
 	
@@ -23,8 +25,7 @@ public class TestCommand implements CommandExecutor {
 			return true;
 		}
 		
-		
-		p.sendMessage("MAP: " + settings.Coal.entrySet());
+		//FREE TO USE :)
 		
 		
 		
