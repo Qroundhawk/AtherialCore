@@ -26,14 +26,16 @@ public class ArmorEquipting implements Listener
 		if(weapon.getType().toString().contains("BOOTS") || weapon.getType().toString().contains("CHESTPLATE")
 				|| weapon.getType().toString().contains("LEGGINGS") || weapon.getType().toString().contains("HELMET")) 
 		{
-			if(e.getAction() == e.getAction().RIGHT_CLICK_AIR || e.getAction() == e.getAction().RIGHT_CLICK_BLOCK)
+			if(e.getAction() == e.getAction().RIGHT_CLICK_AIR)
 			{
 				e.setCancelled(true);
+				return;
 			}
 		}
 	}
+
 	
-	@EventHandler (priority = EventPriority.HIGHEST)
+	@EventHandler 
 	public void Equip(ArmorEquipEvent e) 
 	{
 
