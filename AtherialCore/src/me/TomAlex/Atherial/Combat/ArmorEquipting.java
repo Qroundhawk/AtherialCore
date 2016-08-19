@@ -7,7 +7,10 @@ import java.util.UUID;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 
 import me.TomAlex.Atherial.SettingsManager;
 import me.TomAlex.Atherial.ArmorEquipEvent.ArmorEquipEvent;
@@ -17,6 +20,20 @@ public class ArmorEquipting implements Listener
 	SettingsManager settings = SettingsManager.getInstance();
 	
 	@EventHandler
+	public void RightClickArmor(PlayerInteractEvent e)
+	{
+		ItemStack weapon = e.getPlayer().getItemInHand();
+		if(weapon.getType().toString().contains("BOOTS") || weapon.getType().toString().contains("CHESTPLATE")
+				|| weapon.getType().toString().contains("LEGGINGS") || weapon.getType().toString().contains("HELMET")) 
+		{
+			if(e.getAction() == e.getAction().RIGHT_CLICK_AIR || e.getAction() == e.getAction().RIGHT_CLICK_BLOCK)
+			{
+				e.setCancelled(true);
+			}
+		}
+	}
+	
+	@EventHandler (priority = EventPriority.HIGHEST)
 	public void Equip(ArmorEquipEvent e) 
 	{
 
