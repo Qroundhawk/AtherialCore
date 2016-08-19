@@ -1,8 +1,8 @@
 package me.TomAlex.Atherial.Mining;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map.Entry;
-
-import net.md_5.bungee.api.ChatColor;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -56,26 +56,63 @@ public class OreRespawn {
 				}*/
 				
 				
-				
-				if (settings.Coal.isEmpty() == false) {
+				//@Coal respawn
+				/*if (settings.Coal.isEmpty() == false) {
 					for (Entry<String, Integer> i : settings.Coal.entrySet()) {
-						Bukkit.getServer().broadcastMessage("" + i);
+						i.setValue(i.getValue() - 5);
+						
+						
 						if (settings.getOreData().get("coalore." + i.getKey()) == null) {
 							settings.Coal.remove(i.getKey());
 						}else{
 							Location loc = (Location) settings.getOreData().get("coalore." + i.getKey() + ".loc");
-							if (loc.getWorld().getBlockAt(loc).getType() == Material.COAL_ORE) {
-								Bukkit.getServer().broadcastMessage("Removed ;)");
-								settings.Coal.remove(i.getKey());
-							}else{
-								//settings.Coal.put(i.getKey(), i.getValue() - 5);
-								settings.Coal.replace(i.getKey(), i.getValue() - 5);
-								if 	(i.getValue() == 0) {
-									loc.getWorld().getBlockAt(loc).setType(Material.COAL_ORE);
-									settings.Coal.remove(i.getKey());
-								}
+							
+							if (i.getValue() == 0) {
+								loc.getWorld().getBlockAt(loc).setType(Material.COAL_ORE);
 							}
 						}
+					}
+					
+					List<String> toRemove = new ArrayList<String>();
+					for (Entry<String, Integer> i : settings.Coal.entrySet()) {
+						if (i.getValue() <= 0) {
+							if (!toRemove.contains(i.getKey())) {
+								toRemove.add(i.getKey());
+							}
+						}
+					}
+					for (String i : toRemove) {
+						settings.Coal.remove(i);
+					}
+				}*/
+				
+				
+				
+				if (settings.Coal.isEmpty() == false) {
+					List<String> toRemove = new ArrayList<String>();
+					for (Entry<String, Integer> i : settings.Coal.entrySet()) {
+						i.setValue(i.getValue() - 5);
+						if (!(settings.getOreData().get("coalore." + i.getKey()) == null)) {
+							Location loc = (Location) settings.getOreData().get("coalore." + i.getKey() + ".loc");
+							
+							if (i.getValue() == 0) {
+								if (!(loc.getWorld().getBlockAt(loc).getType() == Material.COAL_ORE)) {
+									loc.getWorld().getBlockAt(loc).setType(Material.COAL_ORE);
+								}
+							}
+						}else{
+							toRemove.add(i.getKey());
+						}
+					}
+					for (Entry<String, Integer> i : settings.Coal.entrySet()) {
+						if (i.getValue() <= 0) {
+							if (!toRemove.contains(i.getKey())) {
+								toRemove.add(i.getKey());
+							}
+						}
+					}
+					for (String i : toRemove) {
+						settings.Coal.remove(i);
 					}
 				}
 				

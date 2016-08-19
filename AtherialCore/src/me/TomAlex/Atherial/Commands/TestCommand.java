@@ -25,8 +25,6 @@ public class TestCommand implements CommandExecutor {
 		
 		
 		p.sendMessage("MAP: " + settings.Coal.entrySet());
-			
-
 		
 		
 		
