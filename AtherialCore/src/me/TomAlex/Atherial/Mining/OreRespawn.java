@@ -62,6 +62,161 @@ public class OreRespawn {
 				
 				
 				
+				//@Iron respawn
+				if (settings.Iron.isEmpty() == false) {
+					List<String> toRemove = new ArrayList<String>();
+					for (Entry<String, Integer> i : settings.Iron.entrySet()) {
+						i.setValue(i.getValue() - 5);
+						if (!(settings.getOreData().get("ironore." + i.getKey()) == null)) {
+							Location loc = (Location) settings.getOreData().get("ironore." + i.getKey() + ".loc");
+							
+							if (i.getValue() == 0) {
+								if (!(loc.getWorld().getBlockAt(loc).getType() == Material.IRON_ORE)) {
+									loc.getWorld().getBlockAt(loc).setType(Material.IRON_ORE);
+								}
+							}
+						}else{
+							toRemove.add(i.getKey());
+						}
+					}
+					for (Entry<String, Integer> i : settings.Iron.entrySet()) {
+						if (i.getValue() <= 0) {
+							if (!toRemove.contains(i.getKey())) {
+								toRemove.add(i.getKey());
+							}
+						}
+					}
+					for (String i : toRemove) {
+						settings.Iron.remove(i);
+					}
+				}
+				
+				
+				
+				//@Gold respawn
+				if (settings.Gold.isEmpty() == false) {
+					List<String> toRemove = new ArrayList<String>();
+					for (Entry<String, Integer> i : settings.Gold.entrySet()) {
+						i.setValue(i.getValue() - 5);
+						if (!(settings.getOreData().get("goldore." + i.getKey()) == null)) {
+							Location loc = (Location) settings.getOreData().get("goldore." + i.getKey() + ".loc");
+							
+							if (i.getValue() == 0) {
+								if (!(loc.getWorld().getBlockAt(loc).getType() == Material.GOLD_ORE)) {
+									loc.getWorld().getBlockAt(loc).setType(Material.GOLD_ORE);
+								}
+							}
+						}else{
+							toRemove.add(i.getKey());
+						}
+					}
+					for (Entry<String, Integer> i : settings.Gold.entrySet()) {
+						if (i.getValue() <= 0) {
+							if (!toRemove.contains(i.getKey())) {
+								toRemove.add(i.getKey());
+							}
+						}
+					}
+					for (String i : toRemove) {
+						settings.Gold.remove(i);
+					}
+				}
+				
+				
+				
+				//@Diamond respawn
+				if (settings.Diamond.isEmpty() == false) {
+					List<String> toRemove = new ArrayList<String>();
+					for (Entry<String, Integer> i : settings.Diamond.entrySet()) {
+						i.setValue(i.getValue() - 5);
+						if (!(settings.getOreData().get("diamondore." + i.getKey()) == null)) {
+							Location loc = (Location) settings.getOreData().get("diamondore." + i.getKey() + ".loc");
+							
+							if (i.getValue() == 0) {
+								if (!(loc.getWorld().getBlockAt(loc).getType() == Material.DIAMOND_ORE)) {
+									loc.getWorld().getBlockAt(loc).setType(Material.DIAMOND_ORE);
+								}
+							}
+						}else{
+							toRemove.add(i.getKey());
+						}
+					}
+					for (Entry<String, Integer> i : settings.Diamond.entrySet()) {
+						if (i.getValue() <= 0) {
+							if (!toRemove.contains(i.getKey())) {
+								toRemove.add(i.getKey());
+							}
+						}
+					}
+					for (String i : toRemove) {
+						settings.Diamond.remove(i);
+					}
+				}
+				
+				
+				
+				//@Lapis respawn
+				if (settings.Lapis.isEmpty() == false) {
+					List<String> toRemove = new ArrayList<String>();
+					for (Entry<String, Integer> i : settings.Lapis.entrySet()) {
+						i.setValue(i.getValue() - 5);
+						if (!(settings.getOreData().get("lapisore." + i.getKey()) == null)) {
+							Location loc = (Location) settings.getOreData().get("lapisore." + i.getKey() + ".loc");
+							
+							if (i.getValue() == 0) {
+								if (!(loc.getWorld().getBlockAt(loc).getType() == Material.LAPIS_ORE)) {
+									loc.getWorld().getBlockAt(loc).setType(Material.LAPIS_ORE);
+								}
+							}
+						}else{
+							toRemove.add(i.getKey());
+						}
+					}
+					for (Entry<String, Integer> i : settings.Lapis.entrySet()) {
+						if (i.getValue() <= 0) {
+							if (!toRemove.contains(i.getKey())) {
+								toRemove.add(i.getKey());
+							}
+						}
+					}
+					for (String i : toRemove) {
+						settings.Lapis.remove(i);
+					}
+				}
+				
+				
+				
+				//@Emerald respawn
+				if (settings.Emerald.isEmpty() == false) {
+					List<String> toRemove = new ArrayList<String>();
+					for (Entry<String, Integer> i : settings.Emerald.entrySet()) {
+						i.setValue(i.getValue() - 5);
+						if (!(settings.getOreData().get("emeraldore." + i.getKey()) == null)) {
+							Location loc = (Location) settings.getOreData().get("emeraldore." + i.getKey() + ".loc");
+							
+							if (i.getValue() == 0) {
+								if (!(loc.getWorld().getBlockAt(loc).getType() == Material.EMERALD_ORE)) {
+									loc.getWorld().getBlockAt(loc).setType(Material.EMERALD_ORE);
+								}
+							}
+						}else{
+							toRemove.add(i.getKey());
+						}
+					}
+					for (Entry<String, Integer> i : settings.Emerald.entrySet()) {
+						if (i.getValue() <= 0) {
+							if (!toRemove.contains(i.getKey())) {
+								toRemove.add(i.getKey());
+							}
+						}
+					}
+					for (String i : toRemove) {
+						settings.Emerald.remove(i);
+					}
+				}
+				
+				
+				
 				
 				
 			}

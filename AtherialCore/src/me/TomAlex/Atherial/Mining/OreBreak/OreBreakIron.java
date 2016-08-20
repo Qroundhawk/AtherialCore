@@ -10,7 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-public class OreBreakCoal implements Listener {
+public class OreBreakIron implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
 
@@ -20,8 +20,8 @@ public class OreBreakCoal implements Listener {
 		Player p = e.getPlayer();
 		Block b = e.getBlock();
 		
-		Material material = Material.COAL_ORE;
-		String ore = "coalore.";
+		Material material = Material.IRON_ORE;
+		String ore = "ironore.";
 		
 		if (b.getType() == material) {
 			if (p.getItemInHand().getType() == Material.FEATHER) {
@@ -35,7 +35,7 @@ public class OreBreakCoal implements Listener {
 						e.setCancelled(true);
 						b.setType(Material.BEDROCK);
 						
-						settings.Coal.put(i, settings.CoalRespawn);
+						settings.Iron.put(i, settings.IronRespawn);
 						return;
 					}
 				}

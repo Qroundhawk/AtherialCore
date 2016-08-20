@@ -17,6 +17,11 @@ import me.TomAlex.Atherial.Economy.VillagerEvent;
 import me.TomAlex.Atherial.Mining.OreRespawn;
 import me.TomAlex.Atherial.Mining.OreSetupRespawn;
 import me.TomAlex.Atherial.Mining.OreBreak.OreBreakCoal;
+import me.TomAlex.Atherial.Mining.OreBreak.OreBreakDiamond;
+import me.TomAlex.Atherial.Mining.OreBreak.OreBreakEmerald;
+import me.TomAlex.Atherial.Mining.OreBreak.OreBreakGold;
+import me.TomAlex.Atherial.Mining.OreBreak.OreBreakIron;
+import me.TomAlex.Atherial.Mining.OreBreak.OreBreakLapis;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationCoal;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationDiamond;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationEmerald;
@@ -78,10 +83,15 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new OreRegistrationLapis(), this);
 		
 		pm.registerEvents(new OreBreakCoal(), this);
+		pm.registerEvents(new OreBreakDiamond(), this);
+		pm.registerEvents(new OreBreakEmerald(), this);
+		pm.registerEvents(new OreBreakGold(), this);
+		pm.registerEvents(new OreBreakIron(), this);
+		pm.registerEvents(new OreBreakLapis(), this);
 		
 		
 
-		/*@Command registers*/
+		/*@Command registers*/	
 		
 		//@Ecomony Commands
 		getCommand("addbank").setExecutor(new EcoAddBankCommand());
