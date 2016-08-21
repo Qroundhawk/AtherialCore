@@ -1,21 +1,28 @@
 package me.TomAlex.Atherial.Mining.OreBreak;
 
-import me.TomAlex.Atherial.SettingsManager;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.bukkit.Bukkit;
+import me.TomAlex.Atherial.SettingsManager;
+import me.TomAlex.Atherial.Mining.LvlExp;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class OreBreakCoal implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
+	LvlExp lvlexp = LvlExp.getInstance();
 	public String smsg = ChatColor.DARK_GRAY +  "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "]" + ChatColor.BOLD + "> ";
 
 	@EventHandler
@@ -68,6 +75,80 @@ public class OreBreakCoal implements Listener {
 									return;
 								}
 								
+								
+								int plusser = settings.CoalXPMax - settings.CoalXPMin;
+								int expplus = (int) ((Math.random() *plusser) + settings.CoalXPMin);
+								int newexp = exp + expplus;
+								
+								p.sendMessage("" + expplus); 
+								
+								if (newexp >= maxexp) {
+									int newlevel = level + 1;
+									int newmaxexp = lvlexp.lvlexp(newlevel + 1);
+									int newnewexp = newexp - maxexp;
+									
+									ItemMeta loremeta = p.getItemInHand().getItemMeta();
+									List<String> lore = new ArrayList<String>();
+							        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newlevel);
+							        lore.add("");
+							        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newnewexp + " / " + newmaxexp);
+							        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "||||||||||||||||||||" + ChatColor.WHITE + "]");
+							        
+							        loremeta.setLore(lore);
+							        p.getItemInHand().setItemMeta(loremeta);
+									
+									return;
+								}
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								//20 / xp nodig = uitkomts    --   nu xp / uitkomst = (rond nummer af) hoeveel streepjes.
+								
+								int stripes1 = maxexp / 20;
+								int stripes2 = newexp / stripes1;
+								int strpies3 = 20 - stripes2;
+								
+								List<String> stripesgreen = new ArrayList<String>();
+								List<String> stripesred = new ArrayList<String>();
+								
+								
+								
+								int counter = 0;
+								int counter2 = 0;
+			        			while (counter < 1) {
+			        				
+			        				
+			        				counter++;
+			        			}
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								ItemMeta loremeta = p.getItemInHand().getItemMeta();
+								List<String> lore = new ArrayList<String>();
+						        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + level);
+						        lore.add("");
+						        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newexp + " / " + maxexp);
+						        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "||||||||||||||||||||" + ChatColor.WHITE + "]");
+						        
+						        loremeta.setLore(lore);
+						        p.getItemInHand().setItemMeta(loremeta);
 								return;
 							}
 						}

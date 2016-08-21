@@ -39,7 +39,8 @@ public class SettingsManager {
     FileConfiguration oredata;
     File orfile;
     
-    
+    FileConfiguration levelexpdata;
+    File lefile;
     
     
     
@@ -149,6 +150,20 @@ public class SettingsManager {
                     }
             }
             oredata = YamlConfiguration.loadConfiguration(orfile);
+            
+            
+            
+            lefile = new File(p.getDataFolder(), "levelexpdata.yml");
+            if (!lefile.exists()) {
+                    try {
+                    	lefile.createNewFile();
+                    }
+                    catch (IOException e) {
+                            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create levelexpdata.yml!");
+                    }
+            }
+            levelexpdata = YamlConfiguration.loadConfiguration(lefile);
+
 
             
             
@@ -238,6 +253,26 @@ public class SettingsManager {
 
     public void reloadOreData() {
     	oredata = YamlConfiguration.loadConfiguration(orfile);
+    }
+    
+    
+    
+    
+    public FileConfiguration getLevelExpData() {
+        return levelexpdata;
+    }
+
+    public void saveLevelExpData() {
+        	try {
+        		levelexpdata.save(lefile);
+        	}
+        	catch (IOException e) {
+                	Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save levelexpdata.yml!");
+        	}
+    }
+
+    public void reloadLevelExpData() {
+    	levelexpdata = YamlConfiguration.loadConfiguration(lefile);
     }
     
     //===========================================================

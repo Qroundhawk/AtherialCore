@@ -1,6 +1,10 @@
 package me.TomAlex.Atherial.Commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.TomAlex.Atherial.SettingsManager;
+import me.TomAlex.Atherial.Mining.LvlExp;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,11 +14,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class TestCommand2 implements CommandExecutor {
 	
 	SettingsManager settings = SettingsManager.getInstance();
-
+	LvlExp lvlexp = LvlExp.getInstance();
+	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		
 		Player p = (Player) sender;
@@ -55,9 +61,15 @@ public class TestCommand2 implements CommandExecutor {
 			p.sendMessage("Nope2");
 		}*/
 		
-		int exp = (int) ((Math.random() *20) + 40);
+		//int exp = (int) ((Math.random() *20) + 40);
 		
-		p.sendMessage("" + exp);
+		
+		List<String> toRemove = new ArrayList<String>();
+		
+		toRemove.add("||||");
+		toRemove.add("////");
+		
+		p.sendMessage("" + toRemove.toString().replace(", ", ""));
 		
 		
 		
@@ -81,7 +93,7 @@ public class TestCommand2 implements CommandExecutor {
         List<String> lore = new ArrayList<String>();
         lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + "1");
         lore.add("");
-        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + "0 / 100");
+        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + "0 / 50");
         lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "||||||||||||||||||||" + ChatColor.WHITE + "]");
         pickaxemeta.setLore(lore);
         pickaxe.setItemMeta(pickaxemeta);

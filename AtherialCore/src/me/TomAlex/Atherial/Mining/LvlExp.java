@@ -1,16 +1,26 @@
 package me.TomAlex.Atherial.Mining;
 
+import me.TomAlex.Atherial.SettingsManager;
+
 public class LvlExp {
 	
 	private LvlExp() { }
 	
+	SettingsManager settings = SettingsManager.getInstance();
 	static LvlExp instance = new LvlExp();
 	   
     public static LvlExp getInstance() {
             return instance;
     }
 	
-	public int Lvl1 = 0;
+    public int lvlexp(int a) {
+    	
+    	int b = settings.getLevelExpData().getInt("" + a);
+    	
+    	return b;
+    }
+    
+	/*public int Lvl1 = 0;
 	public int Lvl2 = 50;
 	public int Lvl3 = 150;
 	public int Lvl4 = 300;
@@ -69,6 +79,6 @@ public class LvlExp {
 	public int Lvl57 = 3500000;
 	public int Lvl58 = 4500000;
 	public int Lvl59 = 5000000;
-	public int Lvl60 = 10000000;
+	public int Lvl60 = 10000000;*/
 	
 }
