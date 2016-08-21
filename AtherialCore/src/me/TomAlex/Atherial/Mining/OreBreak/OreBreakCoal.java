@@ -2,6 +2,7 @@ package me.TomAlex.Atherial.Mining.OreBreak;
 
 import me.TomAlex.Atherial.SettingsManager;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -40,8 +41,32 @@ public class OreBreakCoal implements Listener {
 							if (p.getItemInHand().hasItemMeta()) {
 								b.setType(Material.BEDROCK);
 								settings.Coal.put(i, settings.CoalRespawn);
+								if (p.getInventory().firstEmpty() == -1) {
+									p.sendMessage(ChatColor.RED + "Wacht out! Inventory Full!");
+									return;
+								}
 								ItemStack coalore = new ItemStack(Material.COAL_ORE, 1);
 								p.getInventory().addItem(coalore);
+								
+								String[] args1 = p.getItemInHand().getItemMeta().getLore().toString().split(" ");
+								String level2 = ChatColor.stripColor(args1[1]);
+								String exp2 = ChatColor.stripColor(args1[4]);
+								String maxexp2 = ChatColor.stripColor(args1[6]);
+								level2 = level2.replaceAll(",", "");
+								exp2 = exp2.replaceAll(",", "");
+								maxexp2 = maxexp2.replaceAll(",", "");
+								
+								int level = 0;
+								int exp = 0;
+								int maxexp = 0;
+								try {
+									level = Integer.parseInt(level2);
+									exp = Integer.parseInt(exp2);
+									maxexp = Integer.parseInt(maxexp2);
+								} catch(NumberFormatException ex) {
+									p.sendMessage(ChatColor.RED + "Ow whoops there is an error!");
+									return;
+								}
 								
 								return;
 							}
