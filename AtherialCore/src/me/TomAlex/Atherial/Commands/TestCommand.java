@@ -26,12 +26,14 @@ public class TestCommand implements CommandExecutor {
 		}
 		
 		//FREE TO USE :)
-		p.sendMessage("Coal: " + settings.Coal);
-		p.sendMessage("Iron: " + settings.Iron);
-		p.sendMessage("Gold: " + settings.Gold);
-		p.sendMessage("Diamond: " + settings.Diamond);
-		p.sendMessage("Lapis: " + settings.Lapis);
-		p.sendMessage("Emerald: " + settings.Emerald);
+		String lorePvP = p.getItemInHand().getItemMeta().getLore().get(3);
+		      
+		if (lorePvP.indexOf("Armor") != -1) 
+		{
+			p.sendMessage("true");
+		} else {
+			p.sendMessage("False");
+		}
 		
 		
 		return true;

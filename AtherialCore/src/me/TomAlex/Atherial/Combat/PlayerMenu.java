@@ -73,9 +73,10 @@ public class PlayerMenu implements Listener
 			ItemMeta slotAMeta = slotA.getItemMeta();
 			slotAMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "STATS");
 			slotAMeta.setLore(Arrays.asList("",ChatColor.DARK_RED +  "\u2764" + " MaxHealth: " + p.getMaxHealth(),
-			"", ChatColor.YELLOW + "Armor: " + settings.Armor.get(ud), "HealthRegen: " + settings.Regen.get(ud) ,
-			"BlockChance: " + settings.Block.get(ud), "Thorns Damage: " + settings.Thorns.get(ud)
-			, "Vitality: " + settings.Vit.get(ud)));
+			"", ChatColor.YELLOW + "Armor: " + settings.Armor.get(ud), ChatColor.YELLOW + "HealthRegen: " + settings.Regen.get(ud) ,
+			ChatColor.YELLOW + "BlockChance: " + settings.Block.get(ud), ChatColor.YELLOW + "Thorns Damage: " + settings.Thorns.get(ud)
+			,ChatColor.YELLOW +  "Vitality: " + settings.Vit.get(ud)
+			, ChatColor.YELLOW + "PvE restistance: " + settings.PvE.get(ud),ChatColor.YELLOW + "PvP restistance: " + settings.PvP.get(ud) ));
 			slotA.setItemMeta(slotAMeta);
 	
 			menu.setItem(0, slotA);
