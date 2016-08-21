@@ -53,6 +53,7 @@ public class SettingsManager {
 	public HashMap<UUID, Integer> PvE = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Vit = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Regen = new HashMap<UUID, Integer>();
+	public HashMap<UUID, Integer> Tagger = new HashMap<UUID, Integer>();
 	
 	//@Mining HashMaps
 	public HashMap<String, Integer> Coal = new HashMap<String, Integer>();

@@ -30,7 +30,8 @@ public class PlayerUpdater {
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(JavaPlugin.getProvidingPlugin(Main.class),
 				new Runnable() {
 					public void run() {
-						for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+						for (Player p : Bukkit.getServer().getOnlinePlayers()) 
+						{
 							UUID ud = p.getUniqueId();
 							int maxhealth = (int) p.getMaxHealth();
 							int armorhealth = 100;
@@ -176,6 +177,6 @@ public class PlayerUpdater {
 							}					
 						}
 					}
-				}, 100, 200);
+				}, 100, 100);
 	}
 }
