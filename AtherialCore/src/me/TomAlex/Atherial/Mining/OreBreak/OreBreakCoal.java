@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class OreBreakCoal implements Listener {
 	
@@ -35,7 +36,16 @@ public class OreBreakCoal implements Listener {
 					Location loc = (Location) settings.getOreData().get(ore + i + ".loc");
 					if (b.getLocation().equals(loc)) {
 						e.setCancelled(true);
-						
+						if (p.getItemInHand().getType() == Material.WOOD_PICKAXE || p.getItemInHand().getType() == Material.STONE_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE || p.getItemInHand().getType() == Material.GOLD_PICKAXE || p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
+							if (p.getItemInHand().hasItemMeta()) {
+								b.setType(Material.BEDROCK);
+								settings.Coal.put(i, settings.CoalRespawn);
+								ItemStack coalore = new ItemStack(Material.COAL_ORE, 1);
+								p.getInventory().addItem(coalore);
+								
+								return;
+							}
+						}
 						
 						
 						
