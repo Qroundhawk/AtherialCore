@@ -21,7 +21,7 @@ public class OreBreakCoal implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
 	LvlExp lvlexp = LvlExp.getInstance();
-	public String smsg = ChatColor.DARK_GRAY +  "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "]" + ChatColor.BOLD + "> ";
+	public String smsg = ChatColor.DARK_GRAY +  "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "]> " + ChatColor.GREEN;
 
 	@EventHandler
 	public void BlockBreak(BlockBreakEvent e) {
@@ -32,170 +32,89 @@ public class OreBreakCoal implements Listener {
 		Material material = Material.COAL_ORE;
 		String ore = "coalore.";
 		
+		
 		if (b.getType() == material) {
-			if (p.getItemInHand().getType() == Material.FEATHER) {
-				return;
-			}
+			if (p.getItemInHand().getType() == Material.FEATHER) return;
 			
-			if (!(settings.getOreData().get(ore) == null)) {
-				for (String i : settings.getOreData().getConfigurationSection(ore).getKeys(false)) {
-					Location loc = (Location) settings.getOreData().get(ore + i + ".loc");
-					if (b.getLocation().equals(loc)) {
-						e.setCancelled(true);
-						if (p.getItemInHand().getType() == Material.WOOD_PICKAXE || p.getItemInHand().getType() == Material.STONE_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE || p.getItemInHand().getType() == Material.GOLD_PICKAXE || p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
-							if (p.getItemInHand().hasItemMeta()) {
-								b.setType(Material.BEDROCK);
-								settings.Coal.put(i, settings.CoalRespawn);
-								if (p.getInventory().firstEmpty() == -1) {
-									p.sendMessage(ChatColor.RED + "Wacht out! Inventory Full!");
-									return;
-								}
-								ItemStack coalore = new ItemStack(Material.COAL_ORE, 1);
-								p.getInventory().addItem(coalore);
-								
-								String[] args1 = p.getItemInHand().getItemMeta().getLore().toString().split(" ");
-								String level2 = ChatColor.stripColor(args1[1]);
-								String exp2 = ChatColor.stripColor(args1[4]);
-								String maxexp2 = ChatColor.stripColor(args1[6]);
-								level2 = level2.replaceAll(",", "");
-								exp2 = exp2.replaceAll(",", "");
-								maxexp2 = maxexp2.replaceAll(",", "");
-								
-								int level = 0;
-								int exp = 0;
-								int maxexp = 0;
-								try {
-									level = Integer.parseInt(level2);
-									exp = Integer.parseInt(exp2);
-									maxexp = Integer.parseInt(maxexp2);
-								} catch(NumberFormatException ex) {
-									p.sendMessage(ChatColor.RED + "Ow whoops there is an error!");
-									return;
-								}
-								
-								//Randomizer
-								int plusser = settings.CoalXPMax - settings.CoalXPMin;
-								int expplus = (int) ((Math.random() *plusser) + settings.CoalXPMin);
-								int newexp = exp + expplus;
-								
-								//If level up run this
-								if (newexp >= maxexp) {
-									int newlevel = level + 1;
-									int newmaxexp = lvlexp.lvlexp(newlevel + 1);
-									int newnewexp = newexp - maxexp;
-									
-									int stripes1 = newmaxexp / 20;
-									int stripesg = newnewexp / stripes1;
-									int stripesr = 20 - stripesg;
-									List<String> stripesgreen = new ArrayList<String>();
-									List<String> stripesred = new ArrayList<String>();
-									int countergreen = 0;
-									int countergreen2 = 0;
-				        			while (countergreen < 1) {
-				        				if (countergreen2 != stripesg) {
-				        					stripesgreen.add("|");
-				        					countergreen2++;
-				        				}else{
-				        					countergreen++;
-				        				}
-				        			}
-				        			int counterred = 0;
-									int counterred2 = 0;
-				        			while (counterred < 1) {
-				        				if (counterred2 != stripesr) {
-				        					stripesred.add("|");
-				        					counterred2++;
-				        				}else{
-				        					counterred++;
-				        				}
-				        			}
-				        			String green = stripesgreen.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
-				        			String red = stripesred.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
-									
-									ItemMeta loremeta = p.getItemInHand().getItemMeta();
-									List<String> lore = new ArrayList<String>();
-							        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newlevel);
-							        lore.add("");
-							        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newnewexp + " / " + newmaxexp);
-							        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + green + ChatColor.DARK_RED + "" + ChatColor.BOLD + red + ChatColor.WHITE + "]");
-							        
-							        loremeta.setLore(lore);
-							        p.getItemInHand().setItemMeta(loremeta);
-									
-									return;
-								}
-								//If not level up run this
-								
-								int stripes1 = maxexp / 20;
-								int stripesg = newexp / stripes1;
-								int stripesr = 20 - stripesg;
-								List<String> stripesgreen = new ArrayList<String>();
-								List<String> stripesred = new ArrayList<String>();
-								int countergreen = 0;
-								int countergreen2 = 0;
-			        			while (countergreen < 1) {
-			        				if (countergreen2 != stripesg) {
-			        					stripesgreen.add("|");
-			        					countergreen2++;
-			        				}else{
-			        					countergreen++;
-			        				}
-			        			}
-			        			int counterred = 0;
-								int counterred2 = 0;
-			        			while (counterred < 1) {
-			        				if (counterred2 != stripesr) {
-			        					stripesred.add("|");
-			        					counterred2++;
-			        				}else{
-			        					counterred++;
-			        				}
-			        			}
-			        			String green = stripesgreen.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
-			        			String red = stripesred.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
-								
-								ItemMeta loremeta = p.getItemInHand().getItemMeta();
-								List<String> lore = new ArrayList<String>();
-						        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + level);
-						        lore.add("");
-						        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newexp + " / " + maxexp);
-						        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + green + ChatColor.DARK_RED + "" + ChatColor.BOLD + red + ChatColor.WHITE + "]");
-						        
-						        loremeta.setLore(lore);
-						        p.getItemInHand().setItemMeta(loremeta);
+		if (!(settings.getOreData().get(ore) == null)) {
+			for (String i : settings.getOreData().getConfigurationSection(ore).getKeys(false)) {
+				Location loc = (Location) settings.getOreData().get(ore + i + ".loc");
+				if (b.getLocation().equals(loc)) {
+					e.setCancelled(true);
+					if (p.getItemInHand().getType() == Material.WOOD_PICKAXE || p.getItemInHand().getType() == Material.STONE_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE || p.getItemInHand().getType() == Material.GOLD_PICKAXE || p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
+						if (p.getItemInHand().hasItemMeta()) {
+							b.setType(Material.BEDROCK);
+							settings.Coal.put(i, settings.CoalRespawn);
+							if (p.getInventory().firstEmpty() == -1) {
+								p.sendMessage(ChatColor.RED + "Wacht out! Inventory Full!");
+							}
+							ItemStack coalore = new ItemStack(Material.COAL_ORE, 1);
+							p.getInventory().addItem(coalore);
+							
+							String[] args1 = p.getItemInHand().getItemMeta().getLore().toString().split(" ");
+							String levelnowinttry = ChatColor.stripColor(args1[1]);
+							String expnowinttry = ChatColor.stripColor(args1[4]);
+							String maxexpnowinttry = ChatColor.stripColor(args1[6]);
+							levelnowinttry = levelnowinttry.replaceAll(",", "");
+							expnowinttry = expnowinttry.replaceAll(",", "");
+							maxexpnowinttry = maxexpnowinttry.replaceAll(",", "");
+							
+							int level = 0;
+							int exp = 0;
+							int maxexp = 0;
+							try {
+								level = Integer.parseInt(levelnowinttry);
+								exp = Integer.parseInt(expnowinttry);
+								maxexp = Integer.parseInt(maxexpnowinttry);
+							} catch(NumberFormatException ex) {
+								p.sendMessage(ChatColor.RED + "Ow whoops there is an error!");
 								return;
 							}
+							//Randomizer
+							int plusser = settings.CoalXPMax - settings.CoalXPMin;
+							int exprandom = (int) ((Math.random() *plusser) + settings.CoalXPMin);
+							exp = exp + exprandom;
+							String greenstripes = "Error";
+							String redstripes = "Error";
+							
+							p.sendMessage(smsg + "Your pixkaxe gaind " + ChatColor.RED + exprandom + " exp" + ChatColor.GREEN + " for mining an " + ChatColor.RED + "Coal Ore!");
+							p.sendMessage(smsg + "Your pixkaxe gaind " + ChatColor.YELLOW + exprandom + " exp" + ChatColor.GREEN + " for mining an " + ChatColor.YELLOW + "Coal Ore!");
+							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.RED + exprandom + " exp" + ChatColor.YELLOW + " for mining an " + ChatColor.RED + "Coal Ore!");
+							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.GREEN + exprandom + " exp" + ChatColor.YELLOW + " for mining an " + ChatColor.GREEN + "Coal Ore!");
+							
+							if (exp >= maxexp) {
+								level = level + 1;
+								exp = exp - maxexp;
+								maxexp = lvlexp.lvlexp(level + 1);
+								greenstripes = lvlexp.stripesgreen(exp, maxexp);
+								redstripes = lvlexp.stripesred(exp, maxexp);
+								
+								p.sendMessage(smsg + "Your pickaxe leveld up! Your pickaxe level is now " + ChatColor.RED + "level " + level + "!");
+							}else{
+								greenstripes = lvlexp.stripesgreen(exp, maxexp);
+								redstripes = lvlexp.stripesred(exp, maxexp);
+								
+								
+							}
+							
+							ItemMeta loremeta = p.getItemInHand().getItemMeta();
+							List<String> lore = new ArrayList<String>();
+					        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + level);
+					        lore.add("");
+					        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + exp + " / " + maxexp);
+					        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + greenstripes + ChatColor.DARK_RED + "" + ChatColor.BOLD + redstripes + ChatColor.WHITE + "]");
+					        
+					        loremeta.setLore(lore);
+					        p.getItemInHand().setItemMeta(loremeta);
+							
+							return;
 						}
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						/*b.setType(Material.BEDROCK);
-						
-						settings.Coal.put(i, settings.CoalRespawn);*/
-						return;
 					}
 				}
 			}
-			
-			
 		}
-		
-		
-		
-		
-		
-		
+		return;
+		}
+		return;
 	}
-	
 }

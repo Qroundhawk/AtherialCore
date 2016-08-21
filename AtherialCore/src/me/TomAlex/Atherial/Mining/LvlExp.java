@@ -1,5 +1,8 @@
 package me.TomAlex.Atherial.Mining;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.TomAlex.Atherial.SettingsManager;
 
 public class LvlExp {
@@ -18,6 +21,45 @@ public class LvlExp {
     	int b = settings.getLevelExpData().getInt("" + a);
     	
     	return b;
+    }
+    
+    public String stripesgreen(int exp, int maxexp) {
+    	int stripes1 = maxexp / 20;
+		int stripesg = exp / stripes1;
+		List<String> stripes = new ArrayList<String>();
+		int counter = 0;
+		int counter2 = 0;
+		while (counter < 1) {
+			if (counter2 != stripesg) {
+				stripes.add("|");
+				counter2++;
+			}else{
+				counter++;
+			}
+		}
+		String green = stripes.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
+    	
+    	return green;
+    }
+    
+    public String stripesred(int exp, int maxexp) {
+    	int stripes1 = maxexp / 20;
+		int stripesg = exp / stripes1;
+		int stripesr = 20 - stripesg;
+		List<String> stripes = new ArrayList<String>();
+		int counter = 0;
+		int counter2 = 0;
+		while (counter < 1) {
+			if (counter2 != stripesr) {
+				stripes.add("|");
+				counter2++;
+			}else{
+				counter++;
+			}
+		}
+		String red = stripes.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
+    	
+    	return red;
     }
     
 	/*public int Lvl1 = 0;

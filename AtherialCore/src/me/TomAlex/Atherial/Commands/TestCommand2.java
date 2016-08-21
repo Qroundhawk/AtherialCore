@@ -67,25 +67,22 @@ public class TestCommand2 implements CommandExecutor {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		int level = 2;
+		int exp = 10;
+		int maxexp = 50;
+		String greenstripes = "";
+		String redstripes = "||||||||||||||||||||";
 		
 		
 		ItemStack pickaxe = new ItemStack(Material.WOOD_PICKAXE, 1);
         ItemMeta pickaxemeta = pickaxe.getItemMeta();
         pickaxemeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Wooden Pickaxe");
-        List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + "1");
+        ItemMeta loremeta = p.getItemInHand().getItemMeta();
+		List<String> lore = new ArrayList<String>();
+        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + level);
         lore.add("");
-        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + "1 / 50");
-        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "||||||||||||||||||||" + ChatColor.WHITE + "]");
+        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + exp + " / " + maxexp);
+        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + greenstripes + ChatColor.DARK_RED + "" + ChatColor.BOLD + redstripes + ChatColor.WHITE + "]");
         pickaxemeta.setLore(lore);
         pickaxe.setItemMeta(pickaxemeta);
         
