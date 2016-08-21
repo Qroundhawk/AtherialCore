@@ -6,6 +6,7 @@ import me.TomAlex.Atherial.Combat.Hitting;
 import me.TomAlex.Atherial.Combat.PlayerJoinSet;
 import me.TomAlex.Atherial.Combat.PlayerMenu;
 import me.TomAlex.Atherial.Combat.PlayerRemoveSet;
+import me.TomAlex.Atherial.Combat.PlayerUpdater;
 import me.TomAlex.Atherial.Commands.EcoAddBankCommand;
 import me.TomAlex.Atherial.Commands.EcoAddMarketCommand;
 import me.TomAlex.Atherial.Commands.EcoMoneyCommand;
@@ -43,7 +44,8 @@ public class Main extends JavaPlugin implements Listener {
 	SettingsManager settings = SettingsManager.getInstance();
 	OreSetupRespawn mining = OreSetupRespawn.getInstance();
 	OreRespawn miningore = OreRespawn.getInstance();
-
+	PlayerUpdater updater = PlayerUpdater.getInstance();
+	
 	public void onEnable() {
 		JavaPlugin.getProvidingPlugin(Main.class);
 		settings.setup(this);
