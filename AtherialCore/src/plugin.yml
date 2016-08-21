@@ -9,6 +9,9 @@ commands:
     test:
         usage: /<command>
         description: Test Command.
+    test2:
+        usage: /<command>
+        description: Test Command.
     money:
         usage: /<command>
         description: Money Command.
