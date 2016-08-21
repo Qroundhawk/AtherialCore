@@ -60,14 +60,13 @@ public class ArmorEquipting implements Listener
 			String lorehealth = e.getNewArmorPiece().getItemMeta().getLore().get(1);
 			Scanner in2 = new Scanner(lorehealth).useDelimiter("[^0-9]+");
 			int h = in2.nextInt();
-			int h2 = in2.nextInt();
+			int h2 = in2.nextInt();		
 			p.sendMessage(h2 + "");
 			double maxhealth = p.getMaxHealth();
 			p.setMaxHealth(maxhealth + h2);
 			settings.Health.put(ud, (int) (maxhealth + h2));
 			
-			
-			
+	
 			//----------Setting Armor-----------------
 			String loreArmor = e.getNewArmorPiece().getItemMeta().getLore().get(3);
 			Scanner in3 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
@@ -126,18 +125,30 @@ public class ArmorEquipting implements Listener
 				settings.Vit.put(ud, newVit);				
 			}
 			
-			/*
+			
+	
 			//----------PvP Or PvE restistance------
-			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 12)
+			if(e.getNewArmorPiece().getItemMeta().getLore().size() >= 18)
 			{
-				String loreThorns = e.getNewArmorPiece().getItemMeta().getLore().get(7);
-				Scanner in5 = new Scanner(loreThorns).useDelimiter("[^0-9]+");
-				int Thorns = in5.nextInt();
-				int currentThorns = settings.Thorns.get(p.getUniqueId());
-				int newThorns =  currentThorns +Thorns ;
-				settings.Block.put(p.getUniqueId(), newThorns);		
+				String lorePvP = e.getNewArmorPiece().getItemMeta().getLore().get(8);
+				
+				if (lorePvP.indexOf("PvP") != -1) 
+				{
+					Scanner in8 = new Scanner(lorePvP).useDelimiter("[^0-9]+");
+					int PvP = in8.nextInt();
+					int currentPvP = settings.PvP.get(p.getUniqueId());
+					int newPvP =  currentPvP + PvP ;
+					settings.PvP.put(p.getUniqueId(), newPvP);	
+					
+				}else if(lorePvP.indexOf("PvE") != -1){
+					Scanner in8 = new Scanner(lorePvP).useDelimiter("[^0-9]+");
+					int PvP = in8.nextInt();
+					int currentPvP = settings.PvE.get(p.getUniqueId());
+					int newPvP =  currentPvP + PvP ;
+					settings.PvE.put(p.getUniqueId(), newPvP);
+				}
+				
 			}
-			*/
 					
 			//--------------Message-------------
 			p.sendMessage("");
@@ -213,6 +224,30 @@ public class ArmorEquipting implements Listener
 				int newVit =  currentVit -Vit ;
 				settings.Vit.put(ud, newVit);				
 			}
+			
+			//----------PvP Or PvE restistance------
+			if(e.getOldArmorPiece().getItemMeta().getLore().size() >= 18)
+			{
+				String lorePvP = e.getOldArmorPiece().getItemMeta().getLore().get(8);
+				
+				if (lorePvP.indexOf("PvP") != -1) 
+				{
+					Scanner in8 = new Scanner(lorePvP).useDelimiter("[^0-9]+");
+					int PvP = in8.nextInt();
+					int currentPvP = settings.PvP.get(p.getUniqueId());
+					int newPvP =  currentPvP - PvP ;
+					settings.PvP.put(p.getUniqueId(), newPvP);	
+					
+				}else if(lorePvP.indexOf("PvE") != -1){
+					Scanner in8 = new Scanner(lorePvP).useDelimiter("[^0-9]+");
+					int PvP = in8.nextInt();
+					int currentPvP = settings.PvE.get(p.getUniqueId());
+					int newPvP =  currentPvP - PvP;
+					settings.PvE.put(p.getUniqueId(), newPvP);
+				}
+				
+			}
+					
 			
 
 			p.sendMessage("");

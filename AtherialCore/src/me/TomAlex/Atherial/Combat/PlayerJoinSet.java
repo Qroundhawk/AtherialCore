@@ -3,6 +3,7 @@ package me.TomAlex.Atherial.Combat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 import me.TomAlex.Atherial.Main;
 import me.TomAlex.Atherial.SettingsManager;
@@ -34,6 +35,7 @@ public class PlayerJoinSet implements Listener
 	@EventHandler
 	public void PlayerJoin(PlayerLoginEvent event) {
 		Player p = event.getPlayer();
+		UUID ud = p.getUniqueId();
 		
 		new BukkitRunnable() {
 
@@ -142,15 +144,105 @@ public class PlayerJoinSet implements Listener
 				settings.Block.put(p.getUniqueId(), 0);
 				settings.Thorns.put(p.getUniqueId(), 0);
 				settings.Vit.put(p.getUniqueId(), 0);
-				if(p.getInventory().getHelmet() != null)
+				settings.PvP.put(p.getUniqueId(), 0);
+				settings.PvE.put(p.getUniqueId(), 0);
+				
+				int i = 1;
+				ItemStack armor = null;
+				while(i <= 4)
 				{
-					String loreArmor = p.getInventory().getHelmet().getItemMeta().getLore().get(3);
-					Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
-					int a = in1.nextInt();
-					int currentarmor = settings.Armor.get(p.getUniqueId());
-					int newarmor =  currentarmor +a;
-					settings.Armor.put(p.getUniqueId(), newarmor);
+					switch(i)
+					{
+					case 1: armor = p.getInventory().getHelmet();
+					break;
+					case 2: armor = p.getInventory().getChestplate();
+					break;
+					case 3: armor = p.getInventory().getLeggings();
+					break;
+					case 4: armor = p.getInventory().getBoots();
+					break;
+					}
+		
+					if(armor != null)
+					{
+						String loreArmor = armor.getItemMeta().getLore().get(3);
+						Scanner in1 = new Scanner(loreArmor).useDelimiter("[^0-9]+");
+						int a = in1.nextInt();
+						int currentarmor = settings.Armor.get(p.getUniqueId());
+						int newarmor =  currentarmor +a;
+						settings.Armor.put(p.getUniqueId(), newarmor);
+						
+						//----------HealthRegen-----------------
+						if(armor.getItemMeta().getLore().size() >= 14)
+						{
+							String loreRegen = armor.getItemMeta().getLore().get(4);
+							Scanner in4 = new Scanner(loreRegen).useDelimiter("[^0-9]+");
+							int regen = in4.nextInt();
+							int currentregen = settings.Regen.get(ud);
+							int newregen =  currentregen +regen;
+							settings.Regen.put(ud, newregen);		
+						}	
+						//----------BlockChance-----------------
+						if(armor.getItemMeta().getLore().size() >= 15)
+						{
+							String loreBlock = armor.getItemMeta().getLore().get(5);
+							Scanner in5 = new Scanner(loreBlock).useDelimiter("[^0-9]+");
+							int block = in5.nextInt();
+							int currentblock = settings.Block.get(ud);
+							int newblock =  currentblock + block ;
+							settings.Block.put(ud, newblock);
+							
+						}		
+						//----------Thorns----------------------
+						if(armor.getItemMeta().getLore().size() >= 16)
+						{
+							String loreThorns = armor.getItemMeta().getLore().get(6);
+							Scanner in6 = new Scanner(loreThorns).useDelimiter("[^0-9]+");
+							int Thorns = in6.nextInt();
+							int currentThorns = settings.Thorns.get(ud);
+							int newThorns =  currentThorns +Thorns ;
+							settings.Thorns.put(ud, newThorns);				
+						}
+
+
+						//----------Vit-------------------------
+						if(armor.getItemMeta().getLore().size() >= 17)
+						{
+							String loreVit = armor.getItemMeta().getLore().get(7);
+							Scanner in7 = new Scanner(loreVit).useDelimiter("[^0-9]+");
+							int Vit = in7.nextInt();
+							int currentVit = settings.Vit.get(ud);
+							int newVit =  currentVit +Vit ;
+							settings.Vit.put(ud, newVit);				
+						}
+						
+						
+				
+						//----------PvP Or PvE restistance------
+						if(armor.getItemMeta().getLore().size() >= 18)
+						{
+							String lorePvP = armor.getItemMeta().getLore().get(8);
+							
+							if (lorePvP.indexOf("PvP") != -1) 
+							{
+								Scanner in8 = new Scanner(lorePvP).useDelimiter("[^0-9]+");
+								int PvP = in8.nextInt();
+								int currentPvP = settings.PvP.get(p.getUniqueId());
+								int newPvP =  currentPvP + PvP ;
+								settings.PvP.put(p.getUniqueId(), newPvP);	
+								
+							}else if(lorePvP.indexOf("PvE") != -1){
+								Scanner in8 = new Scanner(lorePvP).useDelimiter("[^0-9]+");
+								int PvP = in8.nextInt();
+								int currentPvP = settings.PvE.get(p.getUniqueId());
+								int newPvP =  currentPvP + PvP ;
+								settings.PvE.put(p.getUniqueId(), newPvP);
+							}							
+						}
+					}
+					i++;
 				}
+				
 				
 				
 				cancel();
