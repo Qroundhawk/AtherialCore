@@ -10,9 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -75,11 +73,12 @@ public class OreBreakCoal implements Listener {
 									return;
 								}
 								
-								
+								//Randomizer
 								int plusser = settings.CoalXPMax - settings.CoalXPMin;
 								int expplus = (int) ((Math.random() *plusser) + settings.CoalXPMin);
 								int newexp = exp + expplus;
 								
+								//If level up run this
 								if (newexp >= maxexp) {
 									int newlevel = level + 1;
 									int newmaxexp = lvlexp.lvlexp(newlevel + 1);
@@ -125,18 +124,7 @@ public class OreBreakCoal implements Listener {
 									
 									return;
 								}
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								//20 / xp nodig = uitkomts    --   nu xp / uitkomst = (rond nummer af) hoeveel streepjes.
+								//If not level up run this
 								
 								int stripes1 = maxexp / 20;
 								int stripesg = newexp / stripes1;
@@ -165,9 +153,6 @@ public class OreBreakCoal implements Listener {
 			        			}
 			        			String green = stripesgreen.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
 			        			String red = stripesred.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
-								
-								
-								
 								
 								ItemMeta loremeta = p.getItemInHand().getItemMeta();
 								List<String> lore = new ArrayList<String>();
