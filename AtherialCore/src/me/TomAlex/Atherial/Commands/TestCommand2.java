@@ -64,19 +64,6 @@ public class TestCommand2 implements CommandExecutor {
 		//int exp = (int) ((Math.random() *20) + 40);
 		
 		
-		List<String> toRemove = new ArrayList<String>();
-		
-		toRemove.add("||||");
-		toRemove.add("////");
-		
-		
-		String formatedString = toRemove.toString()
-			    .replace(", ", "")  //remove the commas
-			    .replace("[", "")  //remove the right bracket
-			    .replace("]", "")  //remove the left bracket
-			    .trim();  
-		
-		p.sendMessage("" + formatedString);
 		
 		
 		
@@ -91,20 +78,18 @@ public class TestCommand2 implements CommandExecutor {
 		
 		
 		
-		
-		
-		/*ItemStack pickaxe = new ItemStack(Material.WOOD_PICKAXE, 1);
+		ItemStack pickaxe = new ItemStack(Material.WOOD_PICKAXE, 1);
         ItemMeta pickaxemeta = pickaxe.getItemMeta();
         pickaxemeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Wooden Pickaxe");
         List<String> lore = new ArrayList<String>();
         lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + "1");
         lore.add("");
-        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + "0 / 50");
+        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + "1 / 50");
         lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "||||||||||||||||||||" + ChatColor.WHITE + "]");
         pickaxemeta.setLore(lore);
         pickaxe.setItemMeta(pickaxemeta);
         
-        pi.addItem(pickaxe);*/
+        pi.addItem(pickaxe);
 		
 		return true;
 	}
