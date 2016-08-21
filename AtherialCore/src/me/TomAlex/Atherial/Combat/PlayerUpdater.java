@@ -1,10 +1,11 @@
 package me.TomAlex.Atherial.Combat;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import me.TomAlex.Atherial.Main;
 import me.TomAlex.Atherial.SettingsManager;
+
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlayerUpdater 
 {
@@ -27,7 +28,10 @@ public class PlayerUpdater
 			{
 				public void run() 
 				{
-		
+					for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+						
+					}
+					
 					
 				}
 			}, 100, 600);	    	
