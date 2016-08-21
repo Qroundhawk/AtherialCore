@@ -5,6 +5,7 @@ import me.TomAlex.Atherial.Combat.ArmorEquipting;
 import me.TomAlex.Atherial.Combat.Hitting;
 import me.TomAlex.Atherial.Combat.PlayerJoinSet;
 import me.TomAlex.Atherial.Combat.PlayerMenu;
+import me.TomAlex.Atherial.Combat.PlayerRemoveSet;
 import me.TomAlex.Atherial.Commands.EcoAddBankCommand;
 import me.TomAlex.Atherial.Commands.EcoAddMarketCommand;
 import me.TomAlex.Atherial.Commands.EcoMoneyCommand;
@@ -62,6 +63,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		//@Combat Events
 		pm.registerEvents(new PlayerJoinSet(), this);
+		pm.registerEvents(new PlayerRemoveSet(), this);
 		pm.registerEvents(new ArmorEquipting(), this);
 		pm.registerEvents(new ArmorListener(getConfig().getStringList("blocked")), this);
 		pm.registerEvents(new Hitting(), this);

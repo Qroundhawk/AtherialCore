@@ -26,15 +26,8 @@ public class TestCommand implements CommandExecutor {
 		}
 		
 		//FREE TO USE :)
-		String lorePvP = p.getItemInHand().getItemMeta().getLore().get(3);
 		      
-		if (lorePvP.indexOf("Armor") != -1) 
-		{
-			p.sendMessage("true");
-		} else {
-			p.sendMessage("False");
-		}
-		
+		p.sendMessage("" + settings.Armor.size());
 		
 		return true;
 	}
