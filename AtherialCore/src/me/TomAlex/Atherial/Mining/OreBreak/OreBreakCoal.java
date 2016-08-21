@@ -85,12 +85,40 @@ public class OreBreakCoal implements Listener {
 									int newmaxexp = lvlexp.lvlexp(newlevel + 1);
 									int newnewexp = newexp - maxexp;
 									
+									int stripes1 = newmaxexp / 20;
+									int stripesg = newnewexp / stripes1;
+									int stripesr = 20 - stripesg;
+									List<String> stripesgreen = new ArrayList<String>();
+									List<String> stripesred = new ArrayList<String>();
+									int countergreen = 0;
+									int countergreen2 = 0;
+				        			while (countergreen < 1) {
+				        				if (countergreen2 != stripesg) {
+				        					stripesgreen.add("|");
+				        					countergreen2++;
+				        				}else{
+				        					countergreen++;
+				        				}
+				        			}
+				        			int counterred = 0;
+									int counterred2 = 0;
+				        			while (counterred < 1) {
+				        				if (counterred2 != stripesr) {
+				        					stripesred.add("|");
+				        					counterred2++;
+				        				}else{
+				        					counterred++;
+				        				}
+				        			}
+				        			String green = stripesgreen.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
+				        			String red = stripesred.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
+									
 									ItemMeta loremeta = p.getItemInHand().getItemMeta();
 									List<String> lore = new ArrayList<String>();
 							        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newlevel);
 							        lore.add("");
 							        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newnewexp + " / " + newmaxexp);
-							        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "||||||||||||||||||||" + ChatColor.WHITE + "]");
+							        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + green + ChatColor.DARK_RED + "" + ChatColor.BOLD + red + ChatColor.WHITE + "]");
 							        
 							        loremeta.setLore(lore);
 							        p.getItemInHand().setItemMeta(loremeta);
@@ -113,10 +141,8 @@ public class OreBreakCoal implements Listener {
 								int stripes1 = maxexp / 20;
 								int stripesg = newexp / stripes1;
 								int stripesr = 20 - stripesg;
-								
 								List<String> stripesgreen = new ArrayList<String>();
 								List<String> stripesred = new ArrayList<String>();
-								
 								int countergreen = 0;
 								int countergreen2 = 0;
 			        			while (countergreen < 1) {
@@ -137,9 +163,10 @@ public class OreBreakCoal implements Listener {
 			        					counterred++;
 			        				}
 			        			}
+			        			String green = stripesgreen.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
+			        			String red = stripesred.toString().replaceAll(", ", "").replace("[", "").replace("]", "");
 								
-			        			String green = stripesgreen.toString().replaceAll(", ", "").replaceAll("[", "");
-			        			String red = stripesred.toString().replaceAll(", ", "");
+								
 								
 								
 								ItemMeta loremeta = p.getItemInHand().getItemMeta();
@@ -147,7 +174,7 @@ public class OreBreakCoal implements Listener {
 						        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + level);
 						        lore.add("");
 						        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newexp + " / " + maxexp);
-						        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + green + ChatColor.DARK_RED + "" + ChatColor.BOLD + red + ChatColor.WHITE + "]");
+						        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + green + ChatColor.DARK_RED + "" + ChatColor.BOLD + red + ChatColor.WHITE + "]");
 						        
 						        loremeta.setLore(lore);
 						        p.getItemInHand().setItemMeta(loremeta);
