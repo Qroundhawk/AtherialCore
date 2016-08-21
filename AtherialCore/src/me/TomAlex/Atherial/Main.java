@@ -116,6 +116,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		mining.miningRespawn();
 		miningore.miningStart();
+		updater.UpdaterStart();
 	}
 	
 	public void onDisable() {
