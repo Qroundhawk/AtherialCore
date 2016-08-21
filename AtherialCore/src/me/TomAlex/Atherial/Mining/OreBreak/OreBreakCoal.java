@@ -80,8 +80,6 @@ public class OreBreakCoal implements Listener {
 								int expplus = (int) ((Math.random() *plusser) + settings.CoalXPMin);
 								int newexp = exp + expplus;
 								
-								p.sendMessage("" + expplus); 
-								
 								if (newexp >= maxexp) {
 									int newlevel = level + 1;
 									int newmaxexp = lvlexp.lvlexp(newlevel + 1);
@@ -113,31 +111,35 @@ public class OreBreakCoal implements Listener {
 								//20 / xp nodig = uitkomts    --   nu xp / uitkomst = (rond nummer af) hoeveel streepjes.
 								
 								int stripes1 = maxexp / 20;
-								int stripes2 = newexp / stripes1;
-								int strpies3 = 20 - stripes2;
+								int stripesg = newexp / stripes1;
+								int stripesr = 20 - stripesg;
 								
 								List<String> stripesgreen = new ArrayList<String>();
 								List<String> stripesred = new ArrayList<String>();
 								
-								
-								
-								int counter = 0;
-								int counter2 = 0;
-			        			while (counter < 1) {
-			        				
-			        				
-			        				counter++;
+								int countergreen = 0;
+								int countergreen2 = 0;
+			        			while (countergreen < 1) {
+			        				if (countergreen2 != stripesg) {
+			        					stripesgreen.add("|");
+			        					countergreen2++;
+			        				}else{
+			        					countergreen++;
+			        				}
+			        			}
+			        			int counterred = 0;
+								int counterred2 = 0;
+			        			while (counterred < 1) {
+			        				if (counterred2 != stripesr) {
+			        					stripesred.add("|");
+			        					counterred2++;
+			        				}else{
+			        					counterred++;
+			        				}
 			        			}
 								
-								
-								
-								
-								
-								
-								
-								
-								
-								
+			        			String green = stripesgreen.toString().replaceAll(", ", "").replaceAll("[", "");
+			        			String red = stripesred.toString().replaceAll(", ", "");
 								
 								
 								ItemMeta loremeta = p.getItemInHand().getItemMeta();
@@ -145,7 +147,7 @@ public class OreBreakCoal implements Listener {
 						        lore.add(ChatColor.WHITE + "Level: " + ChatColor.GRAY + "" + ChatColor.ITALIC + level);
 						        lore.add("");
 						        lore.add(ChatColor.WHITE + "EXP: " + ChatColor.GRAY + "" + ChatColor.ITALIC + newexp + " / " + maxexp);
-						        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + "" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "||||||||||||||||||||" + ChatColor.WHITE + "]");
+						        lore.add(ChatColor.WHITE + "[" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "" + green + ChatColor.DARK_RED + "" + ChatColor.BOLD + red + ChatColor.WHITE + "]");
 						        
 						        loremeta.setLore(lore);
 						        p.getItemInHand().setItemMeta(loremeta);

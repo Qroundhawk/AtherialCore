@@ -69,8 +69,7 @@ public class TestCommand2 implements CommandExecutor {
 		toRemove.add("||||");
 		toRemove.add("////");
 		
-		p.sendMessage("" + toRemove.toString().replace(", ", ""));
-		
+		p.sendMessage("" + toRemove.toString());
 		
 		
 		
