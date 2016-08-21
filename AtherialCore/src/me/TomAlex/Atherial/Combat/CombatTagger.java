@@ -2,6 +2,7 @@ package me.TomAlex.Atherial.Combat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,26 +19,49 @@ public class CombatTagger implements Listener {
 	@EventHandler
 	public void CombatTag(EntityDamageByEntityEvent e) 
 	{
-		if(e.getDamager() instanceof Player)
+		Entity attacker = e.getDamager();
+		Entity defender = e.getEntity();
+		if(attacker instanceof Player)
 		{
-			Player Pdamager = (Player) e.getDamager();
-			// -----------------------------------------CombatTagger----------------------------
-			if (settings.Tagger.containsKey(Pdamager.getUniqueId())) 
+			Player p = (Player) attacker;
+
+			if (settings.Tagger.containsKey(p.getUniqueId())) 
 			{
-				Bukkit.getScheduler().cancelTask(settings.Tagger.get(Pdamager.getUniqueId()));
+				Bukkit.getScheduler().cancelTask(settings.Tagger.get(p.getUniqueId()));
 			} else
-				Pdamager.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
+				p.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
 						+ "]>       " + ChatColor.RED + ChatColor.BOLD.toString() + "You are in combat!"));
 
 			int id = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
 
 				public void run() {
-					Pdamager.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
+					p.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
 							+ "]>       " + ChatColor.GREEN + ChatColor.BOLD.toString() + "You are out of combat!"));
-					settings.Tagger.remove(Pdamager.getUniqueId());
+					settings.Tagger.remove(p.getUniqueId());
 				}
 			}, 100);
-			settings.Tagger.put(Pdamager.getUniqueId(), id);
+			settings.Tagger.put(p.getUniqueId(), id);
+			
+		}else if(defender instanceof Player)
+		{
+			Player p = (Player) defender;
+			
+			if (settings.Tagger.containsKey(p.getUniqueId())) 
+			{
+				Bukkit.getScheduler().cancelTask(settings.Tagger.get(p.getUniqueId()));
+			} else
+				p.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
+						+ "]>       " + ChatColor.RED + ChatColor.BOLD.toString() + "You are in combat!"));
+
+			int id = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
+
+				public void run() {
+					p.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
+							+ "]>       " + ChatColor.GREEN + ChatColor.BOLD.toString() + "You are out of combat!"));
+					settings.Tagger.remove(p.getUniqueId());
+				}
+			}, 200);
+			settings.Tagger.put(p.getUniqueId(), id);
 			
 		}else return;
 	}
