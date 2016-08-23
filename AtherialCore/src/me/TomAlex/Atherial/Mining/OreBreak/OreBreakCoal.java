@@ -29,16 +29,11 @@ public class OreBreakCoal implements Listener {
 		Player p = e.getPlayer();
 		Block b = e.getBlock();
 		
-		Material material = Material.COAL_ORE;
-		String ore = "coalore.";
-		
-		
-		if (b.getType() == material) {
+		if (b.getType() == Material.COAL_ORE) {
 			if (p.getItemInHand().getType() == Material.FEATHER) return;
-			
-		if (!(settings.getOreData().get(ore) == null)) {
-			for (String i : settings.getOreData().getConfigurationSection(ore).getKeys(false)) {
-				Location loc = (Location) settings.getOreData().get(ore + i + ".loc");
+		if (!(settings.getOreData().get("coalore.") == null)) {
+			for (String i : settings.getOreData().getConfigurationSection("coalore.").getKeys(false)) {
+				Location loc = (Location) settings.getOreData().get("coalore." + i + ".loc");
 				if (b.getLocation().equals(loc)) {
 					e.setCancelled(true);
 					if (p.getItemInHand().getType() == Material.WOOD_PICKAXE || p.getItemInHand().getType() == Material.STONE_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE || p.getItemInHand().getType() == Material.GOLD_PICKAXE || p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
