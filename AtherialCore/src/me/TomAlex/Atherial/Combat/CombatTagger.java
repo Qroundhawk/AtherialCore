@@ -16,6 +16,8 @@ public class CombatTagger implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
 
+	String messager = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
+			+ "] " + ChatColor.RED + ChatColor.BOLD.toString() + "COMBAT >";
 	@EventHandler
 	public void CombatTag(EntityDamageByEntityEvent e) 
 	{
@@ -29,20 +31,19 @@ public class CombatTagger implements Listener {
 			{
 				Bukkit.getScheduler().cancelTask(settings.Tagger.get(p.getUniqueId()));
 			} else
-				p.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
-						+ "]>"  + ChatColor.RED +ChatColor.BOLD.toString()   +"You are in combat!"));
+				p.sendMessage(messager +"    You are in combat!");
 
 			int id = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
 
 				public void run() {
-					p.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
-							+ "]>       " + ChatColor.GREEN + ChatColor.BOLD.toString() + "You are out of combat!"));
+					p.sendMessage(messager+ ChatColor.GREEN + "    You are out of combat!");
 					settings.Tagger.remove(p.getUniqueId());
 				}
 			}, 100);
 			settings.Tagger.put(p.getUniqueId(), id);
 			
-		}else if(defender instanceof Player)
+		}
+		if(defender instanceof Player)
 		{
 			Player p = (Player) defender;
 			
@@ -50,20 +51,18 @@ public class CombatTagger implements Listener {
 			{
 				Bukkit.getScheduler().cancelTask(settings.Tagger.get(p.getUniqueId()));
 			} else
-				p.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
-						+ "]>"  + ChatColor.RED +ChatColor.BOLD.toString()   +"You are in combat!"));
+				p.sendMessage(messager +"    You are in combat!");
 
 			int id = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
 
 				public void run() {
-					p.sendMessage((ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY
-							+ "]>       " + ChatColor.GREEN + ChatColor.BOLD.toString() + "You are out of combat!"));
+					p.sendMessage(messager+ ChatColor.GREEN + "    You are out of combat!");
 					settings.Tagger.remove(p.getUniqueId());
 				}
 			}, 200);
 			settings.Tagger.put(p.getUniqueId(), id);
 			
-		}else return;
+		}
 	}
 
 }

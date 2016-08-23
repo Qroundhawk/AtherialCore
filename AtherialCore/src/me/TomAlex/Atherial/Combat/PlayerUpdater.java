@@ -183,11 +183,14 @@ public class PlayerUpdater {
 							}else
 							{
 								int HealthRegen = settings.Regen.get(ud);
-								double newhealth = p.getHealth() + HealthRegen;
-								if(newhealth < p.getMaxHealth())
+								if(HealthRegen != 0)
 								{
-									p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "          +" + HealthRegen + " Health");
-									p.setHealth(newhealth);
+									double newhealth = p.getHealth() + HealthRegen;
+									if(newhealth < p.getMaxHealth())
+									{
+										p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "          +" + HealthRegen + " Health");
+										p.setHealth(newhealth);
+									}
 								}
 							}
 							
