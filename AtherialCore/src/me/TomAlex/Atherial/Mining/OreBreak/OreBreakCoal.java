@@ -21,7 +21,7 @@ public class OreBreakCoal implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
 	LvlExp lvlexp = LvlExp.getInstance();
-	public String smsg = ChatColor.DARK_GRAY +  "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "]> " + ChatColor.GREEN;
+	public String smsg = ChatColor.DARK_GRAY +  "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "MINING > ";
 
 	@EventHandler
 	public void BlockBreak(BlockBreakEvent e) {
@@ -77,10 +77,7 @@ public class OreBreakCoal implements Listener {
 							String greenstripes = "Error";
 							String redstripes = "Error";
 							
-							p.sendMessage(smsg + "Your pixkaxe gaind " + ChatColor.RED + exprandom + " exp" + ChatColor.GREEN + " for mining an " + ChatColor.RED + "Coal Ore!");
-							p.sendMessage(smsg + "Your pixkaxe gaind " + ChatColor.YELLOW + exprandom + " exp" + ChatColor.GREEN + " for mining an " + ChatColor.YELLOW + "Coal Ore!");
-							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.RED + exprandom + " exp" + ChatColor.YELLOW + " for mining an " + ChatColor.RED + "Coal Ore!");
-							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.GREEN + exprandom + " exp" + ChatColor.YELLOW + " for mining an " + ChatColor.GREEN + "Coal Ore!");
+							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.LIGHT_PURPLE + exprandom + " exp" + ChatColor.YELLOW + " for mining an " + ChatColor.LIGHT_PURPLE + "Coal Ore!");
 							
 							if (exp >= maxexp) {
 								level = level + 1;
@@ -89,12 +86,52 @@ public class OreBreakCoal implements Listener {
 								greenstripes = lvlexp.stripesgreen(exp, maxexp);
 								redstripes = lvlexp.stripesred(exp, maxexp);
 								
-								p.sendMessage(smsg + "Your pickaxe leveld up! Your pickaxe level is now " + ChatColor.RED + "level " + level + "!");
+								p.sendMessage(smsg + ChatColor.YELLOW + "Your pickaxe leveld up! Your pickaxe level is now " + ChatColor.LIGHT_PURPLE + "level " + level + "!");
+								
+								if (level == 10) {
+									if (p.getItemInHand().getType() == Material.STONE_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE || p.getItemInHand().getType() == Material.GOLD_PICKAXE || p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
+									}else{
+										p.getItemInHand().setType(Material.STONE_PICKAXE);
+										ItemMeta pickaxemeta = p.getItemInHand().getItemMeta();
+								        pickaxemeta.setDisplayName(ChatColor.GRAY + "" + ChatColor.BOLD + "Stone Pickaxe");
+								        p.getItemInHand().setItemMeta(pickaxemeta);
+								        p.sendMessage(smsg + ChatColor.YELLOW + "Your pickaxe upgraded to a " + ChatColor.LIGHT_PURPLE + "Stone Pickaxe!");
+									}
+								}
+								if (level == 20) {
+									if (p.getItemInHand().getType() == Material.IRON_PICKAXE || p.getItemInHand().getType() == Material.GOLD_PICKAXE || p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
+									}else{
+										p.getItemInHand().setType(Material.IRON_PICKAXE);
+										ItemMeta pickaxemeta = p.getItemInHand().getItemMeta();
+										pickaxemeta.setDisplayName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Iron Pickaxe");
+										p.getItemInHand().setItemMeta(pickaxemeta);
+										p.sendMessage(smsg + ChatColor.YELLOW + "Your pickaxe upgraded to a " + ChatColor.LIGHT_PURPLE + "Iron Pickaxe!");
+									}
+								}
+								if (level == 30) {
+									if (p.getItemInHand().getType() == Material.GOLD_PICKAXE || p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
+									}else{
+										p.getItemInHand().setType(Material.GOLD_PICKAXE);
+										ItemMeta pickaxemeta = p.getItemInHand().getItemMeta();
+										pickaxemeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Gold Pickaxe");
+										p.getItemInHand().setItemMeta(pickaxemeta);
+										p.sendMessage(smsg + ChatColor.YELLOW + "Your pickaxe upgraded to a " + ChatColor.LIGHT_PURPLE + "Gold Pickaxe!");
+									}
+								}
+								if (level == 40) {
+									if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
+									}else{
+										p.getItemInHand().setType(Material.DIAMOND_PICKAXE);
+										ItemMeta pickaxemeta = p.getItemInHand().getItemMeta();
+										pickaxemeta.setDisplayName(ChatColor.BLUE + "" + ChatColor.BOLD + "Diamond Pickaxe");
+										p.getItemInHand().setItemMeta(pickaxemeta);
+										p.sendMessage(smsg + ChatColor.YELLOW + "Your pickaxe upgraded to a " + ChatColor.LIGHT_PURPLE + "Diamond Pickaxe!");
+									}
+								}
+								
 							}else{
 								greenstripes = lvlexp.stripesgreen(exp, maxexp);
 								redstripes = lvlexp.stripesred(exp, maxexp);
-								
-								
 							}
 							
 							ItemMeta loremeta = p.getItemInHand().getItemMeta();
