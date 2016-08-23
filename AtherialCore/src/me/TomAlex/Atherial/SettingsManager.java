@@ -70,14 +70,14 @@ public class SettingsManager {
 	public int DiamondRespawn = 30;
 	public int LapisRespawn = 30;
 	//@Mining OreXP in seconds
-	public int CoalXPMin = 40;
+	public int CoalXPMin = 40;//40
 	public int EmeraldXPMin = 40;
 	public int IronXPMin = 100;
 	public int GoldXPMin = 200;
 	public int DiamondXPMin = 300;
 	public int LapisXPMin = 400;
 	
-	public int CoalXPMax = 60;
+	public int CoalXPMax = 60;//60
 	public int EmeraldXPMax = 60;
 	public int IronXPMax = 150;
 	public int GoldXPMax = 250;

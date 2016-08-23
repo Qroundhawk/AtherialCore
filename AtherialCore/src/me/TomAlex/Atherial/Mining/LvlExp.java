@@ -18,6 +18,10 @@ public class LvlExp {
 	
     public int lvlexp(int a) {
     	
+    	if (settings.getLevelExpData().get("" + a) == null) {
+    		int b = settings.getLevelExpData().getInt("" + 60);
+    		return b;
+    	}
     	int b = settings.getLevelExpData().getInt("" + a);
     	
     	return b;
