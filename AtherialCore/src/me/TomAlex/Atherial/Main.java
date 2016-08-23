@@ -14,6 +14,7 @@ import me.TomAlex.Atherial.Commands.EcoMoneyCommand;
 import me.TomAlex.Atherial.Commands.EcoSetStorageCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
+import me.TomAlex.Atherial.Durability.Infidura;
 import me.TomAlex.Atherial.Economy.MenuBankClickEvent;
 import me.TomAlex.Atherial.Economy.MenuStorageClickEvent;
 import me.TomAlex.Atherial.Economy.StorageCloseEvent;
@@ -72,6 +73,9 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new Hitting(), this);
 		pm.registerEvents(new PlayerMenu(), this);
 		pm.registerEvents(new CombatTagger(), this);
+		
+		//@Dura Events
+		pm.registerEvents(new Infidura(), this);
 		
 		//@Economy Events
 		pm.registerEvents(new JoinEvent(), this);
