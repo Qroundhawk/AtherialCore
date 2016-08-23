@@ -36,6 +36,7 @@ public class PlayerUpdater {
 							int maxhealth = (int) p.getMaxHealth();
 							int armorhealth = 100;
 
+							//----------------------HealthChecker-----------------------
 							int i = 1;
 							int i2 = 1;
 							ItemStack armor = null;
@@ -70,13 +71,13 @@ public class PlayerUpdater {
 							//-----------------Dit doet die als health niet klopt en glitched is---------------
 							if (armorhealth != maxhealth) {
 								p.setMaxHealth(100);
-								settings.Armor.put(p.getUniqueId(), 0);
-								settings.Regen.put(p.getUniqueId(), 0);
-								settings.Block.put(p.getUniqueId(), 0);
-								settings.Thorns.put(p.getUniqueId(), 0);
-								settings.Vit.put(p.getUniqueId(), 0);
-								settings.PvP.put(p.getUniqueId(), 0);
-								settings.PvE.put(p.getUniqueId(), 0);
+								settings.Armor.put(ud, 0);
+								settings.Regen.put(ud, 0);
+								settings.Block.put(ud, 0);
+								settings.Thorns.put(ud, 0);
+								settings.Vit.put(ud, 0);
+								settings.PvP.put(ud, 0);
+								settings.PvE.put(ud, 0);
 
 								while (i2 <= 4) 
 								{
@@ -174,7 +175,22 @@ public class PlayerUpdater {
 									}
 									i2++;
 								}
-							}					
+							}
+							
+							
+							if(settings.Tagger.containsKey(ud))
+							{	
+							}else
+							{
+								int HealthRegen = settings.Regen.get(ud);
+								double newhealth = p.getHealth() + HealthRegen;
+								if(newhealth < p.getMaxHealth())
+								{
+									p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "          +" + HealthRegen + " Health");
+									p.setHealth(newhealth);
+								}
+							}
+							
 						}
 					}
 				}, 100, 100);
