@@ -2,6 +2,7 @@ package me.TomAlex.Atherial.Mining.OreRegisteration;
 
 import me.TomAlex.Atherial.SettingsManager;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -12,6 +13,8 @@ import org.bukkit.event.block.BlockBreakEvent;
 public class OreRegistrationCoal implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
+	
+	public String smsg = ChatColor.DARK_GRAY +  "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "MINING > ";
 	
 	@EventHandler
 	public void BlockBreak(BlockBreakEvent e) {
@@ -38,7 +41,7 @@ public class OreRegistrationCoal implements Listener {
 								settings.getOreData().set(coalore + i, null);
 								settings.saveOreData();
 								
-								p.sendMessage("Removed register");
+								p.sendMessage(smsg + ChatColor.RED + "Your removed a registerd " + ChatColor.LIGHT_PURPLE + "Coal Ore!");
 								
 								b.setType(Material.AIR);
 								return;
@@ -47,14 +50,13 @@ public class OreRegistrationCoal implements Listener {
 					}
 					
 					b.setType(Material.AIR);
-					p.sendMessage("shift");
 					return;
 				}else{
 					if (!(settings.getOreData().get(coalore) == null)) {
 						for (String i : settings.getOreData().getConfigurationSection(coalore).getKeys(false)) {
 							if (settings.getOreData().get(coalore + i + ".loc").equals(b.getLocation())) {
 								
-								p.sendMessage("Already registerd");
+								p.sendMessage(smsg + ChatColor.RED + "This " + ChatColor.LIGHT_PURPLE + "Coal Ore " + ChatColor.RED + "is already registerd!");
 								return;
 							}
 						}
@@ -68,7 +70,7 @@ public class OreRegistrationCoal implements Listener {
 							settings.getOreData().set(coaloresave + number + ".loc", b.getLocation());
 							settings.saveOreData();
 							
-							p.sendMessage("New block");
+							p.sendMessage(smsg + ChatColor.GREEN + "You registerd a new " + ChatColor.LIGHT_PURPLE + "Coal Ore!");
 							counter++;
 						}else{
 							number++;

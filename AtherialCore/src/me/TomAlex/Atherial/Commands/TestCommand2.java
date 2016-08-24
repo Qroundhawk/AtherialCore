@@ -63,11 +63,11 @@ public class TestCommand2 implements CommandExecutor {
 		
 		//int exp = (int) ((Math.random() *20) + 40);
 		
+		p.sendMessage("" + settings.Coal);
+		p.sendMessage("" + settings.Iron);
 		
 		
-		
-		
-		int level = 2;
+		/*int level = 2;
 		int exp = 10;
 		int maxexp = 50;
 		String greenstripes = "";
@@ -86,7 +86,7 @@ public class TestCommand2 implements CommandExecutor {
         pickaxemeta.setLore(lore);
         pickaxe.setItemMeta(pickaxemeta);
         
-        pi.addItem(pickaxe);
+        pi.addItem(pickaxe);*/
 		
 		return true;
 	}

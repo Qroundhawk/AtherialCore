@@ -24,6 +24,12 @@ commands:
     addmarket:
         usage: /<command>
         description: Addmarket Command.
+    respawnore:
+        usage: /<command>
+        description: Respawnore Command.
+    spawnpickaxe:
+        usage: /<command>
+        description: Spawnpickaxe Command.
         
 permissions:
     test.command:
@@ -45,5 +51,11 @@ permissions:
         description: Addmarket.
         default: op
     mining.oresetup:
-        description: Addmarket.
+        description: Oresetup.
+        default: op
+    mining.respawnore:
+        description: Respawnore.
+        default: op
+    mining.spawnpickaxe:
+        description: Spawnpickaxe.
         default: op
