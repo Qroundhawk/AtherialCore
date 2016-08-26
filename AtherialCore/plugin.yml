@@ -30,6 +30,9 @@ commands:
     spawnpickaxe:
         usage: /<command>
         description: Spawnpickaxe Command.
+    repairsmith:
+        usage: /<command>
+        description: Spawns repairsmith.
         
 permissions:
     test.command:
@@ -58,4 +61,7 @@ permissions:
         default: op
     mining.spawnpickaxe:
         description: Spawnpickaxe.
+        default: op
+    repairsmith.command:
+        description: repairsmith
         default: op

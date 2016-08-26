@@ -14,6 +14,7 @@ import me.TomAlex.Atherial.Commands.EcoMoneyCommand;
 import me.TomAlex.Atherial.Commands.EcoSetStorageCommand;
 import me.TomAlex.Atherial.Commands.MineRespawnOreCommand;
 import me.TomAlex.Atherial.Commands.MineSpawnPickaxeCommand;
+import me.TomAlex.Atherial.Commands.RepairSmithCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
 import me.TomAlex.Atherial.Durability.DuraShops;
@@ -122,6 +123,9 @@ public class Main extends JavaPlugin implements Listener {
 		//@Mining Commands
 		getCommand("respawnore").setExecutor(new MineRespawnOreCommand());
 		getCommand("spawnpickaxe").setExecutor(new MineSpawnPickaxeCommand());
+		
+		//@Mining Commands
+		getCommand("repairsmith").setExecutor(new RepairSmithCommand());
 		
 		//@Extra Comamnds
 		getCommand("test").setExecutor(new TestCommand());

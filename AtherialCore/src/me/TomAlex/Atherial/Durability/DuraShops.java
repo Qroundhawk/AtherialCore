@@ -341,7 +341,7 @@ public class DuraShops implements Listener
 
 						if (econ.has(p, cost)) {
 							econ.withdrawPlayer(p, cost);
-							repairLore.set(place, (ChatColor.RED + "   ☼DURABILITY " + ChatColor.WHITE
+							repairLore.set(place, (ChatColor.WHITE
 									+ ChatColor.BOLD.toString() + "[ 100 / 100 ]"));
 							repairMeta.setLore(repairLore);
 							repairItem.setItemMeta(repairMeta);

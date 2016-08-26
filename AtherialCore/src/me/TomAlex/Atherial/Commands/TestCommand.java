@@ -27,7 +27,7 @@ public class TestCommand implements CommandExecutor {
 		
 		//FREE TO USE :)
 		      
-		p.sendMessage("" + settings.Armor.size());
+		p.sendMessage("" + p.getItemInHand().getItemMeta().getLore().size());
 		
 		return true;
 	}

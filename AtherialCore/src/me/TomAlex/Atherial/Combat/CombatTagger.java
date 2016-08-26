@@ -31,7 +31,7 @@ public class CombatTagger implements Listener {
 			{
 				Bukkit.getScheduler().cancelTask(settings.Tagger.get(p.getUniqueId()));
 			} else
-				p.sendMessage(messager +"    You are in combat!");
+				p.sendMessage(messager +"     You are in combat!");
 
 			int id = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
 
@@ -51,12 +51,12 @@ public class CombatTagger implements Listener {
 			{
 				Bukkit.getScheduler().cancelTask(settings.Tagger.get(p.getUniqueId()));
 			} else
-				p.sendMessage(messager +"    You are in combat!");
+				p.sendMessage(messager + "     You are in combat!");
 
 			int id = Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
 
 				public void run() {
-					p.sendMessage(messager+ ChatColor.GREEN + "    You are out of combat!");
+					p.sendMessage(messager+ ChatColor.GREEN + ChatColor.BOLD.toString()+ "    You are out of combat!");
 					settings.Tagger.remove(p.getUniqueId());
 				}
 			}, 200);

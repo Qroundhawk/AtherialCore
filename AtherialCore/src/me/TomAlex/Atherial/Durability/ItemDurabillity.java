@@ -72,7 +72,7 @@ public class ItemDurabillity implements Listener
 						p.getEquipment().setBoots(null);;
 					}else
 					{
-						bootsLore.set(place, (ChatColor.RED + "   ☼DURABILITY " + ChatColor.WHITE+ChatColor.BOLD.toString() +
+						bootsLore.set(place, (ChatColor.WHITE+ChatColor.BOLD.toString() +
 								"[ " + newcustomDura + " / 100 ]"));
 						bootsMeta.setLore(bootsLore);
 						boots.setItemMeta(bootsMeta);
@@ -109,7 +109,7 @@ public class ItemDurabillity implements Listener
 					
 					}else
 					{
-						bootsLore.set(place, (ChatColor.RED + "   ☼DURABILITY " + ChatColor.WHITE+ChatColor.BOLD.toString() +
+						bootsLore.set(place, (ChatColor.WHITE+ChatColor.BOLD.toString() +
 								"[ " + newcustomDura + " / 100 ]"));
 						bootsMeta.setLore(bootsLore);
 						boots.setItemMeta(bootsMeta);
@@ -146,7 +146,7 @@ public class ItemDurabillity implements Listener
 			
 					}else
 					{
-						bootsLore.set(place, (ChatColor.RED + "   ☼DURABILITY " + ChatColor.WHITE+ChatColor.BOLD.toString() +
+						bootsLore.set(place, (ChatColor.WHITE+ChatColor.BOLD.toString() +
 								"[ " + newcustomDura + " / 100 ]"));
 						bootsMeta.setLore(bootsLore);
 						boots.setItemMeta(bootsMeta);
@@ -181,7 +181,7 @@ public class ItemDurabillity implements Listener
 						p.getEquipment().setHelmet(null);;
 					}else
 					{
-						bootsLore.set(place, (ChatColor.RED + "   ☼DURABILITY " + ChatColor.WHITE+ChatColor.BOLD.toString() +
+						bootsLore.set(place, (ChatColor.WHITE+ChatColor.BOLD.toString() +
 								"[ " + newcustomDura + " / 100 ]"));
 						bootsMeta.setLore(bootsLore);
 						boots.setItemMeta(bootsMeta);
@@ -219,6 +219,11 @@ public class ItemDurabillity implements Listener
 			{
 				duraCounter.put(p.getName(), 0);
 			}
+			
+			if(!(p.getItemInHand().hasItemMeta()))
+			{
+				return;
+			}
 		
 
 			int counter = duraCounter.get(p.getName());
@@ -253,7 +258,7 @@ public class ItemDurabillity implements Listener
 					return;
 				}
 				
-				weaponLore.set(place, (ChatColor.RED + "   ☼DURABILITY " + ChatColor.WHITE+ChatColor.BOLD.toString() +
+				weaponLore.set(place, (ChatColor.WHITE+ChatColor.BOLD.toString() +
 						"[ " + newcustomDura + " / 100 ]"));
 				weaponMeta.setLore(weaponLore);
 				weapon.setItemMeta(weaponMeta);
@@ -334,7 +339,7 @@ public class ItemDurabillity implements Listener
 				if(e.getCursor().getType() == repairstone.getType())
 				{
 
-					weaponLore.set(place, (ChatColor.RED + "   ☼DURABILITY " + ChatColor.WHITE + ChatColor.BOLD.toString()
+					weaponLore.set(place, (ChatColor.WHITE + ChatColor.BOLD.toString()
 						+ "[ 100 / 100 ]"));
 					weaponMeta.setLore(weaponLore);
 					weapon.setItemMeta(weaponMeta);
