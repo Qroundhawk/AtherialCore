@@ -16,7 +16,10 @@ import me.TomAlex.Atherial.Commands.MineRespawnOreCommand;
 import me.TomAlex.Atherial.Commands.MineSpawnPickaxeCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
+import me.TomAlex.Atherial.Durability.DuraShops;
 import me.TomAlex.Atherial.Durability.Infidura;
+import me.TomAlex.Atherial.Durability.ItemDurabillity;
+import me.TomAlex.Atherial.Durability.RepairShop;
 import me.TomAlex.Atherial.Economy.MenuBankClickEvent;
 import me.TomAlex.Atherial.Economy.MenuStorageClickEvent;
 import me.TomAlex.Atherial.Economy.StorageCloseEvent;
@@ -78,6 +81,9 @@ public class Main extends JavaPlugin implements Listener {
 		
 		//@Dura Events
 		pm.registerEvents(new Infidura(), this);
+		pm.registerEvents(new DuraShops(), this);
+		pm.registerEvents(new ItemDurabillity(), this);
+		pm.registerEvents(new RepairShop(), this);
 		
 		//@Economy Events
 		pm.registerEvents(new JoinEvent(), this);
