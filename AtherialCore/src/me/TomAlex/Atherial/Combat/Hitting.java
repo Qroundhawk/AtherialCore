@@ -36,6 +36,7 @@ public class Hitting implements Listener
 		if (attacker instanceof Player) 
 		{
 			Player p = (Player) attacker;
+			UUID udattacker = p.getUniqueId();
 
 			//------------check for weapon---------------
 			if ((p.getItemInHand().getType().toString().toLowerCase().contains("sword"))
@@ -47,6 +48,24 @@ public class Hitting implements Listener
 				return;
 			}
 			
+			if(defender instanceof Player)
+			{
+				UUID ud = defender.getUniqueId(); 
+				if(!(settings.pvptoggle.contains(udattacker)))
+				{
+					e.setCancelled(true);
+					p.sendMessage(messager + ChatColor.GREEN + " You have PvP disabled, activate in Player Menu");
+					return;
+				}
+				if(!(settings.pvptoggle.contains(ud)))
+				{
+					e.setCancelled(true);
+					p.sendMessage(messager + ChatColor.GREEN + " This player has PvP disabled");
+					return;
+				}
+			}
+		
+			
 			
 
 			if (p.getItemInHand().hasItemMeta()) 
@@ -54,8 +73,6 @@ public class Hitting implements Listener
 				int loresize = p.getInventory().getItemInMainHand().getItemMeta().getLore().size();
 				ItemStack sword = new ItemStack(p.getItemInHand());
 				
-				double pvpdamage = 0;
-				double pvedamage = 0;
 				// Get Damage
 				String dmglore = sword.getItemMeta().getLore().get(1);
 				Scanner in = new Scanner(dmglore).useDelimiter("[^0-9]+");
@@ -70,6 +87,7 @@ public class Hitting implements Listener
 					double strmulti = (100+str)/100;
 					damage = damage * strmulti;
 				}
+	
 				if(loresize >= 14)
 				{
 					String critlore = sword.getItemMeta().getLore().get(4);
@@ -83,6 +101,7 @@ public class Hitting implements Listener
 					}
 	
 				}
+				
 				if(loresize >= 15)
 				{
 					String steallore = sword.getItemMeta().getLore().get(5);
@@ -95,42 +114,22 @@ public class Hitting implements Listener
 						p.sendMessage(ChatColor.GREEN +  "LifeSteal +" + f.format(lifesteal)  );
 					}
 				}
-				if(loresize >= 16)
-				{
-
-					String pvplore = sword.getItemMeta().getLore().get(6);
-					
-					if (pvplore.indexOf("PvP") != -1) {
-						Scanner in8 = new Scanner(pvplore).useDelimiter("[^0-9]+");
-						double PvP = in8.nextDouble();
-						pvpdamage = ((100+PvP)/100);
-
-
-
-					} else if (pvplore.indexOf("PvE") != -1) {
-						Scanner in8 = new Scanner(pvplore).useDelimiter("[^0-9]+");
-						double PvE = in8.nextDouble();
-						pvedamage = ((100+PvE)/100);
-	
-					}
-				}
-		
+				
 
 				if (defender instanceof Skeleton) 
 				{
-					
+				
 					Skeleton s = (Skeleton) defender;
 					e.setDamage(DamageModifier.ARMOR, 0);
-					e.setDamage(DamageModifier.BASE, damage*pvedamage);
+					e.setDamage(DamageModifier.BASE, damage);
 					p.sendMessage(ChatColor.RED + "PvE► "+ ChatColor.RED + ((int)damage) + " DAMAGE -> " + s.getName() + ChatColor.WHITE + "  [" 
 					+ f.format(s.getHealth()- damage) + "/" + s.getMaxHealth() + "]");
 				}
 				else if(defender instanceof Player)
-				{
+				{					
 					Player pdefender = (Player) defender;
 					UUID ud = pdefender.getUniqueId();
-					damage = damage *pvpdamage;
-					
+			
 					
 					double armor = settings.Armor.get(ud);
 					double thorns = settings.Thorns.get(ud);
@@ -156,13 +155,12 @@ public class Hitting implements Listener
 					e.setDamage(DamageModifier.BASE, finaldamage);
 					
 					//message to attacker
-					p.sendMessage(ChatColor.RED + "PvP► "+ ChatColor.RED + f.format(damage) + " DAMAGE -> " + pdefender.getName() + ChatColor.WHITE + "  [" 
+					p.sendMessage(ChatColor.RED + "PvP► "+ ChatColor.RED + f.format(finaldamage) + " DAMAGE -> " + pdefender.getName() + ChatColor.WHITE + "  [" 
 							+ (f.format(pdefender.getHealth()- damage) + "/" + pdefender.getMaxHealth() + "]"));
 					//message to defender
 					pdefender.sendMessage(ChatColor.RED + "PvP◄" + f.format(finaldamage) + " DAMAGE TAKEN  "
 					+ ChatColor.WHITE + "[Armor% -" + f.format((armor/100)*damage) + " DMG]" 
-							+ " [PvP% -" + f.format((pvp/100)*armordamage) + " DMG]");
-					
+							+ " [PvP% -" + f.format((pvp/100)*armordamage) + " DMG]");				
 				}
 			}else return;
 

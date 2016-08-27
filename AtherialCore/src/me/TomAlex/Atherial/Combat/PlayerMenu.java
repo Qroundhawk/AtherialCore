@@ -30,6 +30,18 @@ public class PlayerMenu implements Listener
 		
 		if (e.getInventory().getName().equals(ChatColor.DARK_GREEN + ChatColor.BOLD.toString() + "Player Menu")) 
 		{	
+			if(e.getSlot()== 2)
+			{
+				if(settings.pvptoggle.contains(p.getUniqueId()))
+				{
+					settings.pvptoggle.remove(p.getUniqueId());
+					p.sendMessage("PvP disabled");
+				}else
+				{
+					settings.pvptoggle.add(p.getUniqueId());
+					p.sendMessage("PvP enabled");
+				}			
+			}
 			e.setCancelled(true);
 		}
 		
@@ -65,10 +77,19 @@ public class PlayerMenu implements Listener
 		
 		if(e.getItem().getType() == Material.COMPASS)
 		{
-			Inventory menu = Bukkit.createInventory(null, 18,
+			Inventory menu = Bukkit.createInventory(null, 27,
 					ChatColor.DARK_GREEN+ ChatColor.BOLD.toString() + "Player Menu");
 			
 
+			ItemStack pvpslot = null;
+			if(settings.pvptoggle.contains(ud))
+			{
+				pvpslot = new ItemStack(Material.INK_SACK, 1, (byte) 10);
+			}else
+			{
+				pvpslot = new ItemStack(Material.INK_SACK, 1, (byte) 8);
+			}
+			
 			ItemStack slotA = new ItemStack(Material.BOOK);
 			ItemMeta slotAMeta = slotA.getItemMeta();
 			slotAMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "STATS");
@@ -78,8 +99,15 @@ public class PlayerMenu implements Listener
 			,ChatColor.YELLOW +  "Vitality: " + settings.Vit.get(ud)
 			, ChatColor.YELLOW + "PvE restistance: " + settings.PvE.get(ud),ChatColor.YELLOW + "PvP restistance: " + settings.PvP.get(ud) ));
 			slotA.setItemMeta(slotAMeta);
-	
+			
+			ItemMeta pvpslotMeta = pvpslot.getItemMeta();
+			pvpslotMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "PvP Toggler");
+			pvpslotMeta.setLore(Arrays.asList("", ChatColor.YELLOW + "Toggles PvP duhh"
+					+ ""));
+			pvpslot.setItemMeta(pvpslotMeta);
+			
 			menu.setItem(0, slotA);
+			menu.setItem(2, pvpslot);
 
 			p.openInventory(menu);
 			

@@ -26,6 +26,15 @@ public class CombatTagger implements Listener {
 		if(attacker instanceof Player)
 		{
 			Player p = (Player) attacker;
+			
+			if(defender instanceof Player)
+			{
+				Player pdefender = (Player) defender;
+				if(!(settings.pvptoggle.contains(p.getUniqueId())) || !(settings.pvptoggle.contains(pdefender.getUniqueId())))
+				{
+					return;
+				}
+			}
 
 			if (settings.Tagger.containsKey(p.getUniqueId())) 
 			{

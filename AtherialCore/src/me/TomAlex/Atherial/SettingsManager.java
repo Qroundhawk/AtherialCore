@@ -2,6 +2,7 @@ package me.TomAlex.Atherial;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -54,6 +55,7 @@ public class SettingsManager {
 	public HashMap<UUID, Integer> Vit = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Regen = new HashMap<UUID, Integer>();
 	public HashMap<UUID, Integer> Tagger = new HashMap<UUID, Integer>();
+	public ArrayList<UUID> pvptoggle = new ArrayList<UUID>();
 	
 	//@Mining HashMaps
 	public HashMap<String, Integer> Coal = new HashMap<String, Integer>();
