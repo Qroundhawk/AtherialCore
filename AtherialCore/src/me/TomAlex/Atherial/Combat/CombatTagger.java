@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -26,6 +27,17 @@ public class CombatTagger implements Listener {
 		if(attacker instanceof Player)
 		{
 			Player p = (Player) attacker;
+			
+			if(defender instanceof Villager)
+			{
+				return;
+			}
+			
+			if( !(p.getItemInHand().getType().toString().toLowerCase().contains("sword"))
+					|| !(p.getItemInHand().getType().toString().toLowerCase().contains("axe")) ) 
+			{
+				return;
+			}
 			
 			if(defender instanceof Player)
 			{

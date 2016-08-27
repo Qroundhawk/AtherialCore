@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -35,6 +36,10 @@ public class PlayerUpdater {
 							UUID ud = p.getUniqueId();
 							int maxhealth = (int) p.getMaxHealth();
 							int armorhealth = 100;
+							if(p.getGameMode().equals(GameMode.CREATIVE))
+							{
+								return;
+							}
 
 							//----------------------HealthChecker-----------------------
 							int i = 1;

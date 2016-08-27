@@ -23,6 +23,9 @@ public class PlayerMenu implements Listener
 {
 	SettingsManager settings = SettingsManager.getInstance();
 	
+	String messager = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.RED
+			+ ChatColor.BOLD.toString() + "COMBAT >";
+	
 	@EventHandler
 	public void statsMenu(InventoryClickEvent e)
 	{
@@ -30,16 +33,32 @@ public class PlayerMenu implements Listener
 		
 		if (e.getInventory().getName().equals(ChatColor.DARK_GREEN + ChatColor.BOLD.toString() + "Player Menu")) 
 		{	
-			if(e.getSlot()== 2)
+
+			if(e.getRawSlot() == 2)
 			{
 				if(settings.pvptoggle.contains(p.getUniqueId()))
 				{
+					ItemStack pvpslot = new ItemStack(Material.INK_SACK, 1, (byte) 8);
+					ItemMeta pvpslotMeta = pvpslot.getItemMeta();
+					pvpslotMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "PvP Toggler");
+					pvpslotMeta.setLore(Arrays.asList("", ChatColor.YELLOW + "Toggles PvP duhh"
+							+ ""));
+					pvpslot.setItemMeta(pvpslotMeta);
+					e.getInventory().setItem(2, pvpslot);
+					
 					settings.pvptoggle.remove(p.getUniqueId());
-					p.sendMessage("PvP disabled");
+					p.sendMessage(messager + ChatColor.GREEN + " PvP disabled");
 				}else
 				{
+					ItemStack pvpslot = new ItemStack(Material.INK_SACK, 1, (byte) 10);
+					ItemMeta pvpslotMeta = pvpslot.getItemMeta();
+					pvpslotMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "PvP Toggler");
+					pvpslotMeta.setLore(Arrays.asList("", ChatColor.YELLOW + "Toggles PvP duhh"
+							+ ""));
+					pvpslot.setItemMeta(pvpslotMeta);
+					e.getInventory().setItem(2, pvpslot);
 					settings.pvptoggle.add(p.getUniqueId());
-					p.sendMessage("PvP enabled");
+					p.sendMessage(messager + ChatColor.GREEN + " PvP Enabled");
 				}			
 			}
 			e.setCancelled(true);
