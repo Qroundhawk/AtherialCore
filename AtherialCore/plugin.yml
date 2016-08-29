@@ -1,5 +1,5 @@
 name: AtherialCore
-version: 0.1
+version: 1.0
 main: me.TomAlex.Atherial.Main
 author: eagleshooter-qroundhawk
 description: AtherialCore
@@ -64,4 +64,7 @@ permissions:
         default: op
     repairsmith.command:
         description: repairsmith
+        default: op
+    chat.staffcolor:
+        description: Staff color
         default: op

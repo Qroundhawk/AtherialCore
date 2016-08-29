@@ -1,6 +1,8 @@
 package me.TomAlex.Atherial;
 
 import me.TomAlex.Atherial.ArmorEquipEvent.ArmorListener;
+import me.TomAlex.Atherial.Chat.ChatEvent;
+import me.TomAlex.Atherial.Chat.ChatStartup;
 import me.TomAlex.Atherial.Combat.ArmorEquipting;
 import me.TomAlex.Atherial.Combat.CombatTagger;
 import me.TomAlex.Atherial.Combat.Hitting;
@@ -53,6 +55,7 @@ public class Main extends JavaPlugin implements Listener {
 	OreSetupRespawn mining = OreSetupRespawn.getInstance();
 	OreRespawn miningore = OreRespawn.getInstance();
 	PlayerUpdater updater = PlayerUpdater.getInstance();
+	ChatStartup chatstartup = ChatStartup.getInstance();
 	
 	public void onEnable() {
 		JavaPlugin.getProvidingPlugin(Main.class);
@@ -110,6 +113,12 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new OreBreakLapis(), this);
 		
 		
+		//@Chat Events
+		pm.registerEvents(new ChatEvent(), this);
+		
+		
+		
+		
 
 		/*@Command registers*/	
 		
@@ -136,6 +145,8 @@ public class Main extends JavaPlugin implements Listener {
 		mining.miningRespawn();
 		miningore.miningStart();
 		updater.UpdaterStart();
+		chatstartup.Startup();
+		chatstartup.Timer();
 	}
 	
 	public void onDisable() {

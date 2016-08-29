@@ -1,20 +1,15 @@
 package me.TomAlex.Atherial.Commands;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import me.TomAlex.Atherial.SettingsManager;
 import me.TomAlex.Atherial.Mining.LvlExp;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class TestCommand2 implements CommandExecutor {
 	
@@ -63,9 +58,7 @@ public class TestCommand2 implements CommandExecutor {
 		
 		//int exp = (int) ((Math.random() *20) + 40);
 		
-		p.sendMessage("" + settings.Coal);
-		p.sendMessage("" + settings.Iron);
-		
+		p.sendMessage("" + settings.Prefix);
 		
 		/*int level = 2;
 		int exp = 10;

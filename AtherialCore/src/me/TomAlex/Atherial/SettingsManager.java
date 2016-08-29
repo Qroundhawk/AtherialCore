@@ -86,9 +86,9 @@ public class SettingsManager {
 	public int DiamondXPMax = 400;
 	public int LapisXPMax = 500;
 	
-	
-	
-	
+	//@Chat HashMaps
+	public HashMap<String, String> Prefix = new HashMap<String, String>();
+	public HashMap<String, Integer> ShoutTimer = new HashMap<String, Integer>();
 	
 	
     
