@@ -33,6 +33,12 @@ commands:
     repairsmith:
         usage: /<command>
         description: Spawns repairsmith.
+    setchatprefix:
+        usage: /<command>
+        description: SetChatPrefix.
+    prefixrefresh:
+        usage: /<command>
+        description: PrefixRefresh.    
         
 permissions:
     test.command:
@@ -67,4 +73,10 @@ permissions:
         default: op
     chat.staffcolor:
         description: Staff color
+        default: op
+    chat.setchatprefix:
+        description: SetChatPrefix
+        default: op
+    chat.prefixrefresh:
+        description: PrefixRefresh
         default: op

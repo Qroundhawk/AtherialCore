@@ -25,8 +25,6 @@ public class ChatEvent implements Listener {
         
         //@Shout System
         if (msg.startsWith("!")) {
-        	//msg = msg.replaceFirst("!", "");
-        	//Bukkit.getServer().broadcastMessage("" + msg);
         	if (settings.ShoutTimer.containsKey(p.getUniqueId().toString())) {
         		p.sendMessage(ChatColor.RED + "You can only shout every 10 seconds!");
         		return;

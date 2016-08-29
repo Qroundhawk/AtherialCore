@@ -10,6 +10,8 @@ import me.TomAlex.Atherial.Combat.PlayerJoinSet;
 import me.TomAlex.Atherial.Combat.PlayerMenu;
 import me.TomAlex.Atherial.Combat.PlayerRemoveSet;
 import me.TomAlex.Atherial.Combat.PlayerUpdater;
+import me.TomAlex.Atherial.Commands.ChatPrefixRefresh;
+import me.TomAlex.Atherial.Commands.ChatSetChatPrefix;
 import me.TomAlex.Atherial.Commands.EcoAddBankCommand;
 import me.TomAlex.Atherial.Commands.EcoAddMarketCommand;
 import me.TomAlex.Atherial.Commands.EcoMoneyCommand;
@@ -140,6 +142,9 @@ public class Main extends JavaPlugin implements Listener {
 		getCommand("test").setExecutor(new TestCommand());
 		getCommand("test2").setExecutor(new TestCommand2());
 		
+		//@Chat Comamnds
+		getCommand("setchatprefix").setExecutor(new ChatSetChatPrefix());
+		getCommand("prefixrefresh").setExecutor(new ChatPrefixRefresh());
 		
 		
 		mining.miningRespawn();
@@ -147,6 +152,7 @@ public class Main extends JavaPlugin implements Listener {
 		updater.UpdaterStart();
 		chatstartup.Startup();
 		chatstartup.Timer();
+		chatstartup.Refresh();
 	}
 	
 	public void onDisable() {
