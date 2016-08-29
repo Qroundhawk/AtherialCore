@@ -22,6 +22,25 @@ public class ChatEvent implements Listener {
         String msg = e.getMessage();
         String prefix = settings.Prefix.get(p.getUniqueId().toString());
         
+        //@GlobalChat
+        if (settings.GlobalChat == true) {
+        	if (p.hasPermission("chat.staffcolor")) {
+        		if (prefix == null) {
+        			Bukkit.getServer().broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW + "Global" + ChatColor.DARK_GRAY + "] " + ChatColor.DARK_RED + p.getName() + ": " + ChatColor.WHITE + msg);
+        		}else{
+        			Bukkit.getServer().broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW + "Global" + ChatColor.DARK_GRAY + "] " + ChatColor.DARK_GRAY + "[" + prefix + ChatColor.DARK_GRAY + "] " + ChatColor.DARK_RED + p.getName() + ": " + ChatColor.WHITE + msg);
+        		}
+        		return;
+        	}
+        	
+        	if (prefix == null) {
+        		Bukkit.getServer().broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW + "Global" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY + p.getName() + ": " + msg);
+        	}else{
+        		Bukkit.getServer().broadcastMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW + "Global" + ChatColor.DARK_GRAY + "] " + ChatColor.DARK_GRAY + "[" + prefix + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY + p.getName() + ": " + ChatColor.WHITE + msg);
+        	}
+        	return;
+        }
+        
         
         //@Shout System
         if (msg.startsWith("!")) {

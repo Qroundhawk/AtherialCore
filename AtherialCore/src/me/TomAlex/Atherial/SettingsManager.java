@@ -89,7 +89,7 @@ public class SettingsManager {
 	//@Chat HashMaps
 	public HashMap<String, String> Prefix = new HashMap<String, String>();
 	public HashMap<String, Integer> ShoutTimer = new HashMap<String, Integer>();
-	
+	public boolean GlobalChat = false;
 	
     
     public void setup(Plugin p) {

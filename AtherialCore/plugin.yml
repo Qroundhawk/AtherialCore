@@ -39,6 +39,9 @@ commands:
     prefixrefresh:
         usage: /<command>
         description: PrefixRefresh.    
+    globalchat:
+        usage: /<command>
+        description: GlobalChat.  
         
 permissions:
     test.command:
@@ -79,4 +82,7 @@ permissions:
         default: op
     chat.prefixrefresh:
         description: PrefixRefresh
+        default: op
+    chat.globalchat:
+        description: GlobalChat
         default: op

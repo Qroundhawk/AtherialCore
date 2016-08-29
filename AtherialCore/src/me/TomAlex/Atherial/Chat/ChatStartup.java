@@ -76,8 +76,6 @@ public class ChatStartup {
     	Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable () {
 			public void run() {
 				
-				Bukkit.getServer().broadcastMessage("Update");
-				
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					if (!(settings.getPlayerData().getString(p.getUniqueId().toString() + ".prefix") == "default")) {
 						settings.Prefix.put(p.getUniqueId().toString(), prefix.Prefix(settings.getPlayerData().getString(p.getUniqueId().toString() + ".prefix")));
