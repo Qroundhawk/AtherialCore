@@ -27,7 +27,7 @@ public class ChatPrefixRefresh implements CommandExecutor {
 			if (!(settings.getPlayerData().getString(i.getUniqueId().toString() + ".prefix") == "default")) {
 				settings.Prefix.put(i.getUniqueId().toString(), prefix.Prefix(settings.getPlayerData().getString(i.getUniqueId().toString() + ".prefix")));
 			}else{
-				settings.Prefix.remove(i.getUniqueId().toString());
+				settings.Prefix.put(i.getUniqueId().toString(), null);
 			}
 		}
 		

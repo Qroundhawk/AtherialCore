@@ -80,7 +80,7 @@ public class ChatStartup {
 					if (!(settings.getPlayerData().getString(p.getUniqueId().toString() + ".prefix") == "default")) {
 						settings.Prefix.put(p.getUniqueId().toString(), prefix.Prefix(settings.getPlayerData().getString(p.getUniqueId().toString() + ".prefix")));
 					}else{
-						settings.Prefix.remove(p.getUniqueId().toString());
+						settings.Prefix.put(p.getUniqueId().toString(), null);
 					}
 				}
 				
