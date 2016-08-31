@@ -49,7 +49,7 @@ public class ChatEvent implements Listener {
         		return;
         	}
         	msg = msg.replaceFirst("!", "");
-        	Bukkit.getServer().broadcastMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Shout" + ChatColor.DARK_AQUA + "]-[" + ChatColor.AQUA + p.getName() + ChatColor.DARK_AQUA + "]>: " + ChatColor.AQUA + msg);
+        	Bukkit.getServer().broadcastMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "Shout" + ChatColor.DARK_AQUA + "]> " + p.getName() + ": " + ChatColor.AQUA + msg);
         	settings.ShoutTimer.put(p.getUniqueId().toString(), 10);
         	return;
         }
