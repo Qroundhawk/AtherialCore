@@ -72,7 +72,7 @@ public class OreBreakCoal implements Listener {
 							String greenstripes = "Error";
 							String redstripes = "Error";
 							
-							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.LIGHT_PURPLE + exprandom + " exp" + ChatColor.YELLOW + " for mining an " + ChatColor.LIGHT_PURPLE + "Coal Ore!");
+							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.LIGHT_PURPLE + exprandom + " exp" + ChatColor.YELLOW + " for mining a " + ChatColor.LIGHT_PURPLE + "Coal Ore!");
 							
 							if (exp >= maxexp) {
 								level = level + 1;

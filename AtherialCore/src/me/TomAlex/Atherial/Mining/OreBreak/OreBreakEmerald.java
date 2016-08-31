@@ -47,8 +47,17 @@ public class OreBreakEmerald implements Listener {
 							if (p.getInventory().firstEmpty() == -1) {
 								p.sendMessage(ChatColor.RED + "Wacht out! Inventory Full!");
 							}
-							ItemStack emeraldore = new ItemStack(Material.EMERALD_ORE, 1);
-							p.getInventory().addItem(emeraldore);
+							
+							ItemStack emerald = new ItemStack(Material.EMERALD, 1);
+					        ItemMeta emeraldmeta = emerald.getItemMeta();
+					        emeraldmeta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Gems");
+							List<String> loreemerald = new ArrayList<String>();
+							loreemerald.add("");
+							loreemerald.add("");
+					        emeraldmeta.setLore(loreemerald);
+					        emerald.setItemMeta(emeraldmeta);
+					        
+							p.getInventory().addItem(emerald);
 							
 							String[] args1 = p.getItemInHand().getItemMeta().getLore().toString().split(" ");
 							String levelnowinttry = ChatColor.stripColor(args1[1]);
@@ -76,7 +85,7 @@ public class OreBreakEmerald implements Listener {
 							String greenstripes = "Error";
 							String redstripes = "Error";
 							
-							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.LIGHT_PURPLE + exprandom + " exp" + ChatColor.YELLOW + " for mining an " + ChatColor.LIGHT_PURPLE + "Emerald Ore!");
+							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.LIGHT_PURPLE + exprandom + " exp" + ChatColor.YELLOW + " for mining a " + ChatColor.LIGHT_PURPLE + "Emerald Ore!");
 							
 							if (exp >= maxexp) {
 								level = level + 1;

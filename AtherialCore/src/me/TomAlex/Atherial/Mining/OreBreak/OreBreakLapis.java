@@ -76,7 +76,7 @@ public class OreBreakLapis implements Listener {
 							String greenstripes = "Error";
 							String redstripes = "Error";
 							
-							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.LIGHT_PURPLE + exprandom + " exp" + ChatColor.YELLOW + " for mining an " + ChatColor.LIGHT_PURPLE + "Lapis Ore!");
+							p.sendMessage(smsg + ChatColor.YELLOW + "Your pixkaxe gaind " + ChatColor.LIGHT_PURPLE + exprandom + " exp" + ChatColor.YELLOW + " for mining a " + ChatColor.LIGHT_PURPLE + "Lapis Ore!");
 							
 							if (exp >= maxexp) {
 								level = level + 1;
