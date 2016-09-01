@@ -41,7 +41,11 @@ commands:
         description: PrefixRefresh.    
     globalchat:
         usage: /<command>
-        description: GlobalChat.  
+        description: GlobalChat.
+    staffchat:
+        usage: /<command>
+        aliases: sc
+        description: StaffChat. 
         
 permissions:
     test.command:
@@ -72,17 +76,20 @@ permissions:
         description: Spawnpickaxe.
         default: op
     repairsmith.command:
-        description: repairsmith
+        description: repairsmith.
         default: op
     chat.staffcolor:
-        description: Staff color
+        description: Staff color.
         default: op
     chat.setchatprefix:
-        description: SetChatPrefix
+        description: SetChatPrefix.
         default: op
     chat.prefixrefresh:
-        description: PrefixRefresh
+        description: PrefixRefresh.
         default: op
     chat.globalchat:
-        description: GlobalChat
+        description: GlobalChat.
+        default: op
+    chat.staffchat:
+        description: StaffChat.
         default: op
