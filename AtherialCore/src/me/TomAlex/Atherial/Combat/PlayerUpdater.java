@@ -26,22 +26,35 @@ public class PlayerUpdater {
 		return instance;
 	}
 
+	public void ExpHealth() 
+	{
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
+			@Override
+			public void run() {
+				for (Player p : Bukkit.getOnlinePlayers()) {
+					p.setLevel((int) p.getHealth());
+					double barHealth = (p.getHealth() / p.getMaxHealth());
+					p.setExp((float) barHealth);
+				}
+			}
+		}, 0, 1 * 20);
+
+	}
+
 	public void UpdaterStart() {
 
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(JavaPlugin.getProvidingPlugin(Main.class),
 				new Runnable() {
 					public void run() {
-						for (Player p : Bukkit.getServer().getOnlinePlayers()) 
-						{
+						for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 							UUID ud = p.getUniqueId();
 							int maxhealth = (int) p.getMaxHealth();
 							int armorhealth = 100;
-							if(p.getGameMode().equals(GameMode.CREATIVE))
-							{
+							if (p.getGameMode().equals(GameMode.CREATIVE)) {
 								return;
 							}
 
-							//----------------------HealthChecker-----------------------
+							// ----------------------HealthChecker-----------------------
 							int i = 1;
 							int i2 = 1;
 							ItemStack armor = null;
@@ -61,7 +74,8 @@ public class PlayerUpdater {
 									break;
 								}
 
-								// -------------gettinghealth wat het zou moeten zijn--------------------
+								// -------------gettinghealth wat het zou moeten
+								// zijn--------------------
 								if (armor != null) {
 									String lorehealth = armor.getItemMeta().getLore().get(1);
 									Scanner in2 = new Scanner(lorehealth).useDelimiter("[^0-9]+");
@@ -73,7 +87,8 @@ public class PlayerUpdater {
 								i++;
 							}
 
-							//-----------------Dit doet die als health niet klopt en glitched is---------------
+							// -----------------Dit doet die als health niet
+							// klopt en glitched is---------------
 							if (armorhealth != maxhealth) {
 								p.setMaxHealth(100);
 								settings.Armor.put(ud, 0);
@@ -84,8 +99,7 @@ public class PlayerUpdater {
 								settings.PvP.put(ud, 0);
 								settings.PvE.put(ud, 0);
 
-								while (i2 <= 4) 
-								{
+								while (i2 <= 4) {
 									switch (i2) {
 									case 1:
 										armor = p.getInventory().getHelmet();
@@ -181,24 +195,20 @@ public class PlayerUpdater {
 									i2++;
 								}
 							}
-							
-							
-							if(settings.Tagger.containsKey(ud))
-							{	
-							}else
-							{
+
+							if (settings.Tagger.containsKey(ud)) {
+							} else {
 								int HealthRegen = settings.Regen.get(ud);
-								if(HealthRegen != 0)
-								{
+								if (HealthRegen != 0) {
 									double newhealth = p.getHealth() + HealthRegen;
-									if(newhealth < p.getMaxHealth())
-									{
-										p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "          +" + HealthRegen + " Health");
+									if (newhealth < p.getMaxHealth()) {
+										p.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "          +"
+												+ HealthRegen + " Health");
 										p.setHealth(newhealth);
 									}
 								}
 							}
-							
+
 						}
 					}
 				}, 100, 100);
