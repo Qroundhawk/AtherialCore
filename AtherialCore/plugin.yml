@@ -46,6 +46,15 @@ commands:
         usage: /<command>
         aliases: sc
         description: StaffChat. 
+    globalmarket:
+        usage: /<command>
+        aliases: sc
+        description: Spawns market villager.
+    itemdisenchanter:
+        usage: /<command>
+        aliases: sc
+        description: Spawns disenchanter villager.
+        
         
 permissions:
     test.command:
@@ -78,6 +87,12 @@ permissions:
     repairsmith.command:
         description: repairsmith.
         default: op
+    globalmarket.command:
+        description: globalmarket
+        default: op
+    itemdisenchanter.command:
+        description: itemdisenchanter
+        default: op        
     chat.staffcolor:
         description: Staff color.
         default: op

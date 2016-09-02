@@ -5,6 +5,7 @@ import me.TomAlex.Atherial.Chat.ChatEvent;
 import me.TomAlex.Atherial.Chat.ChatStartup;
 import me.TomAlex.Atherial.Combat.ArmorEquipting;
 import me.TomAlex.Atherial.Combat.CombatTagger;
+import me.TomAlex.Atherial.Combat.DeathEvent;
 import me.TomAlex.Atherial.Combat.Hitting;
 import me.TomAlex.Atherial.Combat.PlayerJoinSet;
 import me.TomAlex.Atherial.Combat.PlayerMenu;
@@ -18,6 +19,8 @@ import me.TomAlex.Atherial.Commands.EcoAddBankCommand;
 import me.TomAlex.Atherial.Commands.EcoAddMarketCommand;
 import me.TomAlex.Atherial.Commands.EcoMoneyCommand;
 import me.TomAlex.Atherial.Commands.EcoSetStorageCommand;
+import me.TomAlex.Atherial.Commands.GlobalMarketCommand;
+import me.TomAlex.Atherial.Commands.ItemDisenchanter;
 import me.TomAlex.Atherial.Commands.MineRespawnOreCommand;
 import me.TomAlex.Atherial.Commands.MineSpawnPickaxeCommand;
 import me.TomAlex.Atherial.Commands.RepairSmithCommand;
@@ -86,6 +89,7 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new Hitting(), this);
 		pm.registerEvents(new PlayerMenu(), this);
 		pm.registerEvents(new CombatTagger(), this);
+		pm.registerEvents(new DeathEvent(), this);
 		
 		//@Dura Events
 		pm.registerEvents(new Infidura(), this);
@@ -137,8 +141,10 @@ public class Main extends JavaPlugin implements Listener {
 		getCommand("respawnore").setExecutor(new MineRespawnOreCommand());
 		getCommand("spawnpickaxe").setExecutor(new MineSpawnPickaxeCommand());
 		
-		//@Mining Commands
+		//@Mining Shops
 		getCommand("repairsmith").setExecutor(new RepairSmithCommand());
+		getCommand("itemdisenchanter").setExecutor(new ItemDisenchanter());
+		getCommand("globalmarket").setExecutor(new GlobalMarketCommand());
 		
 		//@Extra Comamnds
 		getCommand("test").setExecutor(new TestCommand());
@@ -154,6 +160,7 @@ public class Main extends JavaPlugin implements Listener {
 		mining.miningRespawn();
 		miningore.miningStart();
 		updater.UpdaterStart();
+		updater.ExpHealth();
 		chatstartup.Startup();
 		chatstartup.Timer();
 		chatstartup.Refresh();
