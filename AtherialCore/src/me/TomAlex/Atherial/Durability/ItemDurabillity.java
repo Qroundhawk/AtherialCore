@@ -24,7 +24,6 @@ public class ItemDurabillity implements Listener
 	@EventHandler
 	public void DurabiltyCombat(EntityDamageByEntityEvent e) 
 	{
-		
 
 		Entity defender = e.getEntity();
 		
@@ -210,8 +209,12 @@ public class ItemDurabillity implements Listener
 				e.setCancelled(false);
 			} else 
 			{
-				e.setCancelled(true);
 				return;
+			}
+			
+			if((p.getItemInHand().getType().toString().contains("PICKAXE"))){
+				e.setCancelled(true);
+				return;	
 			}
 			
 

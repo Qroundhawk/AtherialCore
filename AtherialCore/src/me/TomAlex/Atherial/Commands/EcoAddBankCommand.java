@@ -5,9 +5,12 @@ import me.TomAlex.Atherial.Economy.Methods;
 import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.potion.PotionEffect;
@@ -27,10 +30,19 @@ public class EcoAddBankCommand extends Methods implements CommandExecutor {
 			return true;
 		}
 		
-		Villager s = p.getWorld().spawn(p.getLocation(), Villager.class);
-		s.setCustomNameVisible(true);
-		s.setCustomName(ChatColor.DARK_GREEN + "Bank Merchant");
-		s.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 9000000, 10000000));
+		Location l = p.getLocation();
+		
+		Villager v = p.getWorld().spawn(p.getLocation(), Villager.class);	
+		ArmorStand as = (ArmorStand)p.getWorld().spawnEntity(l.add(0.0D, -1.5D, 0.0D), EntityType.ARMOR_STAND);
+	    as.setVisible(false);
+	    as.setGravity(false);
+	    as.setPassenger(v);
+	    v.setCustomName(ChatColor.DARK_GREEN + "Bank Merchant");
+		v.setCustomNameVisible(true);
+		v.setInvulnerable(true);
+		v.setCollidable(false);
+        v.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000000, 100));
+        v.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 1000000000, -100));
 		
 		p.sendMessage(smsg + ChatColor.GREEN + "Spawned bank!");
 		

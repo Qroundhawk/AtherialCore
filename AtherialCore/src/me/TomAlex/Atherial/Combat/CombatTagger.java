@@ -60,7 +60,7 @@ public class CombatTagger implements Listener {
 					p.sendMessage(messager+ ChatColor.GREEN + "    You are out of combat!");
 					settings.Tagger.remove(p.getUniqueId());
 				}
-			}, 100);
+			}, 200);
 			settings.Tagger.put(p.getUniqueId(), id);
 			
 		}
