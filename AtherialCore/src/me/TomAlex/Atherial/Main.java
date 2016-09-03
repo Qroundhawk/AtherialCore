@@ -48,12 +48,17 @@ import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationEmerald;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationGold;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationIron;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationLapis;
+import net.md_5.bungee.api.ChatColor;
 import net.milkbowl.vault.economy.Economy;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.connorlinfoot.actionbarapi.ActionBarAPI;
 
 public class Main extends JavaPlugin implements Listener {
 	
@@ -73,6 +78,7 @@ public class Main extends JavaPlugin implements Listener {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+		
 		
 		/*@Event registers*/
 		PluginManager pm = getServer().getPluginManager();
@@ -185,4 +191,5 @@ public class Main extends JavaPlugin implements Listener {
         econ = rsp.getProvider();
         return econ != null;
     }
+	
 }

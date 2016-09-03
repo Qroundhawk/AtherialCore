@@ -24,7 +24,6 @@ public class ItemDurabillity implements Listener
 	@EventHandler
 	public void DurabiltyCombat(EntityDamageByEntityEvent e) 
 	{
-		
 
 		Entity defender = e.getEntity();
 		

@@ -13,6 +13,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.connorlinfoot.actionbarapi.ActionBarAPI;
+
 public class PlayerUpdater {
 
 	SettingsManager settings = SettingsManager.getInstance();
@@ -35,6 +37,20 @@ public class PlayerUpdater {
 					p.setLevel((int) p.getHealth());
 					double barHealth = (p.getHealth() / p.getMaxHealth());
 					p.setExp((float) barHealth);
+					
+					String CombatTagger;
+					if(settings.Tagger.containsKey(p.getUniqueId()))
+					{
+						CombatTagger = ChatColor.AQUA + "> "+ ChatColor.RED + ChatColor.BOLD.toString() + "In Combat!";
+					}else
+					{
+						CombatTagger = ChatColor.AQUA + "> "+ ChatColor.GREEN + ChatColor.BOLD.toString() + "Out of Combat!";
+					}
+					int health = (int) p.getHealth();
+					int maxhealth = (int) p.getMaxHealth();
+					ActionBarAPI.sendActionBar(p, ChatColor.AQUA + "" + ChatColor.BOLD + "HP " + ChatColor.GREEN + health
+							+ ChatColor.BOLD + "" + ChatColor.AQUA+ "/" + ChatColor.GREEN + maxhealth
+							+ "      " + CombatTagger);
 				}
 			}
 		}, 0, 1 * 20);

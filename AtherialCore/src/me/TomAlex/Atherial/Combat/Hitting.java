@@ -10,6 +10,7 @@ import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Villager;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -209,7 +210,6 @@ public class Hitting implements Listener
 				}
 				
 				int thornsdamage = (int) ((thorns/100)*finaldamage);
-				p.sendMessage(""+ thornsdamage);
 				s.damage(thornsdamage);
 			
 				e.setDamage(DamageModifier.ARMOR, 0);

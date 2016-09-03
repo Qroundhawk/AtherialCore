@@ -9,6 +9,8 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import me.TomAlex.Atherial.SettingsManager;
 
@@ -29,10 +31,16 @@ public class RepairSmithCommand implements CommandExecutor {
 
 
 		Villager v = (Villager) p.getWorld().spawnEntity(l, EntityType.VILLAGER);
+		ArmorStand as = (ArmorStand)p.getWorld().spawnEntity(l.add(0.0D, -1.5D, 0.0D), EntityType.ARMOR_STAND);
+	    as.setVisible(false);
+	    as.setGravity(false);
+	    as.setPassenger(v);
 		v.setCustomName(ChatColor.GREEN + "Item Repair Smith");
 		v.setCustomNameVisible(true);
 		v.setInvulnerable(true);
 		v.setCollidable(false);
+        v.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000000, 100));
+        v.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 1000000000, -100));
 
 		return true;
 	}
