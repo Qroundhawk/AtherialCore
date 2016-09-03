@@ -210,8 +210,12 @@ public class ItemDurabillity implements Listener
 				e.setCancelled(false);
 			} else 
 			{
-				e.setCancelled(true);
 				return;
+			}
+			
+			if((p.getItemInHand().getType().toString().contains("PICKAXE"))){
+				e.setCancelled(true);
+				return;	
 			}
 			
 

@@ -6,8 +6,10 @@ import java.util.UUID;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -41,9 +43,20 @@ public class Hitting implements Listener
 			//------------check for weapon---------------
 			if ((p.getItemInHand().getType().toString().toLowerCase().contains("sword"))
 					|| p.getItemInHand().getType().toString().toLowerCase().contains("axe")) {
-				e.setCancelled(false);
-			} else {
+				e.setCancelled(false);		
+			}else{
 				p.sendMessage(messager + "  This is not a weapon!");
+				e.setCancelled(true);
+				return;
+			}
+			if((p.getItemInHand().getType().toString().contains("PICKAXE"))){
+				p.sendMessage(messager + "  This is not a weapon!");
+				e.setCancelled(true);
+				return;	
+			}
+			
+			if(defender instanceof IronGolem || defender instanceof Villager)
+			{
 				e.setCancelled(true);
 				return;
 			}
@@ -124,9 +137,7 @@ public class Hitting implements Listener
 					e.setDamage(DamageModifier.BASE, damage);
 					p.sendMessage(ChatColor.RED + "PvE► "+ ChatColor.RED + ((int)damage) + " DAMAGE -> " + s.getName() + ChatColor.WHITE + "  [" 
 					+ f.format(s.getHealth()- damage) + "/" + s.getMaxHealth() + "]");
-				}
-				else if(defender instanceof Player)
-				{					
+				}else if(defender instanceof Player){					
 					Player pdefender = (Player) defender;
 					UUID ud = pdefender.getUniqueId();
 			
@@ -161,8 +172,14 @@ public class Hitting implements Listener
 					pdefender.sendMessage(ChatColor.RED + "PvP◄" + f.format(finaldamage) + " DAMAGE TAKEN  "
 					+ ChatColor.WHITE + "[Armor% -" + f.format((armor/100)*damage) + " DMG]" 
 							+ " [PvP% -" + f.format((pvp/100)*armordamage) + " DMG]");				
+				}else{
+					e.setCancelled(true);
+					return;
 				}
-			}else return;
+			}else{
+				e.setCancelled(true);
+				return;
+			}
 
 		}else if(attacker instanceof Skeleton)
 		{
