@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import me.TomAlex.Atherial.SettingsManager;
 
-public class RepairSmithCommand implements CommandExecutor {
+public class GlobalMarketCommand implements CommandExecutor {
 
 	SettingsManager settings = SettingsManager.getInstance();
 
@@ -22,25 +22,25 @@ public class RepairSmithCommand implements CommandExecutor {
 
 		Player p = (Player) sender;
 
-		if (!p.hasPermission("repairsmith.command")) {
+		if (!p.hasPermission("globalmarket.command")) {
 			p.sendMessage(ChatColor.RED + "You do not have permissions to do that.");
 			return true;
 		}
 
 		Location l = p.getLocation();
 
-
 		Villager v = (Villager) p.getWorld().spawnEntity(l, EntityType.VILLAGER);
 		ArmorStand as = (ArmorStand)p.getWorld().spawnEntity(l.add(0.0D, -1.5D, 0.0D), EntityType.ARMOR_STAND);
 	    as.setVisible(false);
 	    as.setGravity(false);
 	    as.setPassenger(v);
-		v.setCustomName(ChatColor.GREEN + "Item Repair Smith");
+	    v.setCustomName(ChatColor.GREEN + "Global Market");
 		v.setCustomNameVisible(true);
 		v.setInvulnerable(true);
 		v.setCollidable(false);
         v.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1000000000, 100));
         v.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 1000000000, -100));
+		
 
 		return true;
 	}

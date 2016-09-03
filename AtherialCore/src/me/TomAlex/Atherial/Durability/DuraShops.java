@@ -57,7 +57,7 @@ public class DuraShops implements Listener
 
 				p.openInventory(invMerchant);
 			}
-			if (entity.getCustomName().equalsIgnoreCase(ChatColor.GREEN + "Item Repair Smith")) {
+			else if (entity.getCustomName().equalsIgnoreCase(ChatColor.GREEN + "Item Repair Smith")) {
 				Inventory invMerchant = Bukkit.createInventory(null, 9,
 						ChatColor.DARK_GREEN + ChatColor.BOLD.toString() + "Repair Shop");
 				p.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "]>"
@@ -131,8 +131,12 @@ public class DuraShops implements Listener
 				p.openInventory(invMerchant);
 
 			}
-			if (entity.getCustomName().equalsIgnoreCase(ChatColor.GREEN + "GemStone Master")) {
+			else if (entity.getCustomName().equalsIgnoreCase(ChatColor.GREEN + "GemStone Master")) {
 				p.sendMessage(ChatColor.RED + "This is not implemented yet, will put in next update!");
+			}
+			else if(entity.getCustomName().equalsIgnoreCase(ChatColor.GREEN + "Global Market"))
+			{
+				p.performCommand("ah");
 			}
 		}
 

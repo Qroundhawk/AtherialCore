@@ -41,7 +41,6 @@ public class ArmorEquipting implements Listener
 
 		Player p = e.getPlayer();
 		UUID ud = p.getUniqueId();
-		p.sendMessage("Works");
 	
 		
 		//Checking if inventory is full
@@ -61,7 +60,6 @@ public class ArmorEquipting implements Listener
 			Scanner in2 = new Scanner(lorehealth).useDelimiter("[^0-9]+");
 			int h = in2.nextInt();
 			int h2 = in2.nextInt();		
-			p.sendMessage(h2 + "");
 			double maxhealth = p.getMaxHealth();
 			p.setMaxHealth(maxhealth + h2);
 			settings.Health.put(ud, (int) (maxhealth + h2));
