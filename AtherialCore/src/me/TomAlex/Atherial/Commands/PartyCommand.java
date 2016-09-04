@@ -21,6 +21,21 @@ public class PartyCommand implements CommandExecutor {
 		}
 		
 		if (args[0].equalsIgnoreCase("create")) {
+			if(args.length == 2)
+			{
+				p.sendMessage("" + args[1]);
+			}else
+			{
+				p.sendMessage("Use /party create name");
+			}
+			return true;
+		}
+		if (args[0].equalsIgnoreCase("invite")) 
+		{
+			//code
+			return true;
+		}
+		if (args[0].equalsIgnoreCase("list")) {
 			//code
 			return true;
 		}
