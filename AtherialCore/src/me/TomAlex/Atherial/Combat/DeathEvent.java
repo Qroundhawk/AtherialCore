@@ -52,7 +52,7 @@ public class DeathEvent implements Listener
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
 			@Override
 			public void run() {
-				for (Player p : Bukkit.getOnlinePlayers()) {
+				
 					p.spigot().respawn();
 					if (boots != null) {
 						p.getInventory().addItem(boots);
@@ -78,8 +78,6 @@ public class DeathEvent implements Listener
 					{
 						settings.pvptoggle.remove(p.getUniqueId());
 					}
-					
-				}
 			}
 		}, 1);
 

@@ -80,7 +80,7 @@ public class PartyCommand implements CommandExecutor {
 					return true;
 				}
 				
-				invited.sendMessage(messager + " You have been invited to " + pn + " party");
+				invited.sendMessage(messager + " You have been invited to " + pn + " party,"+ ChatColor.WHITE + " /party accept");
 				settings.partyInvites.put(invited.getName(), pn);
 			}else 
 			{
@@ -133,6 +133,13 @@ public class PartyCommand implements CommandExecutor {
 				settings.partyPeople.remove(ud);
 				p.sendMessage(messager + " Left the party");
 				
+				Collection<String> members = settings.partys.get(leader);
+				for(String i : members)
+				{
+					Player member = Bukkit.getServer().getPlayer(i);
+					member.sendMessage(messager + pn + " left the party!");
+				}
+				
 			}else
 			{
 				Collection<String> members = settings.partys.get(pn);
@@ -172,7 +179,8 @@ public class PartyCommand implements CommandExecutor {
 					for(String i : members)
 					{
 						Player member = Bukkit.getServer().getPlayer(i);
-						member.sendMessage(messager + message);
+						member.sendMessage(messager + ChatColor.GRAY + "["+ ChatColor.DARK_GREEN + pn + 
+								ChatColor.GRAY + "]:"+ ChatColor.GREEN.toString() + " " +message);
 					}
 				}      
 			}

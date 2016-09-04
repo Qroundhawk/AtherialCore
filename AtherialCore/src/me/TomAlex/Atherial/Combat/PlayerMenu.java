@@ -38,25 +38,11 @@ public class PlayerMenu implements Listener
 			{
 				if(settings.pvptoggle.contains(p.getUniqueId()))
 				{
-					ItemStack pvpslot = new ItemStack(Material.INK_SACK, 1, (byte) 8);
-					ItemMeta pvpslotMeta = pvpslot.getItemMeta();
-					pvpslotMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "PvP Toggler");
-					pvpslotMeta.setLore(Arrays.asList("", ChatColor.YELLOW + "Toggles PvP duhh"
-							+ ""));
-					pvpslot.setItemMeta(pvpslotMeta);
-					e.getInventory().setItem(2, pvpslot);
-					
+			
 					settings.pvptoggle.remove(p.getUniqueId());
 					p.sendMessage(messager + ChatColor.GREEN + " PvP disabled");
 				}else
 				{
-					ItemStack pvpslot = new ItemStack(Material.INK_SACK, 1, (byte) 10);
-					ItemMeta pvpslotMeta = pvpslot.getItemMeta();
-					pvpslotMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString()+ "PvP Toggler");
-					pvpslotMeta.setLore(Arrays.asList("", ChatColor.YELLOW + "Toggles PvP duhh"
-							+ ""));
-					pvpslot.setItemMeta(pvpslotMeta);
-					e.getInventory().setItem(2, pvpslot);
 					settings.pvptoggle.add(p.getUniqueId());
 					p.sendMessage(messager + ChatColor.GREEN + " PvP Enabled");
 				}			
