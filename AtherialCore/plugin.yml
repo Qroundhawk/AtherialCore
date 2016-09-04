@@ -54,6 +54,10 @@ commands:
         usage: /<command>
         aliases: sc
         description: Spawns disenchanter villager.
+    party create:
+        usage: /<command>
+        aliases: sc
+        description: creates party
         
 permissions:
     test.command:

@@ -26,6 +26,7 @@ import me.TomAlex.Atherial.Commands.MineSpawnPickaxeCommand;
 import me.TomAlex.Atherial.Commands.RepairSmithCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
+import me.TomAlex.Atherial.Dungeons.PartyCommands;
 import me.TomAlex.Atherial.Durability.DuraShops;
 import me.TomAlex.Atherial.Durability.Infidura;
 import me.TomAlex.Atherial.Durability.ItemDurabillity;
@@ -135,6 +136,10 @@ public class Main extends JavaPlugin implements Listener {
 		
 
 		/*@Command registers*/	
+		
+		
+		//@DungeonsCommands;
+		getCommand("party create").setExecutor(new PartyCommands());
 		
 		//@Ecomony Commands
 		getCommand("addbank").setExecutor(new EcoAddBankCommand());

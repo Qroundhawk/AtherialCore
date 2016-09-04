@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -12,6 +13,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
+
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 
 public class SettingsManager {
 	 
@@ -43,6 +47,10 @@ public class SettingsManager {
     FileConfiguration levelexpdata;
     File lefile;
     
+    
+    //@Dungeon HashMaps
+    //public HashMap<UUID, ArrayList<String>> partys = new HashMap<UUID,  ArrayList<String>>();
+    public Multimap<UUID, String> partys = ArrayListMultimap.create();
     
     
     //@Combat HashMaps

@@ -26,6 +26,8 @@ public class TestCommand2 implements CommandExecutor {
 			return true;
 		}
 		
+		
+		settings.partys.remove(p.getUniqueId(), "1");
 		/*if (p.getItemInHand().getType() == Material.WOOD_PICKAXE) {
 			if (p.getItemInHand().getItemMeta().getDisplayName().equals(ChatColor.WHITE + "" + ChatColor.BOLD + "Wooden Pickaxe")) {
 				String[] args1 = p.getItemInHand().getItemMeta().getLore().toString().split(" ");
@@ -57,8 +59,6 @@ public class TestCommand2 implements CommandExecutor {
 		}*/
 		
 		//int exp = (int) ((Math.random() *20) + 40);
-		
-		p.sendMessage("" + settings.Prefix);
 		
 		/*int level = 2;
 		int exp = 10;
