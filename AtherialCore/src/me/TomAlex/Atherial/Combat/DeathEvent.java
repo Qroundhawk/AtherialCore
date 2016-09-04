@@ -23,6 +23,7 @@ public class DeathEvent implements Listener
 	ItemStack helm = null;
 	ItemStack sword = null;
 	ItemStack pickaxe = null;
+	ItemStack compass = null;
 
 	@EventHandler
 	public void itemsafer(PlayerDeathEvent e) {
@@ -32,6 +33,7 @@ public class DeathEvent implements Listener
 		chest = p.getEquipment().getChestplate();
 		helm = p.getEquipment().getHelmet();
 		sword = p.getInventory().getItem(0);
+		compass = p.getInventory().getItem(8);
 
 		e.getDrops().clear();
 
@@ -73,7 +75,7 @@ public class DeathEvent implements Listener
 						p.getInventory().addItem(pickaxe);
 					}
 
-					p.getInventory().setItem(8, new ItemStack(Material.COMPASS));
+					p.getInventory().setItem(8, compass);
 					if(settings.pvptoggle.contains(p.getUniqueId()))
 					{
 						settings.pvptoggle.remove(p.getUniqueId());
