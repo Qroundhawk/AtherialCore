@@ -27,9 +27,6 @@ public class TestCommand implements CommandExecutor {
 			p.sendMessage(ChatColor.RED + "You do not have permissions to do that.");
 			return true;
 		}
-		settings.partys.put(p.getUniqueId(), "1");
-		Collection<String> numbers = settings.partys.get(p.getUniqueId());
-		p.sendMessage("" + numbers);
 		
 		
 		
