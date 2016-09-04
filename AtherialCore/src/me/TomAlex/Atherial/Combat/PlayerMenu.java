@@ -26,7 +26,7 @@ public class PlayerMenu implements Listener
 	String messager = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.RED
 			+ ChatColor.BOLD.toString() + "COMBAT >";
 	
-	@EventHandler
+	/*@EventHandler
 	public void statsMenu(InventoryClickEvent e)
 	{
 		Player p = (Player) e.getWhoClicked();	
@@ -131,5 +131,5 @@ public class PlayerMenu implements Listener
 			p.openInventory(menu);
 			
 		}else return;
-	}
+	}*/
 }
