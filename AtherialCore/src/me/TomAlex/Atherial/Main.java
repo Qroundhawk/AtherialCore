@@ -23,10 +23,10 @@ import me.TomAlex.Atherial.Commands.GlobalMarketCommand;
 import me.TomAlex.Atherial.Commands.ItemDisenchanter;
 import me.TomAlex.Atherial.Commands.MineRespawnOreCommand;
 import me.TomAlex.Atherial.Commands.MineSpawnPickaxeCommand;
+import me.TomAlex.Atherial.Commands.PartyCommand;
 import me.TomAlex.Atherial.Commands.RepairSmithCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
-import me.TomAlex.Atherial.Dungeons.PartyCommands;
 import me.TomAlex.Atherial.Durability.DuraShops;
 import me.TomAlex.Atherial.Durability.Infidura;
 import me.TomAlex.Atherial.Durability.ItemDurabillity;
@@ -139,7 +139,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		
 		//@DungeonsCommands;
-		getCommand("party create").setExecutor(new PartyCommands());
+		getCommand("party").setExecutor(new PartyCommand());
 		
 		//@Ecomony Commands
 		getCommand("addbank").setExecutor(new EcoAddBankCommand());
