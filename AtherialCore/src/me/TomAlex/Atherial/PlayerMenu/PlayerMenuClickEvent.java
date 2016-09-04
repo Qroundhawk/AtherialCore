@@ -28,10 +28,12 @@ public class PlayerMenuClickEvent implements Listener {
 	    	if (e.getCurrentItem().getItemMeta().getDisplayName() == null) return;
 	    	
 	    	if (e.getCurrentItem().equals(is.togglePvPOff(pn))) {
+	    		settings.pvptoggle.add(p.getUniqueId());
 	    		e.getInventory().setItem(13, is.togglePvPOn(pn));
 	    		return;
 	    	}
 	    	if (e.getCurrentItem().equals(is.togglePvPOn(pn))) {
+	    		settings.pvptoggle.remove(p.getUniqueId());
 	    		e.getInventory().setItem(13, is.togglePvPOff(pn));
 	    		return;
 	    	}
