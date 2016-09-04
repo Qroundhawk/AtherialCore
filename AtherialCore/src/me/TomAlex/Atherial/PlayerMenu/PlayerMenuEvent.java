@@ -17,7 +17,7 @@ import org.bukkit.inventory.Inventory;
 public class PlayerMenuEvent implements Listener {
 
 	SettingsManager settings = SettingsManager.getInstance();
-	
+	MenuItemStacks is = MenuItemStacks.getInstance();
 	
 	
 	@EventHandler
@@ -25,7 +25,11 @@ public class PlayerMenuEvent implements Listener {
 		
 		Player p = (Player) e.getWhoClicked();
 		
-		if (p.getItemInHand().getType().equals(Material.COMPASS) && p.getItemInHand().hasItemMeta() && p.getItemInHand().getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.ITALIC + "Player Info")) {
+		if (e.getCurrentItem() == null) return;
+    	if (e.getCurrentItem().getItemMeta() == null) return;
+    	if (e.getCurrentItem().getItemMeta().getDisplayName() == null) return;
+		
+		if (e.getCurrentItem().getType().equals(Material.COMPASS) && e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.ITALIC + "Player Info")) {
 			e.setCancelled(true);
 			return;
 		}
@@ -40,27 +44,13 @@ public class PlayerMenuEvent implements Listener {
 		if (e.getAction() == Action.RIGHT_CLICK_AIR ) {
 			if (p.getItemInHand().getType().equals(Material.COMPASS) && p.getItemInHand().hasItemMeta() && p.getItemInHand().getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.ITALIC + "Player Info")) {
 				
-					Inventory PlayerInfo = Bukkit.createInventory(null, 27, ChatColor.DARK_GRAY + "" + p.getName() + "'s Player Info.");
+					Inventory PlayerMenu = Bukkit.createInventory(null, 27, ChatColor.DARK_GRAY + "" + p.getName() + "'s Player Info.");
 					
 					
+					PlayerMenu.setItem(4, is.playerInfo(p.getName()));
+					PlayerMenu.setItem(13, is.togglePvPOff(p.getName()));
 					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					p.openInventory(PlayerInfo);
+					p.openInventory(PlayerMenu);
 					
 					return;
 			}
