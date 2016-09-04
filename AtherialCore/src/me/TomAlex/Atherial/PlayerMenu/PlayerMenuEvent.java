@@ -50,7 +50,11 @@ public class PlayerMenuEvent implements Listener {
 					Inventory PlayerMenu = Bukkit.createInventory(null, 27, ChatColor.DARK_GRAY + "" + p.getName() + "'s Player Info.");
 					
 					
-					PlayerMenu.setItem(13, is.togglePvPOff(pn));
+					if (settings.pvptoggle.contains(p.getUniqueId())) {
+						PlayerMenu.setItem(13, is.togglePvPOn(pn));
+					}else{
+						PlayerMenu.setItem(13, is.togglePvPOff(pn));
+					}
 					PlayerMenu.setItem(22, is.serverInfo());
 					PlayerMenu.setItem(4, is.playerInfo(pn));
 					
