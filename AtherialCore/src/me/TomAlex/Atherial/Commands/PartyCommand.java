@@ -92,6 +92,11 @@ public class PartyCommand implements CommandExecutor {
 		{
 			if(settings.partyInvites.containsKey(pn))
 			{
+				if(settings.partyInvites.get(pn) == null)
+				{
+					p.sendMessage(messager + " Party does not exist");
+					return true;
+				}
 				if(settings.partyPeople.contains(p.getUniqueId()) || settings.partys.containsKey(pn))
 				{
 					p.sendMessage(messager + " Already in party!");
@@ -131,19 +136,47 @@ public class PartyCommand implements CommandExecutor {
 			}else
 			{
 				Collection<String> members = settings.partys.get(pn);
-				members.size();
-				int partysize = members.size();
-				int i = 0;
-				p.sendMessage(messager + i);
-				while (i < partysize) 
+				for(String i : members)
 				{
-					p.sendMessage(" "+ settings.partys.keys());
-
-					i++;
+					Player member = Bukkit.getServer().getPlayer(i);
+					settings.partyLeaders.remove(i);
+					settings.partyPeople.remove(member.getUniqueId());
+					member.sendMessage(messager + " Party disbanded");
 				}
-
+				settings.partys.removeAll(pn);
+	
 			}
 			
+		}
+		if (args[0].equalsIgnoreCase("chat")) 
+		{
+			if(!(settings.partyPeople.contains(ud)))
+			{
+				p.sendMessage(messager + " Not in a party!");
+				return true;
+			}
+			
+			if(settings.partyPeople.contains(p.getUniqueId()) || settings.partys.containsKey(pn))
+			{
+				if (args.length > 1) 
+				{
+					String message = "";
+					for (int i = 1; i < args.length; i++) 
+					{
+						
+						message = message.concat(args[i] + " ");
+					}
+					String leader = settings.partyLeaders.get(pn);
+					Collection<String> members = settings.partys.get(leader);
+					
+					for(String i : members)
+					{
+						Player member = Bukkit.getServer().getPlayer(i);
+						member.sendMessage(messager + message);
+					}
+				}      
+			}
+		
 		}
 		if (args[0].equalsIgnoreCase("info")) 
 		{
