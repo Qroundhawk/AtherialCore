@@ -49,6 +49,7 @@ import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationEmerald;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationGold;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationIron;
 import me.TomAlex.Atherial.Mining.OreRegisteration.OreRegistrationLapis;
+import me.TomAlex.Atherial.PlayerMenu.PlayerMenuClickEvent;
 import me.TomAlex.Atherial.PlayerMenu.PlayerMenuEvent;
 import net.milkbowl.vault.economy.Economy;
 
@@ -130,6 +131,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		//@PlayerInfo Events
 		pm.registerEvents(new PlayerMenuEvent(), this);
+		pm.registerEvents(new PlayerMenuClickEvent(), this);
 		
 		
 		

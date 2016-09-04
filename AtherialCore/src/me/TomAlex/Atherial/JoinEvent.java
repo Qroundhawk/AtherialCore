@@ -1,11 +1,18 @@
 package me.TomAlex.Atherial;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.TomAlex.Atherial.Chat.ChatPrefixes;
 
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class JoinEvent implements Listener {
 
@@ -35,7 +42,15 @@ public class JoinEvent implements Listener {
 			settings.Prefix.put(p.getUniqueId().toString(), null);
 		}
 		
-		
+		ItemStack pmenu = new ItemStack(Material.COMPASS);
+		ItemMeta pmenuMeta = pmenu.getItemMeta();
+		List<String> pmenuLore = new ArrayList<String>();
+		pmenuMeta.setDisplayName(ChatColor.GREEN + "" + ChatColor.ITALIC + "Player Info");
+		pmenuLore.add(ChatColor.GREEN + "|" + ChatColor.GRAY + "Right Click" + ChatColor.GREEN + "| " + ChatColor.GRAY + "to see");
+		pmenuLore.add(ChatColor.GRAY + "all your player info!");
+		pmenuMeta.setLore(pmenuLore);
+		pmenu.setItemMeta(pmenuMeta);
+		p.getInventory().setItem(8, pmenu);
 		
 	}
 }

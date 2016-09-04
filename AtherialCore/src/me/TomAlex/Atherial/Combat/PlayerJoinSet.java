@@ -189,16 +189,6 @@ public class PlayerJoinSet implements Listener {
 
 				p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(16);
 
-				ItemStack pmenu = new ItemStack(Material.COMPASS);
-				ItemMeta pmenuMeta = pmenu.getItemMeta();
-				List<String> pmenuLore = new ArrayList<String>();
-				pmenuMeta.setDisplayName(
-						ChatColor.GREEN + ChatColor.BOLD.toString() + ChatColor.ITALIC.toString() + "Player Menu");
-				pmenuLore.add(ChatColor.WHITE + "Right click to open Player Menu");
-				pmenuMeta.setLore(pmenuLore);
-				pmenu.setItemMeta(pmenuMeta);
-				p.getInventory().setItem(8, pmenu);
-
 				// ---------------------------setting
 				// stats--------------------------
 				settings.Armor.put(p.getUniqueId(), 0);

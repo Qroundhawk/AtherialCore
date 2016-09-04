@@ -4,6 +4,7 @@ import me.TomAlex.Atherial.SettingsManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,6 +31,7 @@ public class PlayerMenuEvent implements Listener {
     	if (e.getCurrentItem().getItemMeta().getDisplayName() == null) return;
 		
 		if (e.getCurrentItem().getType().equals(Material.COMPASS) && e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.ITALIC + "Player Info")) {
+			if (p.getGameMode().equals(GameMode.CREATIVE)) return;
 			e.setCancelled(true);
 			return;
 		}
@@ -40,15 +42,17 @@ public class PlayerMenuEvent implements Listener {
 	public void Compassdrop(PlayerInteractEvent e) {
 		
 		Player p = e.getPlayer();
+		String pn = p.getName();
 		
-		if (e.getAction() == Action.RIGHT_CLICK_AIR ) {
+		if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if (p.getItemInHand().getType().equals(Material.COMPASS) && p.getItemInHand().hasItemMeta() && p.getItemInHand().getItemMeta().getDisplayName().equals(ChatColor.GREEN + "" + ChatColor.ITALIC + "Player Info")) {
 				
 					Inventory PlayerMenu = Bukkit.createInventory(null, 27, ChatColor.DARK_GRAY + "" + p.getName() + "'s Player Info.");
 					
 					
-					PlayerMenu.setItem(4, is.playerInfo(p.getName()));
-					PlayerMenu.setItem(13, is.togglePvPOff(p.getName()));
+					PlayerMenu.setItem(13, is.togglePvPOff(pn));
+					PlayerMenu.setItem(22, is.serverInfo());
+					PlayerMenu.setItem(4, is.playerInfo(pn));
 					
 					p.openInventory(PlayerMenu);
 					
