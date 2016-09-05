@@ -58,6 +58,10 @@ commands:
         usage: /<command>
         aliases: sc
         description: creates party
+    dungeon:
+        usage: /<command>
+        aliases: sc
+        description: creates party
         
 permissions:
     test.command:
