@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -70,6 +71,48 @@ public class MenuItemStacks {
         lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "Twitter: " + ChatColor.WHITE + "@LegionRealmsRPG");
         lore.add("");
         lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "-=[ Play.LegionRealms.Net ]=-");
+        bookmeta.setLore(lore);
+        book.setItemMeta(bookmeta);
+        
+		return book;
+	}
+	
+	public ItemStack playerStats(Player p) {
+		
+		ItemStack book = new ItemStack(Material.IRON_CHESTPLATE, 1);
+		ItemMeta bookmeta = book.getItemMeta();
+		bookmeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + p.getName() + "'s Stats");
+		List<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.DARK_RED + "\u2764 MaxHealth: " + ChatColor.WHITE + "" + ChatColor.ITALIC + settings.Health.get(p.getUniqueId()));
+		lore.add("");
+        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "Armor: " + ChatColor.WHITE + settings.Armor.get(p.getUniqueId()));
+        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "Thorns: " + ChatColor.WHITE + settings.Thorns.get(p.getUniqueId()));
+        lore.add("");
+        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "BlockChance: " + ChatColor.WHITE + settings.Block.get(p.getUniqueId()));
+        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "Vitality: " + ChatColor.WHITE + settings.Vit.get(p.getUniqueId()));
+        lore.add("");
+        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "HealthRegen: " + ChatColor.WHITE + settings.Regen.get(p.getUniqueId()));
+        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "PvE Resistance: " + ChatColor.WHITE + settings.PvE.get(p.getUniqueId()));
+        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "PvP Resistance: " + ChatColor.WHITE + settings.PvP.get(p.getUniqueId()));
+        lore.add("");
+        lore.add(ChatColor.GRAY + "These are your");
+        lore.add(ChatColor.GRAY + "Real-Time player stats!");
+        bookmeta.setLore(lore);
+        book.setItemMeta(bookmeta);
+        
+		return book;
+	}
+	
+	public ItemStack dailyBonus(Player p) {
+		
+		ItemStack book = new ItemStack(Material.IRON_CHESTPLATE, 1);
+		ItemMeta bookmeta = book.getItemMeta();
+		bookmeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + p.getName() + "'s Stats");
+		List<String> lore = new ArrayList<String>();
+        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.DARK_AQUA + "Day: " + ChatColor.WHITE + "1");
+        lore.add("");
+        lore.add(ChatColor.GRAY + "Here you can claim");
+        lore.add(ChatColor.GRAY + "Your daily bonus!");
         bookmeta.setLore(lore);
         book.setItemMeta(bookmeta);
         

@@ -55,6 +55,7 @@ public class PlayerMenuEvent implements Listener {
 					}else{
 						PlayerMenu.setItem(13, is.togglePvPOff(pn));
 					}
+					PlayerMenu.setItem(15, is.playerStats(p));
 					PlayerMenu.setItem(22, is.serverInfo());
 					PlayerMenu.setItem(4, is.playerInfo(pn));
 					
