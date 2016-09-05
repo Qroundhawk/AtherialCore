@@ -53,8 +53,7 @@ public class DeathEvent implements Listener
 
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(JavaPlugin.getProvidingPlugin(Main.class), new Runnable() {
 			@Override
-			public void run() {
-				
+			public void run() {		
 					p.spigot().respawn();
 					if (boots != null) {
 						p.getInventory().addItem(boots);

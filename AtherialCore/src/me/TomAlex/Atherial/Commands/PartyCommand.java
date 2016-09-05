@@ -56,6 +56,7 @@ public class PartyCommand implements CommandExecutor {
 				settings.partys.put(pn, pn);
 				settings.partyLeaders.put(pn, pn);
 				p.sendMessage(messager + " Party has been created!");
+				
 				return true;
 			}
 		}

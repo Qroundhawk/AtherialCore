@@ -53,10 +53,16 @@ import me.TomAlex.Atherial.PlayerMenu.PlayerMenuClickEvent;
 import me.TomAlex.Atherial.PlayerMenu.PlayerMenuEvent;
 import net.milkbowl.vault.economy.Economy;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import be.maximvdw.placeholderapi.PlaceholderAPI;
+import be.maximvdw.placeholderapi.PlaceholderReplaceEvent;
+import be.maximvdw.placeholderapi.PlaceholderReplacer;
 
 public class Main extends JavaPlugin implements Listener {
 	
@@ -76,6 +82,28 @@ public class Main extends JavaPlugin implements Listener {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+		
+		if(Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI"))
+		{
+			PlaceholderAPI.registerPlaceholder(this, "partyleader",	new PlaceholderReplacer()
+			{
+				@Override
+				public String onPlaceholderReplace(PlaceholderReplaceEvent e)
+				{
+					if(settings.partys.containsKey(e.getPlayer().getName()))
+					{
+						String re = ChatColor.GRAY + ChatColor.BOLD.toString() + "> " + e.getPlayer().getName();
+						return re;
+					}else
+					{
+						String re = ChatColor.GRAY + ChatColor.BOLD.toString() + "> " + "free spot";
+						return re;
+						
+					}
+					
+				}
+			});
+		}
 		
 		
 		/*@Event registers*/
