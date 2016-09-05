@@ -56,6 +56,7 @@ public class PlayerMenuEvent implements Listener {
 						PlayerMenu.setItem(13, is.togglePvPOff(pn));
 					}
 					PlayerMenu.setItem(15, is.playerStats(p));
+					PlayerMenu.setItem(11, is.dailyBonus(p));
 					PlayerMenu.setItem(22, is.serverInfo());
 					PlayerMenu.setItem(4, is.playerInfo(pn));
 					

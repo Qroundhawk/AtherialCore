@@ -105,14 +105,15 @@ public class MenuItemStacks {
 	
 	public ItemStack dailyBonus(Player p) {
 		
-		ItemStack book = new ItemStack(Material.IRON_CHESTPLATE, 1);
+		ItemStack book = new ItemStack(Material.CHEST, 1);
 		ItemMeta bookmeta = book.getItemMeta();
-		bookmeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + p.getName() + "'s Stats");
+		bookmeta.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Daily Bonus");
 		List<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.DARK_AQUA + "Day: " + ChatColor.WHITE + "1");
-        lore.add("");
-        lore.add(ChatColor.GRAY + "Here you can claim");
-        lore.add(ChatColor.GRAY + "Your daily bonus!");
+		lore.add(ChatColor.WHITE + "" + ChatColor.BOLD + ">| " + ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.ITALIC + "Comming Soon!" + ChatColor.WHITE + "" + ChatColor.BOLD + " |<");
+        //lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.DARK_AQUA + "Day: " + ChatColor.WHITE + "1");
+        //lore.add("");
+        //lore.add(ChatColor.GRAY + "Here you can claim");
+        //lore.add(ChatColor.GRAY + "Your daily bonus!");
         bookmeta.setLore(lore);
         book.setItemMeta(bookmeta);
         
