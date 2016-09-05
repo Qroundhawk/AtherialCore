@@ -27,6 +27,7 @@ import me.TomAlex.Atherial.Commands.PartyCommand;
 import me.TomAlex.Atherial.Commands.RepairSmithCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
+import me.TomAlex.Atherial.Dungeons.PartyPlaceHolders;
 import me.TomAlex.Atherial.Durability.DuraShops;
 import me.TomAlex.Atherial.Durability.Infidura;
 import me.TomAlex.Atherial.Durability.ItemDurabillity;
@@ -53,16 +54,11 @@ import me.TomAlex.Atherial.PlayerMenu.PlayerMenuClickEvent;
 import me.TomAlex.Atherial.PlayerMenu.PlayerMenuEvent;
 import net.milkbowl.vault.economy.Economy;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import be.maximvdw.placeholderapi.PlaceholderAPI;
-import be.maximvdw.placeholderapi.PlaceholderReplaceEvent;
-import be.maximvdw.placeholderapi.PlaceholderReplacer;
 
 public class Main extends JavaPlugin implements Listener {
 	
@@ -72,6 +68,7 @@ public class Main extends JavaPlugin implements Listener {
 	OreRespawn miningore = OreRespawn.getInstance();
 	PlayerUpdater updater = PlayerUpdater.getInstance();
 	ChatStartup chatstartup = ChatStartup.getInstance();
+	PartyPlaceHolders partyplaceholders = PartyPlaceHolders.getInstance();
 	
 	public void onEnable() {
 		JavaPlugin.getProvidingPlugin(Main.class);
@@ -82,28 +79,6 @@ public class Main extends JavaPlugin implements Listener {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-		
-		if(Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI"))
-		{
-			PlaceholderAPI.registerPlaceholder(this, "partyleader",	new PlaceholderReplacer()
-			{
-				@Override
-				public String onPlaceholderReplace(PlaceholderReplaceEvent e)
-				{
-					if(settings.partys.containsKey(e.getPlayer().getName()))
-					{
-						String re = ChatColor.GRAY + ChatColor.BOLD.toString() + "> " + e.getPlayer().getName();
-						return re;
-					}else
-					{
-						String re = ChatColor.GRAY + ChatColor.BOLD.toString() + "> " + "free spot";
-						return re;
-						
-					}
-					
-				}
-			});
-		}
 		
 		
 		/*@Event registers*/
@@ -205,6 +180,7 @@ public class Main extends JavaPlugin implements Listener {
 		chatstartup.Startup();
 		chatstartup.Timer();
 		chatstartup.Refresh();
+		partyplaceholders.partyPlaceHolders();
 	}
 	
 	public void onDisable() {
