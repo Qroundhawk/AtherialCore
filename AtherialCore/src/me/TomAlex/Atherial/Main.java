@@ -27,6 +27,9 @@ import me.TomAlex.Atherial.Commands.PartyCommand;
 import me.TomAlex.Atherial.Commands.RepairSmithCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
+import me.TomAlex.Atherial.Dungeons.AddGolems;
+import me.TomAlex.Atherial.Dungeons.DungeonGolems;
+import me.TomAlex.Atherial.Dungeons.JoinDungeons;
 import me.TomAlex.Atherial.Dungeons.PartyPlaceHolders;
 import me.TomAlex.Atherial.Durability.DuraShops;
 import me.TomAlex.Atherial.Durability.Infidura;
@@ -84,6 +87,10 @@ public class Main extends JavaPlugin implements Listener {
 		/*@Event registers*/
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
+		
+		//@Dungeon Events
+		pm.registerEvents(new DungeonGolems(), this);
+		pm.registerEvents(new JoinDungeons(), this);
 		
 		//@Join Events
 		pm.registerEvents(new JoinEvent(), this);
@@ -145,6 +152,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		//@DungeonsCommands;
 		getCommand("party").setExecutor(new PartyCommand());
+		getCommand("dungeon").setExecutor(new AddGolems());
 		
 		//@Ecomony Commands
 		getCommand("addbank").setExecutor(new EcoAddBankCommand());

@@ -49,11 +49,13 @@ public class SettingsManager {
     
     
     //@Dungeon HashMaps
-    //public HashMap<UUID, ArrayList<String>> partys = new HashMap<UUID,  ArrayList<String>>();
     public Multimap<String, String> partys = ArrayListMultimap.create();
     public ArrayList<UUID> partyPeople = new ArrayList<UUID>();
     public HashMap<String, String> partyLeaders = new HashMap<String, String>();
     public HashMap<String, String> partyInvites = new HashMap<String, String>();
+    
+    public HashMap<String, String> Dungeons = new HashMap<String, String>();
+    public HashMap<String, String> Dungeonleaders = new HashMap<String, String>();
     
     
     //@Combat HashMaps
