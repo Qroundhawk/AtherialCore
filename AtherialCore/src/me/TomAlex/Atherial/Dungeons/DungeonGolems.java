@@ -25,6 +25,7 @@ public class DungeonGolems implements Listener
 	String messager = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.GOLD
 			+ ChatColor.BOLD.toString() + "DUNGEON > " + ChatColor.GREEN;
 	
+	
 	Location maw1 = new Location(Bukkit.getWorld("world"), -408, 70, -707);
 	
 	@EventHandler

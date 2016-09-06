@@ -1,12 +1,14 @@
 package me.TomAlex.Atherial.Commands;
 
 import me.TomAlex.Atherial.SettingsManager;
+import me.TomAlex.Atherial.Dungeons.MawSetup;
 
 import java.util.Collection;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,8 +17,16 @@ import org.bukkit.entity.Player;
 public class PartyCommand implements CommandExecutor {
 
 	SettingsManager settings = SettingsManager.getInstance();
+	MawSetup dungeonsetup = MawSetup.getInstance();
+	
 	String messager = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.AQUA
 			+ ChatColor.BOLD.toString() + "PARTY > " + ChatColor.GREEN;
+	
+	String messager2 = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.GOLD
+			+ ChatColor.BOLD.toString() + "DUNGEON > " + ChatColor.GREEN;
+	
+	
+	Location maw1Golem = new Location(Bukkit.getWorld("world"), -435, 64, -698);
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		
@@ -141,9 +151,54 @@ public class PartyCommand implements CommandExecutor {
 					member.sendMessage(messager + pn + " left the party!");
 				}
 				
+				//checks if player is in a dungeon when leaving party.
+				//Removes from dungeon on party leave
+				if(settings.DungeonPeople.containsKey(pn))
+				{
+					String dname = settings.DungeonPeople.get(pn);
+					if(dname == "maw1")
+					{
+						settings.DungeonPeople.remove(pn);
+						p.teleport(maw1Golem);
+						p.sendMessage(messager2 + " Kick out of dungeon, no party!");
+					}
+				}
+				
 			}else
 			{
 				Collection<String> members = settings.partys.get(pn);
+				
+				//checks if partyleader has start dungeon
+				if(settings.Dungeonleaders.containsKey(pn))
+				{
+					//gets dungeon being done by party
+					String dname = settings.Dungeonleaders.get(pn);
+					settings.Dungeons.remove(dname);
+					settings.Dungeonleaders.remove(pn);
+					
+					for(String i : members)
+					{
+						
+						Player member = Bukkit.getServer().getPlayer(i);
+						String mname = member.getName();
+						if(settings.DungeonPeople.containsKey(mname))
+						{
+							if(dname == "maw1")
+							{
+								settings.DungeonPeople.remove(member.getName());
+								member.teleport(maw1Golem);
+								member.sendMessage(messager2 + " Kicked out of dungeon because party leader left!");
+							}
+						}
+
+					}
+					
+					if(dname == "maw1")
+					{
+						dungeonsetup.maw1reset();
+					}
+				}
+				
 				for(String i : members)
 				{
 					Player member = Bukkit.getServer().getPlayer(i);
