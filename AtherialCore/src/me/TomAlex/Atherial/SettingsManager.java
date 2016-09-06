@@ -4,13 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 
@@ -82,6 +83,10 @@ public class SettingsManager {
 	public HashMap<String, Integer> Gold = new HashMap<String, Integer>();
 	public HashMap<String, Integer> Diamond = new HashMap<String, Integer>();
 	public HashMap<String, Integer> Lapis = new HashMap<String, Integer>();
+	
+	//@HorseJUSIN Rename
+	public HashMap<Player, ItemStack> pendingRename = new HashMap<Player, ItemStack>();
+	
 	//@Mining respawnrate in seconds
 	public int CoalRespawn = 120;
 	public int EmeraldRespawn = 120;

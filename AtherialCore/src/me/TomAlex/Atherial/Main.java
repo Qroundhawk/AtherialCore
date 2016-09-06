@@ -3,6 +3,7 @@ package me.TomAlex.Atherial;
 import me.TomAlex.Atherial.ArmorEquipEvent.ArmorListener;
 import me.TomAlex.Atherial.Chat.ChatEvent;
 import me.TomAlex.Atherial.Chat.ChatStartup;
+import me.TomAlex.Atherial.Chat.HorsesJUSTIN.HorseGUIClickEvent;
 import me.TomAlex.Atherial.Combat.ArmorEquipting;
 import me.TomAlex.Atherial.Combat.CombatTagger;
 import me.TomAlex.Atherial.Combat.DeathEvent;
@@ -119,7 +120,6 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new MenuBankClickEvent(), this);
 		pm.registerEvents(new MenuStorageClickEvent(), this);
 		pm.registerEvents(new StorageCloseEvent(), this);
-		
 
 		//@Mining Events
 		pm.registerEvents(new OreRegistrationCoal(), this);
@@ -136,14 +136,15 @@ public class Main extends JavaPlugin implements Listener {
 		pm.registerEvents(new OreBreakIron(), this);
 		pm.registerEvents(new OreBreakLapis(), this);
 		
-		
 		//@Chat Events
 		pm.registerEvents(new ChatEvent(), this);
-		
 		
 		//@PlayerInfo Events
 		pm.registerEvents(new PlayerMenuEvent(), this);
 		pm.registerEvents(new PlayerMenuClickEvent(), this);
+		
+		//@HorseJUSTIN Events
+		pm.registerEvents(new HorseGUIClickEvent(), this);
 		
 		
 		

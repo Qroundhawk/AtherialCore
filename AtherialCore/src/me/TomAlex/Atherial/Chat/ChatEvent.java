@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class ChatEvent implements Listener {
 	
@@ -18,6 +20,17 @@ public class ChatEvent implements Listener {
 	public void onPlayerChat(AsyncPlayerChatEvent e) {
 		
         e.setCancelled(true);
+        
+        //@Horse Renaming
+		if(settings.pendingRename.containsKey(e.getPlayer())){
+			ItemStack is = settings.pendingRename.get(e.getPlayer());
+			ItemMeta im = is.getItemMeta();
+			im.setDisplayName(e.getMessage());
+			is.setItemMeta(im);
+			e.getPlayer().sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "HORSES > " + ChatColor.GRAY + "Your horse has been renamed to: " + e.getMessage());
+			settings.pendingRename.remove(e.getPlayer());
+			return;
+		}
         
         Player p = e.getPlayer();
         String msg = e.getMessage();
