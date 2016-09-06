@@ -26,6 +26,7 @@ public class DungeonGolems implements Listener
 			+ ChatColor.BOLD.toString() + "DUNGEON > " + ChatColor.GREEN;
 	
 	Location maw1 = new Location(Bukkit.getWorld("world"), -408, 70, -707);
+	
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEntityEvent e)
 	{
@@ -51,6 +52,7 @@ public class DungeonGolems implements Listener
 				if(settings.Dungeonleaders.containsKey(leader))
 				{
 					p.sendMessage(messager + " Joined Maw of Souls Dungeon");
+					settings.DungeonPeople.put(pn, "maw1");
 					p.teleport(maw1);
 					return;
 				}else if(!settings.partys.containsKey(pn))

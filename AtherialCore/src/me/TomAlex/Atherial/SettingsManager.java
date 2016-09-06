@@ -56,7 +56,7 @@ public class SettingsManager {
     
     public HashMap<String, String> Dungeons = new HashMap<String, String>();
     public HashMap<String, String> Dungeonleaders = new HashMap<String, String>();
-    public ArrayList<String> dungeonPeople = new ArrayList<String>();
+    public HashMap<String, String> DungeonPeople = new HashMap<String, String>();
     
     
     

@@ -16,7 +16,8 @@ public class MawDungeon implements Listener
 	String messager = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.GOLD
 			+ ChatColor.BOLD.toString() + "COMBAT > " + ChatColor.GREEN;
 	
-	Location maw1 = new Location(Bukkit.getWorld("world"), -408, 70, -707);
+	Location maw1Start = new Location(Bukkit.getWorld("world"), -408, 70, -707);
+	
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent e) 
 	{
@@ -34,12 +35,13 @@ public class MawDungeon implements Listener
 	    	{
 	    		if(!settings.Dungeons.containsKey("maw1"))
 	    		{
-	    			p.teleport(maw1);
+	    			p.teleport(maw1Start);
 		    		settings.Dungeons.put("maw1", pn);
 		    		settings.Dungeonleaders.put(pn, "maw1");
+		    		settings.DungeonPeople.put(pn, "maw1");
 	    		}else
 	    		{
-	    			p.sendMessage("Dungeons full");
+	    			p.sendMessage("No aviable dungeons open");
 	    			p.closeInventory();
 	    		}
 	    	}
