@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
@@ -15,13 +14,8 @@ public class ChatEvent implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
 	
-	@EventHandler(priority = EventPriority.LOW)
+	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent e) {
-		
-		if (e.isCancelled() == true) {
-			return;
-		}
-		
 		
         e.setCancelled(true);
         

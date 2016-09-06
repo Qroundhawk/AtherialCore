@@ -26,5 +26,24 @@ public class LegionMethods {
     	p.sendMessage("hey");
     	return;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    public void setPlayerLegion(Player p, String i) {
+    	
+    	if (settings.getLegionData().get(i) == null) {
+    		System.out.println("Legion > Error! - setPlayerLegion");
+    		return;
+    	}
+    	
+    	settings.getPlayerData().set(p.getUniqueId() + ".legion", i);
+    	
+    	return;
+    }
 
 }
