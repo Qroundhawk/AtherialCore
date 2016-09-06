@@ -29,7 +29,7 @@ import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
 import me.TomAlex.Atherial.Dungeons.AddGolems;
 import me.TomAlex.Atherial.Dungeons.DungeonGolems;
-import me.TomAlex.Atherial.Dungeons.JoinDungeons;
+import me.TomAlex.Atherial.Dungeons.MawDungeon;
 import me.TomAlex.Atherial.Dungeons.PartyPlaceHolders;
 import me.TomAlex.Atherial.Durability.DuraShops;
 import me.TomAlex.Atherial.Durability.Infidura;
@@ -90,7 +90,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		//@Dungeon Events
 		pm.registerEvents(new DungeonGolems(), this);
-		pm.registerEvents(new JoinDungeons(), this);
+		pm.registerEvents(new MawDungeon(), this);
 		
 		//@Join Events
 		pm.registerEvents(new JoinEvent(), this);
