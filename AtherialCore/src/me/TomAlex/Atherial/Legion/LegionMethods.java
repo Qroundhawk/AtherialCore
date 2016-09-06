@@ -1,4 +1,4 @@
-package me.TomAlex.Atherial.Commands.Legions;
+package me.TomAlex.Atherial.Legion;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

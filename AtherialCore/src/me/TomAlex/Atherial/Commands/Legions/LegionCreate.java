@@ -1,6 +1,7 @@
 package me.TomAlex.Atherial.Commands.Legions;
 
 import me.TomAlex.Atherial.SettingsManager;
+import me.TomAlex.Atherial.Legion.LegionMethods;
 
 import org.bukkit.entity.Player;
 
