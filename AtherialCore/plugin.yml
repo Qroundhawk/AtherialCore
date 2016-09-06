@@ -62,6 +62,10 @@ commands:
         usage: /<command>
         aliases: sc
         description: creates party
+    legion:
+        usage: /<command>
+        aliases: sc
+        description: creates party
         
 permissions:
     test.command:
@@ -114,4 +118,7 @@ permissions:
         default: op
     chat.staffchat:
         description: StaffChat.
+        default: op
+    legion.use:
+        description: Legions.
         default: op
