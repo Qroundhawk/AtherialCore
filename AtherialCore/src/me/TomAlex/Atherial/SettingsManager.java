@@ -47,6 +47,9 @@ public class SettingsManager {
     FileConfiguration levelexpdata;
     File lefile;
     
+    FileConfiguration legiondata;
+    File lgfile;
+    
     
     //@Dungeon HashMaps
     public Multimap<String, String> partys = ArrayListMultimap.create();
@@ -181,6 +184,20 @@ public class SettingsManager {
                     }
             }
             levelexpdata = YamlConfiguration.loadConfiguration(lefile);
+            
+            
+            
+            lgfile = new File(p.getDataFolder(), "legiondata.yml");
+            if (!lgfile.exists()) {
+                    try {
+                    	lgfile.createNewFile();
+                    }
+                    catch (IOException e) {
+                            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create legiondata.yml!");
+                    }
+            }
+            legiondata = YamlConfiguration.loadConfiguration(lgfile);
+
 
 
             
@@ -291,6 +308,26 @@ public class SettingsManager {
 
     public void reloadLevelExpData() {
     	levelexpdata = YamlConfiguration.loadConfiguration(lefile);
+    }
+    
+    
+    
+    
+    public FileConfiguration getLegionData() {
+        return legiondata;
+    }
+
+    public void saveLegionData() {
+        	try {
+        		legiondata.save(lgfile);
+        	}
+        	catch (IOException e) {
+                	Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save legiondata.yml!");
+        	}
+    }
+
+    public void reloadLegionData() {
+    	legiondata = YamlConfiguration.loadConfiguration(lgfile);
     }
     
     //===========================================================
