@@ -1,4 +1,4 @@
-package me.TomAlex.Atherial.Dungeons;
+package me.TomAlex.Atherial.Commands;
 
 import java.util.UUID;
 
