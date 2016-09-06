@@ -83,7 +83,7 @@ public class MenuItemStacks {
 		ItemMeta bookmeta = book.getItemMeta();
 		bookmeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + p.getName() + "'s Stats");
 		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.DARK_RED + "\u2764 MaxHealth: " + ChatColor.WHITE + "" + ChatColor.ITALIC + settings.Health.get(p.getUniqueId()));
+		lore.add(ChatColor.DARK_RED + "\u2764 MaxHealth: " + ChatColor.WHITE + "" + ChatColor.ITALIC + p.getMaxHealth());
 		lore.add("");
         lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "Armor: " + ChatColor.WHITE + settings.Armor.get(p.getUniqueId()));
         lore.add(ChatColor.DARK_GRAY + "\u25BA" + ChatColor.GRAY + "Thorns: " + ChatColor.WHITE + settings.Thorns.get(p.getUniqueId()));
