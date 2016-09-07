@@ -45,7 +45,9 @@ public class MawDungeon implements Listener
 		    		settings.Dungeonleaders.put(pn, "maw1");
 		    		settings.DungeonPeople.put(pn, "maw1");
 		    		
-		    		dungeonsetup.maw1set();
+		    	
+					dungeonsetup.maw1reset();
+					dungeonsetup.maw1set();
 		    		
 		    		//send message to notify players
 		    		String leader = settings.partyLeaders.get(pn);

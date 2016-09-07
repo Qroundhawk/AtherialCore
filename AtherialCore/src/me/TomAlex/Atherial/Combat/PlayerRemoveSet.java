@@ -12,10 +12,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import me.TomAlex.Atherial.SettingsManager;
+import me.TomAlex.Atherial.Dungeons.MawSetup;
 
 public class PlayerRemoveSet implements Listener
 {
 	SettingsManager settings = SettingsManager.getInstance();
+	MawSetup dungeonsetup = MawSetup.getInstance();
 	
 	String messager = ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "!" + ChatColor.DARK_GRAY + "] " + ChatColor.AQUA
 			+ ChatColor.BOLD.toString() + "PARTY > " + ChatColor.GREEN;
@@ -99,6 +101,11 @@ public class PlayerRemoveSet implements Listener
 						}
 					}
 
+				}
+				
+				if(dname == "maw1")
+				{
+					dungeonsetup.maw1reset();
 				}
 			}
 			for(String i : members)
