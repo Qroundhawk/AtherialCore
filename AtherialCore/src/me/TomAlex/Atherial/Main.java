@@ -29,7 +29,6 @@ import me.TomAlex.Atherial.Commands.PartyCommand;
 import me.TomAlex.Atherial.Commands.RepairSmithCommand;
 import me.TomAlex.Atherial.Commands.TestCommand;
 import me.TomAlex.Atherial.Commands.TestCommand2;
-import me.TomAlex.Atherial.Commands.Legions.LegionCreate;
 import me.TomAlex.Atherial.Commands.Legions.LegionCommand;
 import me.TomAlex.Atherial.Dungeons.DungeonGolems;
 import me.TomAlex.Atherial.Dungeons.MawDungeon;
